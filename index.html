@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rosane Campos Nail Design</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="profile-pic">
+      <img src="LINK_DA_FOTO_AQUI" alt="Rosane Campos">
+    </div>
+    <h1>Rosane Campos Nail Design</h1>
+    <p class="subtext">💅 A beleza começa nas suas mãos</p>
+
+    <a onclick="enviarEvento()" class="btn whatsapp" href="https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!">📞 Entrar em Contato</a>
+    <a class="btn preencher" href="#">📝 Preencher</a>
+  </div>
+
+  <script>
+    function getCookie(name) {
+      const value = "; " + document.cookie;
+      const parts = value.split("; " + name + "=");
+      return parts.length === 2 ? parts.pop().split(";").shift() : null;
+    }
+
+    let externalId = localStorage.getItem("external_id");
+    if (!externalId) {
+      externalId = "user_" + Math.random().toString(36).substring(2) + Date.now();
+      localStorage.setItem("external_id", externalId);
+    }
+
+    const fbp = getCookie("_fbp");
+
+    function enviarEvento() {
+      fetch("https://SEU_PROXY_AQUI/render/api/conversion", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_name: "Lead",
+          event_source_url: window.location.href,
+          fbp: fbp || "NA",
+          external_id: externalId
+        })
+      });
+    }
+  </script>
+</body>
+</html>
