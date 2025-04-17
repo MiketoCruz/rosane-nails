@@ -4,13 +4,13 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom, #fcd5e6, #fad0dd);
   text-align: center;
-  padding: 30px 15px; /* Ajustei padding lateral */
+  padding: 30px 15px;
 }
 
 .container {
-  max-width: 450px; /* Aumentei um pouco para acomodar melhor o carrossel */
+  max-width: 450px;
   margin: auto;
-  overflow-x: hidden; /* Evita barras de rolagem horizontais indesejadas */
+  overflow-x: hidden;
 }
 
 /* Foto de Perfil */
@@ -40,51 +40,53 @@ h1 {
   font-size: 14px;
   color: #555;
   margin: 6px auto;
-  max-width: 90%; /* Ajusta largura */
+  max-width: 90%;
 }
 
 /* Estilos para o Carrossel Swiper */
 .swiper {
   width: 100%;
-  max-width: 400px; /* Largura máxima do carrossel */
-  margin: 20px auto; /* Espaçamento e centralização */
-  padding-bottom: 30px; /* Espaço para as bolinhas de paginação */
+  max-width: 400px; /* Mantém a largura máxima do carrossel */
+  margin: 20px auto;
+  /* O padding-bottom reserva espaço para as bolinhas ABAIXO da imagem de altura fixa */
+  padding-bottom: 30px;
+  position: relative; /* Garante contexto para posicionamento absoluto, se necessário */
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff; /* Fundo opcional para o slide */
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent; /* Fundo transparente por padrão */
+  /* Não precisa de fundo ou flex aqui se a imagem vai cobrir tudo */
+  background-color: transparent;
 }
 
 .swiper-slide img {
   display: block;
-  width: 100%; /* Imagem ocupa toda a largura do slide */
-  height: auto; /* Altura automática para manter proporção */
-  object-fit: cover; /* Cobre a área do slide */
-  border-radius: 16px; /* Bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease; /* Mantém a transição se quiser o hover */
+  width: 100%; /* Faz a imagem tentar ocupar toda a LARGURA do slide */
+  height: 350px; /* <<< ALTURA FIXA DEFINIDA! Ajuste este valor se quiser (ex: 300px, 400px) */
+  object-fit: cover; /* <<< FAZ A IMAGEM COBRIR A ÁREA (altura e largura), CORTANDO O EXCESSO */
+  object-position: center; /* Centraliza a imagem antes de cortar (geralmente o melhor) */
+  border-radius: 16px; /* Mantém as bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Mantém a sombra */
 }
 
-/* Opcional: Mantém o efeito de zoom no hover (pode não ser ideal em mobile) */
+/* Removemos o hover de zoom que pode ser estranho com object-fit */
+/*
 .swiper-slide img:hover {
   transform: scale(1.02);
 }
+*/
 
-/* Estilos para a paginação (bolinhas) - Swiper cuida da maior parte */
+/* Estilos para a paginação (bolinhas) */
 .swiper-pagination {
-  bottom: 0px !important; /* Posiciona as bolinhas na parte inferior do espaço reservado */
+  /* Posiciona as bolinhas dentro do padding-bottom do .swiper */
+  position: absolute; /* Garante posicionamento relativo ao .swiper */
+  bottom: 5px !important; /* Posição a partir do fundo */
+  left: 0; /* Alinha à esquerda */
+  width: 100%; /* Ocupa toda a largura para centralizar as bolinhas */
 }
 
-/* (Estilos dos botões e rodapé permanecem os mesmos de antes) */
-
+/* (Estilos dos botões e rodapé permanecem os mesmos) */
 /* Botões */
 .btn {
   display: flex;
@@ -134,12 +136,19 @@ footer {
   .btn {
     font-size: 14px;
     padding: 12px;
-    max-width: 95%; /* Botão pode ficar um pouco mais largo no mobile */
+    max-width: 95%;
   }
 
    .swiper {
-    max-width: 100%; /* Carrossel ocupa toda a largura no mobile */
+    max-width: 100%; /* Carrossel ocupa a largura toda no mobile */
   }
+
+  /* Você pode querer ajustar a altura da imagem no mobile também */
+  .swiper-slide img {
+     /* Por exemplo, diminuir um pouco a altura em telas pequenas */
+     /* height: 300px; */
+  }
+
 
   .welcome,
   .truth {
