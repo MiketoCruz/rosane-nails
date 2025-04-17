@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rosane Campos Nail Design</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="style.css">
 
   <script>
   !function(f,b,e,v,n,t,s)
@@ -23,62 +29,68 @@
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/>
   </noscript>
-  <style>
-    .swiper-pagination-bullet-active {
-      background-color: #d63384; /* Cor rosa para a bolinha ativa */
-    }
-  </style>
-</head>
+  </head>
 <body>
   <div class="container">
-    <div class="profile-pic">
-      <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Foto de Rosane Campos">
-    </div>
-    <h1>Rosane Campos Nail Design</h1>
-    <p class="subtext">💅 A beleza começa nas suas mãos</p>
-    <p class="welcome">Seja bem-vinda! Aqui cada detalhe é feito com carinho 💖</p>
-    <p class="truth">O primeiro passo pra fidelidade é o cuidado real com você ✨</p>
+    <header class="profile-header">
+      <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Logo Rosane Campos" class="profile-pic">
+      <h1>Rosane Campos Nail Design</h1>
+      <p class="subtext">💅 A beleza começa nas suas mãos</p>
+    </header>
 
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/XoQS1ua.jpeg" alt="Exemplo de trabalho de unha 1">
+    <section class="welcome-section">
+      <p class="welcome">Seja bem-vinda! Aqui cada detalhe é feito com carinho 💖</p>
+      <p class="truth">O primeiro passo pra fidelidade é o cuidado real com você ✨</p>
+    </section>
+
+    <section class="carousel-section">
+      <h2>Conheça meu trabalho</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://i.imgur.com/XoQS1ua.jpeg" alt="Exemplo de trabalho de unha 1">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de trabalho de unha 2">
+          </div>
+          <div class="swiper-slide">
+             <img src="https://via.placeholder.com/400x300.png/fcc2d7/808080?text=Exemplo+3" alt="Exemplo de trabalho de unha 3">
+          </div>
+           <div class="swiper-slide">
+             <img src="https://via.placeholder.com/400x300.png/fbc5dc/808080?text=Exemplo+4" alt="Exemplo de trabalho de unha 4">
+          </div>
         </div>
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de trabalho de unha 2">
-        </div>
-        <div class="swiper-slide">
-           <img src="https://via.placeholder.com/400x400.png/fcc2d7/808080?text=Exemplo+3" alt="Exemplo de trabalho de unha 3">
-        </div>
-         <div class="swiper-slide">
-           <img src="https://via.placeholder.com/400x400.png/fbc5dc/808080?text=Exemplo+4" alt="Exemplo de trabalho de unha 4">
-        </div>
+        <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-    <a class="btn whatsapp" href="#" onclick="enviarEvento(event)">
-      📞 Agendar pelo WhatsApp
-    </a>
-    <a class="btn preencher" href="#">
-      📝 Ver Tabela de Preços (Exemplo)
-    </a>
+    </section>
+    <section class="cta-section">
+      <a class="btn whatsapp-btn" href="#" onclick="enviarEvento(event)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+        <span>Agendar pelo WhatsApp</span>
+      </a>
+    </section>
 
     <footer>
-      <p>Qualidade, cuidado e beleza nas suas mãos</p>
+      <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // Função para buscar o valor de um cookie pelo nome
+    // Define o ano atual no rodapé
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // Função para buscar o valor de um cookie pelo nome (Mantida)
     function getCookie(name) {
       const value = "; " + document.cookie;
       const parts = value.split("; " + name + "=");
       return parts.length === 2 ? parts.pop().split(";").shift() : null;
     }
 
-    // ID Externo e FBP (mantido igual)
+    // ID Externo e FBP (Mantido)
     let externalId = localStorage.getItem("external_id");
     if (!externalId) {
       externalId = "user_" + Math.random().toString(36).substring(2) + Date.now();
@@ -86,7 +98,7 @@
     }
     const fbp = getCookie("_fbp");
 
-    // Função para enviar evento para o Proxy (mantida igual)
+    // Função para enviar evento para o Proxy (Mantida)
     function enviarEvento(event) {
       event.preventDefault();
       const proxyUrl = "https://rosane-proxy.onrender.com/api/conversion"; // CONFIRME SE ESSA É A URL CORRETA!
@@ -97,6 +109,8 @@
         external_id: externalId
       };
 
+      console.log("Enviando evento:", eventData); // Log para debug
+
       fetch(proxyUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -105,9 +119,14 @@
       .then(response => {
          console.log("Proxy response status:", response.status);
          if (!response.ok) { console.error("Erro ao enviar evento para o proxy."); }
+         // Mesmo se der erro no proxy, tenta redirecionar
       })
-      .catch(error => { console.error("Erro na requisição fetch para o proxy:", error); })
+      .catch(error => {
+        console.error("Erro na requisição fetch para o proxy:", error);
+        // Mesmo se der erro no fetch, tenta redirecionar
+      })
       .finally(() => {
+        console.log("Redirecionando para o WhatsApp..."); // Log para debug
         // CONFIRME SE ESTE É O LINK CORRETO!
         const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
         window.location.href = whatsappUrl;
@@ -116,18 +135,22 @@
 
     // Inicialização do Swiper (Carrossel)
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1, // Mostrar 1 slide por vez
-      spaceBetween: 20, // Espaço entre os slides (útil se mostrar mais de 1)
-      loop: true, // Permite navegar em loop (do último para o primeiro)
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      grabCursor: true, // Adiciona cursor de "mãozinha"
       pagination: {
-        el: ".swiper-pagination", // Onde colocar as bolinhas
-        clickable: true, // Permite clicar nas bolinhas para navegar
+        el: ".swiper-pagination",
+        clickable: true,
       },
-      autoplay: { // Opcional: faz o carrossel rodar sozinho
-        delay: 3500, // Tempo em milissegundos (3.5 segundos)
-        disableOnInteraction: false, // Continua automático mesmo depois de interação manual
+      autoplay: {
+        delay: 4000, // Aumentei um pouco o tempo
+        disableOnInteraction: true, // Pausa ao interagir (melhor UX)
       },
-      // Adicione outras opções se desejar: https://swiperjs.com/swiper-api
+      effect: "fade", // Opcional: Efeito de fade entre slides
+      fadeEffect: {
+         crossFade: true
+      },
     });
   </script>
 </body>
