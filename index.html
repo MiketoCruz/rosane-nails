@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rosane Campos Nail Design</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1312994806657918');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 <body>
   <div class="container">
@@ -14,7 +34,7 @@
     <h1>Rosane Campos Nail Design</h1>
     <p class="subtext">💅 A beleza começa nas suas mãos</p>
 
-    <a onclick="enviarEvento()" class="btn whatsapp" href="https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!">📞 Whatsapp</a>
+    <a class="btn whatsapp" href="#" onclick="enviarEvento(event)">📞 Whatsapp</a>
     <a class="btn preencher" href="#">📝 Preencher</a>
   </div>
 
@@ -33,8 +53,10 @@
 
     const fbp = getCookie("_fbp");
 
-    function enviarEvento() {
-      fetch("https://SEU_PROXY_AQUI/render/api/conversion", {
+    function enviarEvento(event) {
+      event.preventDefault();
+
+      fetch("https://rosane-proxy.onrender.com/api/conversion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -43,6 +65,8 @@
           fbp: fbp || "NA",
           external_id: externalId
         })
+      }).finally(() => {
+        window.location.href = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
       });
     }
   </script>
