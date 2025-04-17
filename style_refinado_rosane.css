@@ -1,157 +1,192 @@
-/* Estilos Gerais */
-body {
+/* Reset Básico e Box Sizing */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #fcd5e6, #fad0dd);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos Gerais */
+html {
+  font-size: 16px; /* Base para unidades REM */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif; /* Fonte padrão para textos */
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333; /* Cor de texto principal (cinza escuro) */
+  background: linear-gradient(to bottom, #FCE4EC, #FFF8F9); /* Gradiente Rosa Claro -> Quase Branco */
   text-align: center;
-  padding: 30px 15px;
+  padding: 1rem 0; /* Espaçamento no topo/fundo, sem padding lateral no body */
+  overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 .container {
-  max-width: 450px;
-  margin: auto;
-  overflow-x: hidden;
+  max-width: 500px; /* Aumenta um pouco a largura máxima */
+  margin: 0 auto; /* Centraliza */
+  padding: 0 1rem; /* Adiciona padding lateral DENTRO do container */
 }
 
-/* Foto de Perfil */
-.profile-pic img {
-  width: 130px;
-  height: 130px;
+/* Cabeçalho com Perfil/Logo */
+.profile-header {
+  margin-bottom: 2rem; /* Espaço abaixo do cabeçalho */
+}
+
+.profile-pic {
+  width: 120px; /* Ajusta tamanho da logo/foto */
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin: 0 auto 1rem auto; /* Centraliza e adiciona espaço abaixo */
+  display: block;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+  border: 3px solid white; /* Borda branca opcional */
 }
 
-/* Textos */
 h1 {
-  font-size: 22px;
-  margin: 8px 0 5px;
+  font-family: 'Poppins', sans-serif; /* Fonte do Título */
+  font-weight: 700;
+  font-size: 1.8rem; /* Tamanho do título */
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .subtext {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 8px;
-}
-
-.welcome,
-.truth {
-  font-size: 14px;
+  font-size: 1rem; /* Tamanho do subtítulo */
   color: #555;
-  margin: 6px auto;
-  max-width: 90%;
+  margin-bottom: 0;
 }
 
-/* Estilos para o Carrossel Swiper */
+/* Seção de Boas-Vindas */
+.welcome-section {
+  margin-bottom: 2.5rem; /* Espaço abaixo dos textos */
+  font-size: 0.95rem;
+  color: #444;
+  padding: 0 0.5rem; /* Pequeno padding lateral para textos */
+}
+
+.welcome-section p {
+    margin-bottom: 0.5rem;
+}
+
+/* Seção do Carrossel */
+.carousel-section {
+  margin-bottom: 2.5rem;
+}
+
+.carousel-section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #444;
+  margin-bottom: 1.5rem; /* Espaço antes do carrossel */
+}
+
 .swiper {
   width: 100%;
-  max-width: 400px; /* Mantém a largura máxima do carrossel */
-  margin: 20px auto;
-  /* O padding-bottom reserva espaço para as bolinhas ABAIXO da imagem de altura fixa */
-  padding-bottom: 30px;
-  position: relative; /* Garante contexto para posicionamento absoluto, se necessário */
+  max-width: 400px; /* Largura do carrossel */
+  margin: 0 auto; /* Centraliza */
+  position: relative;
+  border-radius: 16px; /* Arredonda o container do swiper */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra no carrossel */
+  /* Remove padding-bottom, a paginação ficará sobre a imagem */
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  /* Não precisa de fundo ou flex aqui se a imagem vai cobrir tudo */
   background-color: transparent;
+  text-align: center; /* Garante centralização se houver texto */
 }
 
 .swiper-slide img {
   display: block;
-  width: 100%; /* Faz a imagem tentar ocupar toda a LARGURA do slide */
-  height: 350px; /* <<< ALTURA FIXA DEFINIDA! Ajuste este valor se quiser (ex: 300px, 400px) */
-  object-fit: cover; /* <<< FAZ A IMAGEM COBRIR A ÁREA (altura e largura), CORTANDO O EXCESSO */
-  object-position: center; /* Centraliza a imagem antes de cortar (geralmente o melhor) */
-  border-radius: 16px; /* Mantém as bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Mantém a sombra */
+  width: 100%;
+  height: 300px; /* <<< ALTURA FIXA! Experimente este valor */
+  object-fit: cover; /* <<< COBRE A ÁREA */
+  object-position: center;
+  /* A borda arredondada agora vem do container .swiper */
+  border-radius: 0; /* Remove radius da imagem individual */
+  /* Remove sombra da imagem individual, fica no container */
+  box-shadow: none;
 }
 
-/* Removemos o hover de zoom que pode ser estranho com object-fit */
-/*
-.swiper-slide img:hover {
-  transform: scale(1.02);
-}
-*/
-
-/* Estilos para a paginação (bolinhas) */
+/* Paginação (Bolinhas) */
 .swiper-pagination {
-  /* Posiciona as bolinhas dentro do padding-bottom do .swiper */
-  position: absolute; /* Garante posicionamento relativo ao .swiper */
-  bottom: 5px !important; /* Posição a partir do fundo */
-  left: 0; /* Alinha à esquerda */
-  width: 100%; /* Ocupa toda a largura para centralizar as bolinhas */
+  position: absolute;
+  bottom: 10px !important; /* Posição um pouco acima da base */
+  left: 0;
+  width: 100%;
+}
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.7); /* Bolinhas brancas semi-transparentes */
+  opacity: 1;
+  width: 10px; /* Tamanho das bolinhas */
+  height: 10px;
+}
+.swiper-pagination-bullet-active {
+  background-color: #E91E63; /* Cor rosa vibrante para bolinha ativa */
+  transform: scale(1.1);
 }
 
-/* (Estilos dos botões e rodapé permanecem os mesmos) */
-/* Botões */
-.btn {
-  display: flex;
+/* Seção do Botão de Ação (CTA) */
+.cta-section {
+  margin-bottom: 2rem;
+}
+
+.whatsapp-btn {
+  display: inline-flex; /* Permite alinhar ícone e texto e respeitar padding */
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 100%;
-  max-width: 320px;
-  margin: 14px auto;
-  padding: 14px;
-  background: #fff;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
+  gap: 0.75rem; /* Espaço entre ícone e texto */
+  width: auto; /* Largura automática baseada no conteúdo */
+  max-width: 90%; /* Limita largura máxima */
+  margin: 0 auto; /* Centraliza */
+  padding: 0.8rem 1.8rem; /* Mais padding para um botão robusto */
+  background-color: #E91E63; /* Rosa Vibrante */
+  border: none; /* Remove borda padrão */
+  border-radius: 50px; /* Botão bem arredondado (pilula) */
+  font-family: 'Poppins', sans-serif; /* Fonte do botão */
+  font-size: 1.1rem; /* Tamanho da fonte do botão */
+  font-weight: 600;
   text-decoration: none;
-  color: #000;
-  box-shadow: 3px 3px 0 #000;
-  transition: all 0.2s ease-in-out;
+  color: #fff; /* Texto branco */
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4); /* Sombra correspondente à cor */
+  transition: all 0.3s ease; /* Transição suave */
+  cursor: pointer;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 5px 5px 0 #000;
+.whatsapp-btn svg {
+  /* O tamanho já foi definido no HTML (width/height), fill="currentColor" pega a cor do texto */
 }
 
-.whatsapp {
-  border: 2px solid #25d366;
+.whatsapp-btn:hover,
+.whatsapp-btn:focus {
+  background-color: #D81B60; /* Rosa um pouco mais escuro no hover */
+  transform: translateY(-3px); /* Efeito de levantar */
+  box-shadow: 0 6px 20px rgba(216, 27, 96, 0.5); /* Sombra mais intensa */
+  outline: none; /* Remove outline do focus */
 }
 
-.preencher {
-  border: 2px dashed #999;
-}
 
 /* Rodapé */
 footer {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #333;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* Linha sutil acima do rodapé */
+  font-size: 0.85rem;
+  color: #555;
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
+/* Ajustes finos para Telas Menores (se necessário, mas o design já é mobile-first) */
+@media (max-width: 360px) {
+  html {
+    font-size: 15px; /* Reduz um pouco a base da fonte em telas muito pequenas */
+  }
   h1 {
-    font-size: 20px;
+    font-size: 1.6rem;
   }
-
-  .btn {
-    font-size: 14px;
-    padding: 12px;
-    max-width: 95%;
-  }
-
-   .swiper {
-    max-width: 100%; /* Carrossel ocupa a largura toda no mobile */
-  }
-
-  /* Você pode querer ajustar a altura da imagem no mobile também */
-  .swiper-slide img {
-     /* Por exemplo, diminuir um pouco a altura em telas pequenas */
-     /* height: 300px; */
-  }
-
-
-  .welcome,
-  .truth {
-    max-width: 95%;
+  .whatsapp-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
   }
 }
