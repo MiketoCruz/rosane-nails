@@ -2,24 +2,25 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #fcd5e6, #fad0dd); /* Gradiente rosa suave */
+  background: linear-gradient(to bottom, #fcd5e6, #fad0dd);
   text-align: center;
-  padding: 30px 20px; /* Espaçamento interno */
+  padding: 30px 15px; /* Ajustei padding lateral */
 }
 
 .container {
-  max-width: 400px; /* Largura máxima do conteúdo */
-  margin: auto; /* Centraliza o container */
+  max-width: 450px; /* Aumentei um pouco para acomodar melhor o carrossel */
+  margin: auto;
+  overflow-x: hidden; /* Evita barras de rolagem horizontais indesejadas */
 }
 
 /* Foto de Perfil */
 .profile-pic img {
   width: 130px;
   height: 130px;
-  border-radius: 50%; /* Deixa a imagem redonda */
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Textos */
@@ -38,16 +39,110 @@ h1 {
 .truth {
   font-size: 14px;
   color: #555;
-  margin: 6px auto; /* Espaçamento vertical e centralização */
-  max-width: 320px; /* Limita largura para melhor leitura */
+  margin: 6px auto;
+  max-width: 90%; /* Ajusta largura */
 }
 
-/* Galeria de Imagens (Estilo Carrossel Simples) */
-.carousel img {
-  display: block; /* Para que margin:auto funcione corretamente */
-  width: 100%; /* Ocupa toda a largura disponível */
-  max-width: 320px; /* Limita a largura máxima em telas maiores */
+/* Estilos para o Carrossel Swiper */
+.swiper {
+  width: 100%;
+  max-width: 400px; /* Largura máxima do carrossel */
+  margin: 20px auto; /* Espaçamento e centralização */
+  padding-bottom: 30px; /* Espaço para as bolinhas de paginação */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff; /* Fundo opcional para o slide */
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Fundo transparente por padrão */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%; /* Imagem ocupa toda a largura do slide */
+  height: auto; /* Altura automática para manter proporção */
+  object-fit: cover; /* Cobre a área do slide */
   border-radius: 16px; /* Bordas arredondadas */
-  margin: 15px auto; /* Espaçamento vertical e centralização horizontal */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra discreta */
-  transition: transform 0.3s ease; /* Transição suave
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease; /* Mantém a transição se quiser o hover */
+}
+
+/* Opcional: Mantém o efeito de zoom no hover (pode não ser ideal em mobile) */
+.swiper-slide img:hover {
+  transform: scale(1.02);
+}
+
+/* Estilos para a paginação (bolinhas) - Swiper cuida da maior parte */
+.swiper-pagination {
+  bottom: 0px !important; /* Posiciona as bolinhas na parte inferior do espaço reservado */
+}
+
+/* (Estilos dos botões e rodapé permanecem os mesmos de antes) */
+
+/* Botões */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin: 14px auto;
+  padding: 14px;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 3px 3px 0 #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 #000;
+}
+
+.whatsapp {
+  border: 2px solid #25d366;
+}
+
+.preencher {
+  border: 2px dashed #999;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px;
+    max-width: 95%; /* Botão pode ficar um pouco mais largo no mobile */
+  }
+
+   .swiper {
+    max-width: 100%; /* Carrossel ocupa toda a largura no mobile */
+  }
+
+  .welcome,
+  .truth {
+    max-width: 95%;
+  }
+}
