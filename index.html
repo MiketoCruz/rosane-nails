@@ -2,11 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rosane Campos Nail Design</title>
   <link rel="stylesheet" href="style.css">
 
-  <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,6 +15,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
+  // Substitua 'SEU_PIXEL_ID' pelo ID real do seu Pixel
   fbq('init', '1312994806657918');
   fbq('track', 'PageView');
   </script>
@@ -23,12 +23,11 @@
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
-</head>
+  </head>
 <body>
   <div class="container">
     <div class="profile-pic">
-      <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos">
+      <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Foto de Rosane Campos">
     </div>
     <h1>Rosane Campos Nail Design</h1>
     <p class="subtext">💅 A beleza começa nas suas mãos</p>
@@ -36,47 +35,85 @@
     <p class="truth">O primeiro passo pra fidelidade é o cuidado real com você ✨</p>
 
     <div class="carousel">
-      <img src="https://i.imgur.com/XoQS1ua.jpeg" alt="Exemplo de unha">
-      <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de unha">
-    </div>
+      <img src="https://i.imgur.com/XoQS1ua.jpeg" alt="Exemplo de trabalho de unha 1">
+      <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de trabalho de unha 2">
+      </div>
 
-    <a class="btn whatsapp" href="#" onclick="enviarEvento(event)">📞 Whatsapp</a>
-    <a class="btn preencher" href="#">📝 Preencher</a>
+    <a class="btn whatsapp" href="#" onclick="enviarEvento(event)">
+      📞 Agendar pelo WhatsApp
+    </a>
+    <a class="btn preencher" href="#">
+      📝 Ver Tabela de Preços (Exemplo)
+      </a>
 
     <footer>
       <p>Qualidade, cuidado e beleza nas suas mãos</p>
-    </footer>
+      </footer>
   </div>
 
   <script>
+    // Função para buscar o valor de um cookie pelo nome
     function getCookie(name) {
       const value = "; " + document.cookie;
       const parts = value.split("; " + name + "=");
+      // Se encontrou o cookie, retorna o valor, senão null
       return parts.length === 2 ? parts.pop().split(";").shift() : null;
     }
 
+    // Tenta pegar um ID externo do localStorage ou gera um novo
     let externalId = localStorage.getItem("external_id");
     if (!externalId) {
+      // Gera um ID único combinando aleatoriedade e timestamp
       externalId = "user_" + Math.random().toString(36).substring(2) + Date.now();
+      // Salva o novo ID no localStorage para persistir entre visitas
       localStorage.setItem("external_id", externalId);
     }
 
+    // Pega o valor do cookie _fbp (ID do navegador do Facebook)
     const fbp = getCookie("_fbp");
 
+    // Função chamada quando o botão do WhatsApp é clicado
     function enviarEvento(event) {
+      // Previne o comportamento padrão do link (que seria navegar para '#')
       event.preventDefault();
 
-      fetch("https://rosane-proxy.onrender.com/api/conversion", {
+      // URL do seu servidor proxy (onde está o código que envia para a CAPI)
+      const proxyUrl = "https://rosane-proxy.onrender.com/api/conversion"; // CONFIRME SE ESSA É A URL CORRETA DO SEU PROXY NA RENDER
+
+      // Dados a serem enviados para o proxy
+      const eventData = {
+        event_name: "Lead", // Nome do evento padrão para lead
+        event_source_url: window.location.href, // URL da página atual
+        fbp: fbp || "NA", // Envia o _fbp se existir, senão envia "NA"
+        external_id: externalId // ID único gerado para este usuário/sessão
+        // Adicione outros dados se necessário (ex: user_agent, client_ip - mas estes geralmente são pegos no servidor proxy)
+      };
+
+      // Faz a requisição POST para o servidor proxy
+      fetch(proxyUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          event_name: "Lead",
-          event_source_url: window.location.href,
-          fbp: fbp || "NA",
-          external_id: externalId
-        })
-      }).finally(() => {
-        window.location.href = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData) // Converte os dados para JSON
+      })
+      .then(response => {
+         // Opcional: verificar se a resposta do proxy foi ok (status 2xx)
+         console.log("Proxy response status:", response.status);
+         if (!response.ok) {
+            console.error("Erro ao enviar evento para o proxy.");
+         }
+      })
+      .catch(error => {
+        // Captura erros de rede ao tentar falar com o proxy
+        console.error("Erro na requisição fetch para o proxy:", error);
+      })
+      .finally(() => {
+        // ESTE CÓDIGO EXECUTA SEMPRE, tendo o fetch funcionado ou não.
+        // Redireciona o usuário para o link do WhatsApp.
+        // IMPORTANTE: Substitua pelo link correto do WhatsApp da Rosane!
+        const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
+        window.location.href = whatsappUrl;
       });
     }
   </script>
