@@ -1,10 +1,10 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom, #fcd5e6, #fad0dd);
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
 .container {
@@ -17,19 +17,35 @@ body {
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-  font-size: 24px;
-  margin: 10px 0 5px;
+  font-size: 22px;
+  margin: 8px 0 5px;
 }
 
 .subtext {
   font-size: 14px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.welcome,
+.truth {
+  font-size: 14px;
   color: #555;
-  margin-bottom: 30px;
+  margin: 6px auto;
+  max-width: 320px;
+}
+
+.carousel img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin: 15px auto;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .btn {
@@ -40,10 +56,10 @@ h1 {
   width: 100%;
   max-width: 320px;
   margin: 14px auto;
-  padding: 15px;
+  padding: 14px;
   background: #fff;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: none;
   color: #000;
   box-shadow: 3px 3px 0 #000;
@@ -60,4 +76,10 @@ h1 {
 
 .preencher {
   border: 2px dashed #999;
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #333;
 }
