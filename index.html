@@ -46,10 +46,10 @@
       font-weight: 400;
       line-height: 1.6;
       color: #333;
-      /* Gradiente levemente mais intenso no topo */
-      background: linear-gradient(to bottom, #F8BBD0, #FFF8F9);
+      /* Novo Degradê Sugerido */
+      background: linear-gradient(to bottom, #ffe0ed, #f9cfe0);
       text-align: center;
-      padding: 1.5rem 0; /* Aumenta um pouco o padding geral */
+      padding: 1.5rem 0;
       overflow-x: hidden;
     }
 
@@ -61,158 +61,172 @@
 
     /* Cabeçalho com Perfil/Logo */
     .profile-header {
-      margin-bottom: 1.5rem; /* Ajusta espaço */
+      margin-bottom: 1.5rem;
     }
 
     .profile-pic {
-      width: 110px; /* Levemente menor */
-      height: 110px;
+      width: 150px; /* <<< Logo Maior */
+      height: 150px; /* <<< Logo Maior */
       border-radius: 50%;
       object-fit: cover;
       margin: 0 auto 1rem auto;
       display: block;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+      /* Sombra levemente ajustada */
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       border: 3px solid white;
     }
 
     h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.7rem; /* Ajusta tamanho */
+      font-size: 1.7rem;
       color: #333;
       margin-bottom: 0.5rem;
       line-height: 1.3;
     }
 
-    /* Novo Subtexto Principal */
     .subtext-principal {
       font-size: 1rem;
-      color: #E91E63; /* Cor rosa destaque */
-      margin: 0.5rem auto 1.5rem auto; /* Espaçamento */
-      max-width: 85%;
-      font-weight: 400; /* Normal, não negrito */
+      color: #D81B60; /* Tom de rosa um pouco mais escuro para contraste */
+      margin: 0.5rem auto 1.5rem auto;
+      max-width: 90%; /* Ajusta largura máxima */
+      font-weight: 400;
       line-height: 1.5;
     }
 
-    /* Seção de Boas-Vindas (anterior) */
+    /* Seção de Boas-Vindas (Textos com mais peso) */
     .welcome-section {
-      margin-bottom: 2rem;
-      font-size: 0.9rem; /* Levemente menor */
-      color: #555;
+      margin-bottom: 2.5rem; /* Aumenta espaço abaixo */
       padding: 0 0.5rem;
     }
+
     .welcome-section p {
-        margin-bottom: 0.3rem;
+        font-size: 1rem; /* Aumenta levemente a fonte */
+        color: #444; /* Cor mais escura */
+        font-weight: 700; /* <<< Mais Peso (usando Lato Bold) */
+        margin-bottom: 0.5rem; /* Mais espaço entre eles */
+        line-height: 1.5;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* Seção do Carrossel */
     .carousel-section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem; /* Aumenta espaço abaixo */
     }
 
-    .carousel-section h2 { /* Título acima do carrossel */
+    .carousel-section h2 {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 1.3rem; /* Ajusta tamanho */
+      font-size: 1.3rem;
       color: #444;
       margin-bottom: 1.5rem;
     }
 
     .swiper {
       width: 100%;
-      max-width: 380px; /* Pouco menor para dar mais margem */
+      max-width: 380px;
       margin: 0 auto;
       position: relative;
-      /* Remove sombra/borda do container principal, vai pro slide */
       border-radius: 0;
       box-shadow: none;
-      padding-bottom: 35px; /* Espaço para paginação */
+      padding-bottom: 35px;
     }
 
     .swiper-slide {
-      background-color: #FFF0F5; /* Cor de fundo Rosê (LavenderBlush) para o frame */
-      border-radius: 12px; /* Bordas arredondadas para o frame/slide */
-      padding: 0.5rem; /* Espaçamento interno para criar a moldura */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave no slide (efeito cartão) */
-      overflow: hidden; /* Garante que a imagem não vaze do padding */
+      background-color: #FFF0F5;
+      border-radius: 12px;
+      padding: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* Sombra suave ajustada */
+      overflow: hidden;
     }
 
     .swiper-slide img {
       display: block;
       width: 100%;
-      height: 300px; /* Mantém altura fixa */
+      height: 300px;
       object-fit: cover;
       object-position: center;
-      /* Adiciona borda arredondada na imagem também, um pouco menor que a do slide */
       border-radius: 8px;
-      box-shadow: none; /* Sombra fica no slide */
+      box-shadow: none;
+      /* Borda sutil para contraste */
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     /* Paginação (Bolinhas) */
     .swiper-pagination {
       position: absolute;
-      bottom: 8px !important; /* Ajusta posição */
+      bottom: 8px !important;
       left: 0;
       width: 100%;
     }
     .swiper-pagination-bullet {
-      background-color: rgba(0, 0, 0, 0.3); /* Bolinhas cinza */
+      background-color: rgba(0, 0, 0, 0.3);
       opacity: 1;
       width: 9px;
       height: 9px;
     }
     .swiper-pagination-bullet-active {
-      background-color: #E91E63; /* Rosa vibrante ativa */
+      background-color: #E91E63;
       transform: scale(1.1);
     }
 
-    /* Novo Bloco de Valor / Diferenciais */
+    /* Bloco de Valor / Diferenciais */
     .value-prop-section {
-        background-color: rgba(255, 255, 255, 0.5); /* Fundo branco semi-transparente */
+        background-color: rgba(255, 255, 255, 0.6); /* Aumenta levemente opacidade */
         border-radius: 15px;
-        padding: 1.5rem 1rem;
-        margin: 2.5rem auto;
+        padding: 1.8rem 1.2rem; /* Ajusta padding */
+        /* Aumenta margem superior, centraliza horizontal, mantém margem inferior */
+        margin: 3rem auto 2.5rem auto;
         max-width: 420px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08); /* Sombra ajustada */
     }
 
     .value-prop-section h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
         font-size: 1.3rem;
-        color: #444;
-        margin-bottom: 1.5rem;
+        color: #333; /* Cor mais escura */
+        margin-bottom: 1.8rem; /* Mais espaço abaixo do título */
     }
 
     .value-prop-section ul {
-        list-style: none; /* Remove bolinhas padrão da lista */
+        list-style: none;
         padding: 0;
         margin: 0;
     }
 
     .value-prop-section li {
-        font-size: 1.05rem; /* Fonte levemente maior */
-        color: #333;
-        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #444; /* Cor ajustada */
+        margin-bottom: 1.2rem; /* Mais espaço entre itens */
         line-height: 1.5;
-        display: flex; /* Alinha emoji e texto */
-        align-items: center; /* Alinha verticalmente */
-        text-align: left; /* Alinha texto à esquerda dentro do item */
-        gap: 0.8rem; /* Espaço entre emoji e texto */
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 0.8rem;
     }
 
      .value-prop-section li:last-child {
-        margin-bottom: 0; /* Remove margem do último item */
+        margin-bottom: 0;
     }
 
-    .value-prop-section li span { /* Estilo para o emoji */
-        font-size: 1.2rem; /* Tamanho do emoji */
+    .value-prop-section li span { /* Emoji */
+        font-size: 1.2rem;
     }
 
 
     /* Seção do Botão de Ação (CTA) */
     .cta-section {
-      margin: 2.5rem 0; /* Ajusta margem */
+      margin: 3rem 0; /* Mais espaço vertical */
+    }
+
+    /* Definição da Animação Pulse */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); } /* Pulso levemente mais sutil */
+      100% { transform: scale(1); }
     }
 
     .whatsapp-btn {
@@ -221,41 +235,41 @@
       justify-content: center;
       gap: 0.75rem;
       width: auto;
-      max-width: 95%; /* Permite ficar um pouco mais largo */
+      max-width: 95%;
       margin: 0 auto;
-      padding: 0.9rem 2rem; /* Aumenta um pouco o padding */
+      padding: 0.9rem 2rem;
       background-color: #E91E63;
       border: none;
       border-radius: 50px;
       font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem; /* Levemente maior */
+      font-size: 1.15rem;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
-      /* Sombra inicial um pouco mais suave */
       box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição SÓ para cor e sombra */
       cursor: pointer;
     }
 
     .whatsapp-btn svg {
-      width: 22px; /* Aumenta um pouco o ícone */
+      width: 22px;
       height: 22px;
     }
 
     .whatsapp-btn:hover,
     .whatsapp-btn:focus {
-      background-color: #D81B60; /* Mantém escurecimento */
-      transform: translateY(-4px); /* Levanta um pouco mais */
-      /* Novo efeito de brilho/glow no hover */
-      box-shadow: 0 0 12px #E91E63, 0 4px 8px rgba(0, 0, 0, 0.2); /* Combina glow com sombra sutil */
+      background-color: #D81B60; /* Escurece no hover */
+      /* Aplica animação e glow no hover/focus */
+      animation: pulse 0.6s ease-in-out; /* Animação pulse */
+      box-shadow: 0 0 15px rgba(233, 30, 99, 0.7); /* Efeito Glow */
       outline: none;
+      /* Remove o transform: translateY para não conflitar com a animação pulse */
     }
 
 
     /* Rodapé */
     footer {
-      margin-top: 2.5rem; /* Ajusta espaço */
+      margin-top: 3rem; /* Mais espaço acima */
       padding-top: 1.5rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 0.85rem;
@@ -271,17 +285,17 @@
         font-size: 1.5rem;
       }
       .value-prop-section h3 {
-         font-size: 1.2rem;
+         font-size: 1.15rem;
       }
        .value-prop-section li {
-         font-size: 1rem;
+         font-size: 0.95rem;
       }
       .whatsapp-btn {
         font-size: 1rem;
         padding: 0.8rem 1.6rem;
       }
       .swiper-slide img {
-        height: 280px; /* Altura um pouco menor em telas muito estreitas */
+        height: 260px; /* Altura menor ainda para telas bem pequenas */
       }
     }
   </style>
@@ -402,12 +416,9 @@
       },
       autoplay: {
         delay: 4000,
-        disableOnInteraction: true,
+        disableOnInteraction: true, // Pausa quando o usuário interage
       },
-      effect: "slide", // Voltei para slide, fade pode ser estranho com a moldura
-      // fadeEffect: { // Remove fade effect for now
-      //    crossFade: true
-      // },
+      effect: "slide", // Efeito slide padrão
     });
   </script>
 </body>
