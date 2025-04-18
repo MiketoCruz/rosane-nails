@@ -37,67 +37,72 @@
 
     /* Estilos Gerais */
     html {
-      font-size: 16px; /* Base para unidades REM */
+      font-size: 16px;
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Lato', sans-serif; /* Fonte padrão para textos */
+      font-family: 'Lato', sans-serif;
       font-weight: 400;
       line-height: 1.6;
-      color: #333; /* Cor de texto principal (cinza escuro) */
-      background: linear-gradient(to bottom, #FCE4EC, #FFF8F9); /* Gradiente Rosa Claro -> Quase Branco */
+      color: #333;
+      /* Gradiente levemente mais intenso no topo */
+      background: linear-gradient(to bottom, #F8BBD0, #FFF8F9);
       text-align: center;
-      padding: 1rem 0; /* Espaçamento no topo/fundo, sem padding lateral no body */
-      overflow-x: hidden; /* Prevenir scroll horizontal */
+      padding: 1.5rem 0; /* Aumenta um pouco o padding geral */
+      overflow-x: hidden;
     }
 
     .container {
-      max-width: 500px; /* Aumenta um pouco a largura máxima */
-      margin: 0 auto; /* Centraliza */
-      padding: 0 1rem; /* Adiciona padding lateral DENTRO do container */
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     /* Cabeçalho com Perfil/Logo */
     .profile-header {
-      margin-bottom: 2rem; /* Espaço abaixo do cabeçalho */
+      margin-bottom: 1.5rem; /* Ajusta espaço */
     }
 
     .profile-pic {
-      width: 120px; /* Ajusta tamanho da logo/foto */
-      height: 120px;
+      width: 110px; /* Levemente menor */
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 1rem auto; /* Centraliza e adiciona espaço abaixo */
+      margin: 0 auto 1rem auto;
       display: block;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
-      border: 3px solid white; /* Borda branca opcional */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+      border: 3px solid white;
     }
 
     h1 {
-      font-family: 'Poppins', sans-serif; /* Fonte do Título */
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.8rem; /* Tamanho do título */
+      font-size: 1.7rem; /* Ajusta tamanho */
       color: #333;
       margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
 
-    .subtext {
-      font-size: 1rem; /* Tamanho do subtítulo */
-      color: #555;
-      margin-bottom: 0;
+    /* Novo Subtexto Principal */
+    .subtext-principal {
+      font-size: 1rem;
+      color: #E91E63; /* Cor rosa destaque */
+      margin: 0.5rem auto 1.5rem auto; /* Espaçamento */
+      max-width: 85%;
+      font-weight: 400; /* Normal, não negrito */
+      line-height: 1.5;
     }
 
-    /* Seção de Boas-Vindas */
+    /* Seção de Boas-Vindas (anterior) */
     .welcome-section {
-      margin-bottom: 2.5rem; /* Espaço abaixo dos textos */
-      font-size: 0.95rem;
-      color: #444;
-      padding: 0 0.5rem; /* Pequeno padding lateral para textos */
+      margin-bottom: 2rem;
+      font-size: 0.9rem; /* Levemente menor */
+      color: #555;
+      padding: 0 0.5rem;
     }
-
     .welcome-section p {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
 
     /* Seção do Carrossel */
@@ -105,104 +110,154 @@
       margin-bottom: 2.5rem;
     }
 
-    .carousel-section h2 {
+    .carousel-section h2 { /* Título acima do carrossel */
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 1.4rem;
+      font-size: 1.3rem; /* Ajusta tamanho */
       color: #444;
-      margin-bottom: 1.5rem; /* Espaço antes do carrossel */
+      margin-bottom: 1.5rem;
     }
 
     .swiper {
       width: 100%;
-      max-width: 400px; /* Largura do carrossel */
-      margin: 0 auto; /* Centraliza */
+      max-width: 380px; /* Pouco menor para dar mais margem */
+      margin: 0 auto;
       position: relative;
-      border-radius: 16px; /* Arredonda o container do swiper */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra no carrossel */
-      /* Remove padding-bottom, a paginação ficará sobre a imagem */
+      /* Remove sombra/borda do container principal, vai pro slide */
+      border-radius: 0;
+      box-shadow: none;
+      padding-bottom: 35px; /* Espaço para paginação */
     }
 
     .swiper-slide {
-      background-color: transparent;
-      text-align: center; /* Garante centralização se houver texto */
+      background-color: #FFF0F5; /* Cor de fundo Rosê (LavenderBlush) para o frame */
+      border-radius: 12px; /* Bordas arredondadas para o frame/slide */
+      padding: 0.5rem; /* Espaçamento interno para criar a moldura */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave no slide (efeito cartão) */
+      overflow: hidden; /* Garante que a imagem não vaze do padding */
     }
 
     .swiper-slide img {
       display: block;
       width: 100%;
-      height: 300px; /* <<< ALTURA FIXA! Experimente este valor */
-      object-fit: cover; /* <<< COBRE A ÁREA */
+      height: 300px; /* Mantém altura fixa */
+      object-fit: cover;
       object-position: center;
-      /* A borda arredondada agora vem do container .swiper */
-      border-radius: 0; /* Remove radius da imagem individual */
-      /* Remove sombra da imagem individual, fica no container */
-      box-shadow: none;
+      /* Adiciona borda arredondada na imagem também, um pouco menor que a do slide */
+      border-radius: 8px;
+      box-shadow: none; /* Sombra fica no slide */
     }
 
     /* Paginação (Bolinhas) */
     .swiper-pagination {
       position: absolute;
-      bottom: 10px !important; /* Posição um pouco acima da base */
+      bottom: 8px !important; /* Ajusta posição */
       left: 0;
       width: 100%;
     }
     .swiper-pagination-bullet {
-      background-color: rgba(255, 255, 255, 0.7); /* Bolinhas brancas semi-transparentes */
+      background-color: rgba(0, 0, 0, 0.3); /* Bolinhas cinza */
       opacity: 1;
-      width: 10px; /* Tamanho das bolinhas */
-      height: 10px;
+      width: 9px;
+      height: 9px;
     }
     .swiper-pagination-bullet-active {
-      background-color: #E91E63; /* Cor rosa vibrante para bolinha ativa */
+      background-color: #E91E63; /* Rosa vibrante ativa */
       transform: scale(1.1);
     }
 
+    /* Novo Bloco de Valor / Diferenciais */
+    .value-prop-section {
+        background-color: rgba(255, 255, 255, 0.5); /* Fundo branco semi-transparente */
+        border-radius: 15px;
+        padding: 1.5rem 1rem;
+        margin: 2.5rem auto;
+        max-width: 420px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    }
+
+    .value-prop-section h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: #444;
+        margin-bottom: 1.5rem;
+    }
+
+    .value-prop-section ul {
+        list-style: none; /* Remove bolinhas padrão da lista */
+        padding: 0;
+        margin: 0;
+    }
+
+    .value-prop-section li {
+        font-size: 1.05rem; /* Fonte levemente maior */
+        color: #333;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        display: flex; /* Alinha emoji e texto */
+        align-items: center; /* Alinha verticalmente */
+        text-align: left; /* Alinha texto à esquerda dentro do item */
+        gap: 0.8rem; /* Espaço entre emoji e texto */
+    }
+
+     .value-prop-section li:last-child {
+        margin-bottom: 0; /* Remove margem do último item */
+    }
+
+    .value-prop-section li span { /* Estilo para o emoji */
+        font-size: 1.2rem; /* Tamanho do emoji */
+    }
+
+
     /* Seção do Botão de Ação (CTA) */
     .cta-section {
-      margin-bottom: 2rem;
+      margin: 2.5rem 0; /* Ajusta margem */
     }
 
     .whatsapp-btn {
-      display: inline-flex; /* Permite alinhar ícone e texto e respeitar padding */
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem; /* Espaço entre ícone e texto */
-      width: auto; /* Largura automática baseada no conteúdo */
-      max-width: 90%; /* Limita largura máxima */
-      margin: 0 auto; /* Centraliza */
-      padding: 0.8rem 1.8rem; /* Mais padding para um botão robusto */
-      background-color: #E91E63; /* Rosa Vibrante */
-      border: none; /* Remove borda padrão */
-      border-radius: 50px; /* Botão bem arredondado (pilula) */
-      font-family: 'Poppins', sans-serif; /* Fonte do botão */
-      font-size: 1.1rem; /* Tamanho da fonte do botão */
+      gap: 0.75rem;
+      width: auto;
+      max-width: 95%; /* Permite ficar um pouco mais largo */
+      margin: 0 auto;
+      padding: 0.9rem 2rem; /* Aumenta um pouco o padding */
+      background-color: #E91E63;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem; /* Levemente maior */
       font-weight: 600;
       text-decoration: none;
-      color: #fff; /* Texto branco */
-      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4); /* Sombra correspondente à cor */
-      transition: all 0.3s ease; /* Transição suave */
+      color: #fff;
+      /* Sombra inicial um pouco mais suave */
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
+      transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .whatsapp-btn svg {
-      /* O tamanho já foi definido no HTML (width/height), fill="currentColor" pega a cor do texto */
+      width: 22px; /* Aumenta um pouco o ícone */
+      height: 22px;
     }
 
     .whatsapp-btn:hover,
     .whatsapp-btn:focus {
-      background-color: #D81B60; /* Rosa um pouco mais escuro no hover */
-      transform: translateY(-3px); /* Efeito de levantar */
-      box-shadow: 0 6px 20px rgba(216, 27, 96, 0.5); /* Sombra mais intensa */
-      outline: none; /* Remove outline do focus */
+      background-color: #D81B60; /* Mantém escurecimento */
+      transform: translateY(-4px); /* Levanta um pouco mais */
+      /* Novo efeito de brilho/glow no hover */
+      box-shadow: 0 0 12px #E91E63, 0 4px 8px rgba(0, 0, 0, 0.2); /* Combina glow com sombra sutil */
+      outline: none;
     }
 
 
     /* Rodapé */
     footer {
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.08); /* Linha sutil acima do rodapé */
+      margin-top: 2.5rem; /* Ajusta espaço */
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
       font-size: 0.85rem;
       color: #555;
     }
@@ -210,14 +265,23 @@
     /* Ajustes finos para Telas Menores */
     @media (max-width: 360px) {
       html {
-        font-size: 15px; /* Reduz um pouco a base da fonte em telas muito pequenas */
+        font-size: 15px;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+      }
+      .value-prop-section h3 {
+         font-size: 1.2rem;
+      }
+       .value-prop-section li {
+         font-size: 1rem;
       }
       .whatsapp-btn {
         font-size: 1rem;
-        padding: 0.7rem 1.5rem;
+        padding: 0.8rem 1.6rem;
+      }
+      .swiper-slide img {
+        height: 280px; /* Altura um pouco menor em telas muito estreitas */
       }
     }
   </style>
@@ -227,16 +291,16 @@
     <header class="profile-header">
       <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Logo Rosane Campos" class="profile-pic">
       <h1>Rosane Campos Nail Design</h1>
-      <p class="subtext">💅 A beleza começa nas suas mãos</p>
+      <p class="subtext-principal">💖 Unhas delicadas com toque profissional e um atendimento que acolhe você desde o primeiro clique.</p>
     </header>
 
     <section class="welcome-section">
-      <p class="welcome">Seja bem-vinda! Aqui cada detalhe é feito com carinho 💖</p>
+      <p class="welcome">Seja bem-vinda! Aqui cada detalhe é feito com carinho.</p>
       <p class="truth">O primeiro passo pra fidelidade é o cuidado real com você ✨</p>
     </section>
 
     <section class="carousel-section">
-      <h2>Conheça meu trabalho</h2>
+      <h2>✨ Veja como posso valorizar suas mãos</h2>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -245,21 +309,26 @@
           <div class="swiper-slide">
             <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de trabalho de unha 2">
           </div>
-          <div class="swiper-slide">
-             <img src="https://via.placeholder.com/400x300.png/fcc2d7/808080?text=Exemplo+3" alt="Exemplo de trabalho de unha 3">
           </div>
-           <div class="swiper-slide">
-             <img src="https://via.placeholder.com/400x300.png/fbc5dc/808080?text=Exemplo+4" alt="Exemplo de trabalho de unha 4">
-          </div>
-        </div>
         <div class="swiper-pagination"></div>
       </div>
     </section>
+    <section class="value-prop-section">
+        <h3>Por que escolher a Rosane?</h3>
+        <ul>
+            <li><span>🌷</span>Atendimento humanizado e totalmente personalizado</li>
+            <li><span>🧼</span>Ambiente limpo, calmo e reservado para seu momento</li>
+            <li><span>📍</span>Local seguro e de fácil acesso em Gravataí</li>
+        </ul>
+    </section>
+
     <section class="cta-section">
       <a class="btn whatsapp-btn" href="#" onclick="enviarEvento(event)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor" style="vertical-align: middle;"> <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" fill="currentColor" style="vertical-align: middle;">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
         </svg>
-        <span style="vertical-align: middle;">Agendar pelo WhatsApp</span> </a>
+        <span style="vertical-align: middle;">Me chama no WhatsApp 🌸</span>
+      </a>
     </section>
 
     <footer>
@@ -299,7 +368,7 @@
         external_id: externalId
       };
 
-      console.log("Enviando evento:", eventData); // Log para debug
+      console.log("Enviando evento:", eventData);
 
       fetch(proxyUrl, {
         method: "POST",
@@ -309,14 +378,12 @@
       .then(response => {
          console.log("Proxy response status:", response.status);
          if (!response.ok) { console.error("Erro ao enviar evento para o proxy."); }
-         // Mesmo se der erro no proxy, tenta redirecionar
       })
       .catch(error => {
         console.error("Erro na requisição fetch para o proxy:", error);
-        // Mesmo se der erro no fetch, tenta redirecionar
       })
       .finally(() => {
-        console.log("Redirecionando para o WhatsApp..."); // Log para debug
+        console.log("Redirecionando para o WhatsApp...");
         // CONFIRME SE ESTE É O LINK CORRETO!
         const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
         window.location.href = whatsappUrl;
@@ -326,7 +393,7 @@
     // Inicialização do Swiper (Carrossel)
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 1,
-      spaceBetween: 20,
+      spaceBetween: 20, // Espaço entre os "cartões" dos slides
       loop: true,
       grabCursor: true,
       pagination: {
@@ -335,12 +402,12 @@
       },
       autoplay: {
         delay: 4000,
-        disableOnInteraction: true, // Pausa quando o usuário interage
+        disableOnInteraction: true,
       },
-      effect: "fade", // Efeito de transição suave
-      fadeEffect: {
-         crossFade: true
-      },
+      effect: "slide", // Voltei para slide, fade pode ser estranho com a moldura
+      // fadeEffect: { // Remove fade effect for now
+      //    crossFade: true
+      // },
     });
   </script>
 </body>
