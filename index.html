@@ -491,8 +491,8 @@
             return; // Interrompe a execução
        }
 
-      // !!! IMPORTANTE: SUBSTITUA PELA URL REAL DO SEU PROXY QUANDO CRIÁ-LO !!!
-      const proxyUrl = "https://rosane-proxy-api.onrender.com";
+      // *** URL CORRETA DO SEU PROXY WEB SERVICE NO RENDER ***
+      const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; // <--- CORRIGIDO!
 
       // Dados do evento para enviar ao Proxy
       const eventData = {
@@ -513,46 +513,45 @@
 
       console.log("Enviando evento para o proxy:", eventData);
 
-      // Verifica se a URL do proxy foi definida (medida de segurança)
-       if (proxyUrl === "URL_DO_SEU_PROXY_AQUI/api/conversion") {
-             console.error("ALERTA: URL do Proxy não foi definida no código! O evento NÃO será enviado para a API de Conversões.");
-             // Não impede o redirect, mas avisa no console. Poderia impedir se quisesse.
-             // alert("Configuração pendente. Contate o suporte."); // Exemplo se quisesse avisar usuário
-       } else {
-           // Envia para o Proxy apenas se a URL foi alterada
-            fetch(proxyUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(eventData)
-            })
-            .then(response => {
-                console.log("Status da resposta do Proxy:", response.status);
-                if (!response.ok) {
-                    // Tenta ler a mensagem de erro do proxy, se houver
-                    response.json().then(errData => {
-                        console.error("Erro ao enviar evento para o proxy. Status:", response.status, "Mensagem:", errData);
-                    }).catch(() => {
-                         console.error("Erro ao enviar evento para o proxy. Status:", response.status, response.statusText);
-                    });
-                } else {
-                    console.log("Evento enviado ao proxy com sucesso.");
-                }
-            })
-            .catch(error => {
-                console.error("Erro na requisição fetch para o proxy (pode ser rede ou CORS):", error);
-                // Poderia informar o usuário que o rastreamento falhou, mas o redirect ainda ocorrerá.
-                // alert("Houve um problema ao registrar sua visita. Por favor, tente novamente se necessário.");
-            });
-       }
+       // Envia para o Proxy
+        fetch(proxyUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(eventData)
+        })
+        .then(response => {
+            console.log("Status da resposta do Proxy:", response.status);
+            if (!response.ok) {
+                // Tenta ler a mensagem de erro do proxy, se houver
+                response.json().then(errData => {
+                    console.error("Erro ao enviar evento para o proxy. Status:", response.status, "Mensagem:", errData);
+                }).catch(() => {
+                     console.error("Erro ao enviar evento para o proxy. Status:", response.status, response.statusText);
+                });
+            } else {
+                 // Se a resposta foi OK (ex: 200), tenta ler o JSON de sucesso do proxy
+                 response.json().then(successData => {
+                     console.log("Resposta de sucesso do Proxy:", successData);
+                 }).catch(err => {
+                    console.warn("Não foi possível parsear a resposta JSON de sucesso do proxy:", err);
+                 });
+            }
+        })
+        .catch(error => {
+            console.error("Erro na requisição fetch para o proxy (pode ser rede, CORS no proxy ou proxy offline):", error);
+            // Poderia informar o usuário que o rastreamento falhou, mas o redirect ainda ocorrerá.
+             alert("Houve um problema ao conectar ao nosso servidor. Sua mensagem será enviada, mas tente novamente mais tarde se o erro persistir.");
+        });
 
-      // Executa o redirecionamento SEMPRE no finally, após a tentativa de fetch (ou se a URL não foi definida)
+
+      // Executa o redirecionamento SEMPRE no finally (ou após o fetch), após a tentativa de envio
       // para garantir que o usuário chegue ao WhatsApp.
       // Usamos um pequeno delay para dar chance ao fetch de iniciar/completar em alguns casos.
        setTimeout(() => {
             console.log("Redirecionando para o WhatsApp...");
             const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!"; // Confirmado
             window.location.href = whatsappUrl;
-       }, 200); // Atraso de 200ms antes de redirecionar
+       }, 300); // Aumentei um pouco o atraso para 300ms
 
     }
     // --- FIM DA FUNÇÃO ATUALIZADA ---
