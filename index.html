@@ -60,7 +60,10 @@
         /* 3. Container Consistente */
         .container {
             max-width: 560px; margin-left: auto; margin-right: auto;
-            padding-left: var(--space-sm); padding-right: var(--space-sm); width: 100%;
+            /* AJUSTADO: Padding lateral fixo em 20px */
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 100%;
         }
         /* 4. Tipografia Padronizada */
         h1, h2, h3 {
@@ -129,8 +132,9 @@
         /* Ajustes Mobile */
         @media (max-width: 600px) {
             h1 { font-size: var(--text-xl); } h2 { font-size: var(--text-lg); } h3 { font-size: calc(var(--text-lg) * 0.95); }
-            .container { padding-left: var(--space-sm); padding-right: var(--space-sm); }
-            .section { padding: var(--space-md) var(--space-sm); margin-bottom: var(--space-lg);} /* Reduz margin entre seções no mobile */
+            /* No mobile, mantém o padding lateral do container definido acima (20px) ou pode ajustar se preferir */
+            /* .container { padding-left: var(--space-sm); padding-right: var(--space-sm); } */
+            .section { padding: var(--space-md) var(--space-sm); margin-bottom: var(--space-lg);}
             .profile-pic { width: 120px; height: 120px; margin-bottom: var(--space-sm); }
             .benefit-item { gap: var(--space-sm); flex-direction: column; align-items: flex-start; } .emoji { margin-bottom: var(--space-xs); }
             .swiper-slide img { height: 280px; }
@@ -138,7 +142,7 @@
             .whatsapp-btn { display: block; width: 100%; font-size: var(--text-md); padding: var(--space-sm) var(--space-md); } #leadForm .whatsapp-btn { width: 100%; }
             #floating-whatsapp-button { width: 55px; height: 55px; bottom: var(--space-sm); right: var(--space-sm); } #floating-whatsapp-button svg { width: 28px; height: 28px; }
             .footer-seals { max-width: 100%; }
-            .text-block-centered { max-width: 100%; } /* Texto centralizado ocupa largura total no mobile */
+            .text-block-centered { max-width: 100%; }
         }
     </style>
 </head>
@@ -153,7 +157,8 @@
         </header>
 
         <section class="about-section section" id="sobre">
-            <h2>Conheça a Rosane</h2> <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1]</strong> e <strong>[Técnica 2]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
+            <h2>Conheça a Rosane</h2>
+            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1]</strong> e <strong>[Técnica 2]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
         </section>
 
         <section class="welcome-section section" id="beneficios">
@@ -177,7 +182,8 @@
         </section>
 
         <section class="carousel-section section" id="trabalhos">
-            <h2>Meu Trabalho</h2> <div class="swiper mySwiper">
+            <h2>Meu Trabalho</h2>
+            <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Manicure Profissional - Exemplo 1"></div>
                     <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Unhas Decoradas - Exemplo 2"></div>
@@ -190,7 +196,8 @@
         </section>
 
         <section class="testimonials-section section" id="depoimentos">
-            <h2>O Que Dizem as Clientes</h2> <div class="testimonial-card">
+            <h2>O Que Dizem as Clientes</h2>
+             <div class="testimonial-card">
                 <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
                 <p class="testimonial-author"><img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Ana P."><strong>Ana P.</strong> - Gravataí/RS</p>
             </div>
@@ -205,7 +212,9 @@
         </section>
 
         <section class="form-cta-section section" id="contato">
-            <h3 id="formTitle">Agende seu Horário 💅</h3> <p class="form-subtitle">Preencha abaixo e fale comigo no WhatsApp!</p> <div id="formSuccessMessage">💌 Perfeito! Abrindo WhatsApp...</div>
+            <h3 id="formTitle">Agende seu Horário 💅</h3>
+            <p class="form-subtitle">Preencha abaixo e fale comigo no WhatsApp!</p>
+            <div id="formSuccessMessage">💌 Perfeito! Abrindo WhatsApp...</div>
 
             <form id="leadForm" novalidate>
                 <div>
@@ -219,10 +228,13 @@
                 <div>
                      <label for="email">Melhor E-mail:</label>
                      <input type="email" id="email" name="email" required>
-                     <p class="microcopy">Apenas para confirmações.</p> </div>
+                     <p class="microcopy">Apenas para confirmações.</p>
+                </div>
                 <div>
                     <label for="phone">WhatsApp (com DDD):</label>
-                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Ex: 51999998888" placeholder="Ex: 51999998888"> <p class="microcopy">Para agendarmos rapidinho!</p> </div>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Ex: 51999998888" placeholder="Ex: 51999998888">
+                    <p class="microcopy">Para agendarmos rapidinho!</p>
+                </div>
                 <div id="formError">Ops! Verifique os campos marcados.</div>
 
                 <button type="submit" class="btn whatsapp-btn" id="submitButton">
@@ -234,8 +246,11 @@
 
         <footer>
             <p>📍 Atendimento em Gravataí/RS – <strong>[Inserir Bairro ou Referência Aqui]</strong></p>
-            <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design.</p> <p><a href="politica-privacidade.html" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | LGPD</p> <div class="footer-seals">
-                <span>🔒 Dados seguros</span> | <span>❤️ +500 Atendimentos</span> </div>
+            <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design.</p>
+            <p><a href="politica-privacidade.html" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | LGPD</p>
+            <div class="footer-seals">
+                <span>🔒 Dados seguros</span> | <span>❤️ +500 Atendimentos</span>
+            </div>
         </footer>
 
     </div><a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
@@ -275,14 +290,14 @@
         // Lógica de Visitante
         handleReturningVisitor();
 
-        // --- Lógica do Formulário (Estrutura Próxima ao Original) ---
+        // --- Lógica do Formulário ---
         const leadForm = document.getElementById('leadForm');
         const submitButton = document.getElementById('submitButton');
         const formSuccessMessage = document.getElementById('formSuccessMessage');
         const formError = document.getElementById('formError');
         const phoneInput = document.getElementById('phone');
 
-        // Validação Live do Telefone (Mantida)
+        // Validação Live do Telefone
         if (phoneInput) {
             phoneInput.addEventListener('input', () => {
                 phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
@@ -300,97 +315,66 @@
         // Listener de Submit do Formulário
         if (leadForm && submitButton && formSuccessMessage && formError) {
             leadForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Previne envio padrão
-
+                event.preventDefault();
                 formError.style.display = 'none';
                 formSuccessMessage.style.display = 'none';
                 let isValid = true;
 
-                // Validação Final no Submit
+                // Validação Final
                 Array.from(leadForm.elements).forEach(input => {
-                    input.classList.remove('invalid-submit'); // Limpa erro anterior
+                    input.classList.remove('invalid-submit');
                     if (input.type !== 'button' && input.type !== 'submit' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
                          if(input.style.borderColor !== 'var(--color-warning)') { input.style.borderColor = 'var(--color-border)'; }
                          input.classList.remove('invalid-submit');
                     }
-                    // Verifica validade apenas em campos que possuem a função e são visíveis
                     if (input.offsetParent !== null && typeof input.checkValidity === 'function' && !input.checkValidity()) {
-                        isValid = false;
-                        input.classList.add('invalid-submit');
-                        input.style.borderColor = 'var(--color-error)';
+                        isValid = false; input.classList.add('invalid-submit'); input.style.borderColor = 'var(--color-error)';
                     }
                 });
 
-
                 if (!isValid) {
-                    formError.textContent = "Ops! Verifique os campos marcados.";
-                    formError.style.display = 'block';
-                    console.error("Formulário inválido no submit.");
-                    return; // Interrompe se inválido
+                    formError.textContent = "Ops! Verifique os campos marcados."; formError.style.display = 'block';
+                    console.error("Formulário inválido."); return;
                 }
 
-                // Formulário Válido -> Enviar Dados
-                console.log("Formulário válido, preparando envio CAPI...");
-                formSuccessMessage.innerHTML = "💌 Tudo certo! Enviando...";
-                formSuccessMessage.style.display = 'block';
-                submitButton.disabled = true;
-                submitButton.style.opacity = '0.7';
-                submitButton.style.cursor = 'not-allowed';
+                // Formulário Válido -> Enviar
+                console.log("Enviando CAPI...");
+                formSuccessMessage.innerHTML = "💌 Enviando..."; formSuccessMessage.style.display = 'block';
+                submitButton.disabled = true; submitButton.style.opacity = '0.7'; submitButton.style.cursor = 'not-allowed';
 
-                // Coleta dados (usando getElementById como no original)
                 const firstName = document.getElementById('firstName').value.trim();
                 const lastName = document.getElementById('lastName').value.trim();
                 const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim(); // Já validado live e no checkValidity
+                const phone = document.getElementById('phone').value.trim();
                 const fbp = getCookie("_fbp");
                 let externalId = localStorage.getItem("external_id");
                 if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
 
                 const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
-                const eventData = {
-                    event_name: "Lead", event_source_url: window.location.href,
-                    fbp: fbp || "NA", external_id: externalId,
-                    user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
-                };
+                const eventData = { event_name: "Lead", event_source_url: window.location.href, fbp: fbp || "NA", external_id: externalId, user_data: { fn: firstName, ln: lastName, em: email, ph: phone } };
 
-                console.log("Enviando CAPI:", eventData);
-
-                // Fetch para o Proxy
                 fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
                 .then(response => response.json().then(data => ({ok: response.ok, data, status: response.status })))
                 .then(({ok, data, status}) => {
-                    if (!ok) { throw new Error(`Erro ${status} do Proxy: ${data?.message || 'Erro desconhecido'}`); }
-
+                    if (!ok) { throw new Error(`Erro ${status}: ${data?.message || 'API Error'}`); }
                     console.log("Sucesso CAPI:", data);
                     formSuccessMessage.innerHTML = "💌 Perfeito! Abrindo WhatsApp...";
-
                     const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações.`;
-                    // Número CORRETO aplicado aqui
                     const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
-
-                    setTimeout(() => { window.location.href = whatsappUrl; }, 500); // Delay menor
-
+                    setTimeout(() => { window.location.href = whatsappUrl; }, 500);
                 })
                 .catch(error => {
-                    console.error("Falha no envio CAPI ou redirect:", error);
+                    console.error("Falha no envio/redirect:", error);
                     formSuccessMessage.style.display = 'none';
-                    formError.textContent = `Erro ao enviar. Tente de novo. (${error.message})`;
-                    formError.style.display = 'block';
+                    formError.textContent = `Erro: ${error.message}. Tente novamente.`; formError.style.display = 'block';
                 })
                 .finally(() => {
-                    // Reabilita botão após um tempo
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.style.opacity = '1';
-                        submitButton.style.cursor = 'pointer';
-                    }, 4000);
-                }); // Fim do fetch.finally
-            }); // Fim do eventListener submit
-        } else {
-            console.error("Elementos do formulário não encontrados para adicionar listener.");
-        } // Fim do if leadForm
+                    setTimeout(() => { submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer'; }, 4000);
+                });
+            });
+        } else { console.error("Elementos do formulário não encontrados."); }
 
-    }); // Fim do DOMContentLoaded listener
+    }); // Fim DOMContentLoaded
     </script>
 </body>
 </html>
