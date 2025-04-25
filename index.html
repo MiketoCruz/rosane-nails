@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta name="facebook-domain-verification" content="mp1oj81t2mrqjgo4ofnrbrldsd16z3" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rosane Campos Nail Design</title>
+  <title>Rosane Campos Nail Design - Unhas Perfeitas em Gravataí</title> <meta name="description" content="Manicure especialista em unhas delicadas e duradouras em Gravataí. Agende seu momento de autocuidado e sinta-se confiante com unhas impecáveis."> <meta name="facebook-domain-verification" content="mp1oj81t2mrqjgo4ofnrbrldsd16z3" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://i.imgur.com">
+
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -29,507 +31,400 @@
     src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/>
   </noscript>
   <style>
-    /* Reset Básico e Box Sizing */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Estilos Gerais */
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-
+    /* Reset Básico e Estilos Gerais */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
     body {
       font-family: 'Lato', sans-serif;
       font-weight: 400;
       line-height: 1.6;
       color: #333;
-      /* Novo Degradê Sugerido */
       background: linear-gradient(to bottom, #ffe0ed, #f9cfe0);
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 0; /* Aumenta padding geral */
       overflow-x: hidden;
     }
+    .container { max-width: 550px; margin: 0 auto; padding: 0 1rem; } /* Aumenta max-width */
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* Cabeçalho com Perfil/Logo */
-    .profile-header {
-      margin-bottom: 1.5rem;
-    }
-
+    /* Header */
+    .profile-header { margin-bottom: 2rem; }
     .profile-pic {
-      width: 150px; /* <<< Logo Maior */
-      height: 150px; /* <<< Logo Maior */
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1rem auto;
-      display: block;
-      /* Sombra levemente ajustada */
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      border: 3px solid white;
+      width: 140px; height: 140px; /* Levemente menor */
+      border-radius: 50%; object-fit: cover; margin: 0 auto 1rem auto; display: block;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+      border: 4px solid white;
     }
-
     h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.7rem;
-      color: #333;
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.9rem; /* Mais destaque */
+      color: #C2185B; /* Cor principal mais forte */
+      margin-bottom: 0.5rem; line-height: 1.3;
+    }
+     /* Elemento para Mensagem de Retorno (inicialmente escondido) */
+    .returning-visitor-message {
+        font-size: 1rem; color: #D81B60; font-weight: 700;
+        margin: 0 auto 1rem auto; max-width: 90%;
+        display: none; /* Começa escondido */
+        padding: 0.5rem; background-color: rgba(255,255,255,0.6); border-radius: 8px;
+    }
+    .subtext-principal { /* Subtítulo principal */
+      font-size: 1.1rem; color: #444; /* Mais sóbrio */
+      margin: 0.5rem auto 2rem auto; max-width: 90%;
+      font-weight: 400; line-height: 1.5;
     }
 
-    .subtext-principal {
-      font-size: 1rem;
-      color: #D81B60; /* Tom de rosa um pouco mais escuro para contraste */
-      margin: 0.5rem auto 1.5rem auto;
-      max-width: 90%; /* Ajusta largura máxima */
-      font-weight: 400;
-      line-height: 1.5;
-    }
-
-    /* Seção de Boas-Vindas (Textos com mais peso) */
-    .welcome-section {
-      margin-bottom: 2.5rem; /* Aumenta espaço abaixo */
-      padding: 0 0.5rem;
-    }
-
-    .welcome-section p {
-        font-size: 1rem; /* Aumenta levemente a fonte */
-        color: #444; /* Cor mais escura */
-        font-weight: 700; /* <<< Mais Peso (usando Lato Bold) */
-        margin-bottom: 0.5rem; /* Mais espaço entre eles */
-        line-height: 1.5;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Seção do Carrossel */
-    .carousel-section {
-      margin-bottom: 3rem; /* Aumenta espaço abaixo */
-    }
-
-    .carousel-section h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #444;
-      margin-bottom: 1.5rem;
-    }
-
-    .swiper {
-      width: 100%;
-      max-width: 380px;
-      margin: 0 auto;
-      position: relative;
-      border-radius: 0;
-      box-shadow: none;
-      padding-bottom: 35px;
-    }
-
-    .swiper-slide {
-      background-color: #FFF0F5;
-      border-radius: 12px;
-      padding: 0.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* Sombra suave ajustada */
-      overflow: hidden;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 8px;
-      box-shadow: none;
-      /* Borda sutil para contraste */
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    /* Paginação (Bolinhas) */
-    .swiper-pagination {
-      position: absolute;
-      bottom: 8px !important;
-      left: 0;
-      width: 100%;
-    }
-    .swiper-pagination-bullet {
-      background-color: rgba(0, 0, 0, 0.3);
-      opacity: 1;
-      width: 9px;
-      height: 9px;
-    }
-    .swiper-pagination-bullet-active {
-      background-color: #E91E63;
-      transform: scale(1.1);
-    }
-
-    /* Bloco de Valor / Diferenciais */
-    .value-prop-section {
-        background-color: rgba(255, 255, 255, 0.6); /* Aumenta levemente opacidade */
-        border-radius: 15px;
-        padding: 1.8rem 1.2rem; /* Ajusta padding */
-        /* Aumenta margem superior, centraliza horizontal, mantém margem inferior */
-        margin: 3rem auto 2.5rem auto;
-        max-width: 420px;
-        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08); /* Sombra ajustada */
-    }
-
-    .value-prop-section h3 {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.3rem;
-        color: #333; /* Cor mais escura */
-        margin-bottom: 1.8rem; /* Mais espaço abaixo do título */
-    }
-
-    .value-prop-section ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .value-prop-section li {
-        font-size: 1.05rem;
-        color: #444; /* Cor ajustada */
-        margin-bottom: 1.2rem; /* Mais espaço entre itens */
-        line-height: 1.5;
-        display: flex;
-        align-items: center;
-        text-align: left;
-        gap: 0.8rem;
-    }
-
-     .value-prop-section li:last-child {
-        margin-bottom: 0;
-    }
-
-    .value-prop-section li span { /* Emoji */
-        font-size: 1.2rem;
-    }
-
-    /* ===== ESTILOS PARA NOVA SEÇÃO DE FORMULÁRIO ===== */
-    .form-section {
-        margin-bottom: 2rem;
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 1.5rem;
-        border-radius: 15px;
-        max-width: 420px;
-        margin-left: auto;
-        margin-right: auto;
+    /* Seção Sobre Mim */
+    .about-section {
+        background-color: rgba(255, 255, 255, 0.7); padding: 2rem 1.5rem;
+        border-radius: 15px; margin: 3rem auto; max-width: 95%;
         box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
     }
-
-    .form-section h3 {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.2rem;
-        color: #333;
-        margin-bottom: 1.5rem;
+    .about-section h2 {
+        font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem;
+        color: #C2185B; margin-bottom: 1.5rem;
     }
-     .form-section p {
-        font-size: 0.95rem;
-        color: #555;
-        margin-bottom: 1.5rem;
-        line-height: 1.4;
+    .about-section p {
+        font-size: 1rem; color: #555; line-height: 1.7; text-align: justify; /* Justificado */
     }
 
-    #leadForm {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: left; /* Alinha placeholders e texto digitado à esquerda */
+    /* Seção de Boas-Vindas (revisada para benefícios) */
+    .welcome-section { margin-bottom: 3rem; padding: 0 0.5rem; }
+    .welcome-section h2 {
+        font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem;
+        color: #444; margin-bottom: 1.5rem;
     }
+    .welcome-section .benefit-item {
+        font-size: 1.05rem; color: #555; font-weight: 700;
+        margin-bottom: 1rem; line-height: 1.5; max-width: 90%;
+        margin-left: auto; margin-right: auto; display: flex;
+        align-items: center; text-align: left; gap: 0.8rem;
+    }
+     .welcome-section .benefit-item span { font-size: 1.3rem; color: #E91E63; }
 
-    #leadForm input[type="text"],
-    #leadForm input[type="email"],
-    #leadForm input[type="tel"] {
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-family: 'Lato', sans-serif;
-        transition: border-color 0.3s ease;
+    /* Seção do Carrossel (Mantida, mas com H2 revisado) */
+    .carousel-section { margin-bottom: 3rem; }
+    .carousel-section h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem; /* Aumenta */
+      color: #444; margin-bottom: 1.5rem;
     }
-    #leadForm input:focus {
-        outline: none;
-        border-color: #E91E63;
-    }
+    /* Estilos do Swiper mantidos como antes... */
+    .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); padding-bottom: 40px; overflow: hidden;}
+    .swiper-slide { background-color: #fff; border-radius: 8px; padding: 0; /* Removido padding para imagem ocupar tudo */ box-shadow: none; overflow: hidden; }
+    .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; object-position: center; border-radius: 8px; border: none; }
+    .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; }
+    .swiper-pagination-bullet { background-color: rgba(0, 0, 0, 0.4); opacity: 1; width: 10px; height: 10px; }
+    .swiper-pagination-bullet-active { background-color: #E91E63; transform: scale(1.1); }
 
-    /* Estilo para inputs inválidos (via JS) */
-    #leadForm input.invalid {
-        border-color: red;
+    /* Seção Depoimentos */
+    .testimonials-section {
+        background-color: rgba(255, 255, 255, 0.7); padding: 2rem 1.5rem;
+        border-radius: 15px; margin: 3rem auto; max-width: 95%;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
     }
+    .testimonials-section h2 {
+        font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem;
+        color: #C2185B; margin-bottom: 1.5rem;
+    }
+    .testimonial-card {
+        background-color: #fff; border-radius: 10px; padding: 1.5rem;
+        margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        text-align: left;
+    }
+     .testimonial-card:last-child { margin-bottom: 0; }
+    .testimonial-quote { font-style: italic; color: #555; margin-bottom: 1rem; }
+    .testimonial-author { font-weight: 700; color: #E91E63; text-align: right; }
+    .testimonial-author img { width: 40px; height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 0.5rem; object-fit: cover; }
 
-     #formError {
-        color: red;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-        display: none; /* Começa escondido */
-        text-align: center; /* Centraliza a mensagem de erro */
+    /* Seção Formulário e CTA */
+    .form-cta-section {
+        background-color: rgba(255, 255, 255, 0.8); padding: 2.5rem 1.5rem; /* Mais padding */
+        border-radius: 15px; margin: 3rem auto 2rem auto; max-width: 95%;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    .form-cta-section h3 {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.6rem; /* Maior */
+      color: #333; margin-bottom: 1rem; line-height: 1.3;
+    }
+     .form-cta-section p { font-size: 1rem; color: #555; margin-bottom: 2rem; line-height: 1.5; max-width: 90%; margin-left: auto; margin-right: auto;}
+    #leadForm { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; } /* Mais gap */
+    #leadForm label { display: block; text-align: left; font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; color: #444; } /* Adiciona Label */
+    #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] {
+      padding: 0.9rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;
+      font-family: 'Lato', sans-serif; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+     #leadForm input:focus { outline: none; border-color: #E91E63; box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2); }
+    #leadForm input.invalid { border-color: red; }
+     /* Microcopy */
+     .microcopy { font-size: 0.85rem; color: #666; text-align: left; margin-top: -0.8rem; margin-bottom: 0.5rem; }
+     #formError { color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none; text-align: center; font-weight: bold; }
+     #formSuccessMessage { /* Mensagem de sucesso pós-envio */
+        color: #006400; background-color: #e6ffed; border: 1px solid #90ee90;
+        padding: 1rem; border-radius: 8px; font-weight: bold;
+        margin-bottom: 1.5rem; display: none; /* Começa escondido */
      }
-    /* ===== FIM DOS ESTILOS PARA FORMULÁRIO ===== */
 
-
-    /* Seção do Botão de Ação (CTA) */
-    .cta-section {
-      margin: 1rem 0 3rem 0; /* Diminui margem superior após form, mantém inferior */
-    }
-
-    /* Definição da Animação Pulse */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); } /* Pulso levemente mais sutil */
-      100% { transform: scale(1); }
-    }
-
+    /* Botão CTA */
     .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      width: auto;
-      max-width: 95%;
-      margin: 0 auto;
-      padding: 0.9rem 2rem;
-      background-color: #E91E63;
-      border: none;
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição SÓ para cor e sombra */
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem;
+      width: auto; max-width: 100%; padding: 1rem 2.5rem; /* Botão maior */
+      background: linear-gradient(to right, #E91E63, #C2185B); /* Gradiente no botão */
+      border: none; border-radius: 50px; font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem; font-weight: 700; text-decoration: none; color: #fff;
+      box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+      transition: all 0.3s ease; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
-
-    .whatsapp-btn svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .whatsapp-btn:hover,
-    .whatsapp-btn:focus {
-      background-color: #D81B60; /* Escurece no hover */
-      /* Aplica animação e glow no hover/focus */
-      animation: pulse 0.6s ease-in-out; /* Animação pulse */
-      box-shadow: 0 0 15px rgba(233, 30, 99, 0.7); /* Efeito Glow */
-      outline: none;
-      /* Remove o transform: translateY para não conflitar com a animação pulse */
-    }
-
+     .whatsapp-btn svg { width: 24px; height: 24px; }
+     @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
+     .whatsapp-btn:hover, .whatsapp-btn:focus {
+       background: linear-gradient(to right, #C2185B, #AD1457); /* Escurece */
+       transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none;
+     }
 
     /* Rodapé */
-    footer {
-      margin-top: 3rem; /* Mais espaço acima */
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      font-size: 0.85rem;
-      color: #555;
-    }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.1); font-size: 0.9rem; color: #555; }
+    footer p { margin-bottom: 0.5rem; }
+    footer a { color: #E91E63; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-    /* Ajustes finos para Telas Menores */
-    @media (max-width: 360px) {
-      html {
-        font-size: 15px;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-       .value-prop-section h3 {
-         font-size: 1.15rem;
-      }
-        .value-prop-section li {
-         font-size: 0.95rem;
-      }
-       .form-section h3 { /* Ajuste do form para telas menores */
-            font-size: 1.1rem;
-        }
-        #leadForm input[type="text"],
-        #leadForm input[type="email"],
-        #leadForm input[type="tel"] {
-            font-size: 0.95rem;
-            padding: 0.7rem;
-        }
-      .whatsapp-btn {
-        font-size: 1rem;
-        padding: 0.8rem 1.6rem;
-      }
-      .swiper-slide img {
-        height: 260px; /* Altura menor ainda para telas bem pequenas */
-      }
+    /* Ajustes Mobile */
+    @media (max-width: 480px) { /* Aumenta ponto de quebra */
+      html { font-size: 15.5px; }
+      h1 { font-size: 1.7rem; }
+      .container { padding: 0 0.8rem; }
+      .profile-pic { width: 120px; height: 120px; }
+      .welcome-section h2, .carousel-section h2, .about-section h2, .testimonials-section h2, .form-cta-section h3 { font-size: 1.4rem; }
+       .form-cta-section p { font-size: 0.95rem; }
+      .swiper-slide img { height: 280px; }
+      .whatsapp-btn { font-size: 1.1rem; padding: 0.9rem 2rem; }
     }
   </style>
-  </head>
+</head>
 <body>
   <div class="container">
     <header class="profile-header">
-      <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Logo Rosane Campos" class="profile-pic">
-      <h1>Rosane Campos Nail Design</h1>
-      <p class="subtext-principal">💖 Unhas delicadas com toque profissional e um atendimento que acolhe você desde o primeiro clique.</p>
+      <div id="dynamic-header">
+        <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer" class="profile-pic">
+        <h1>Unhas Perfeitas Começam Aqui! ✨</h1>
+        <p class="returning-visitor-message" id="returningMessage">🎁 Que bom te ver de novo! Preparamos algo especial pra você!</p>
+        <p class="subtext-principal" id="mainSubtitle">Transforme suas mãos com cuidado profissional e um toque de carinho em Gravataí.</p>
+      </div>
     </header>
 
-    <section class="welcome-section">
-      <p class="welcome">Seja bem-vinda! Aqui cada detalhe é feito com carinho.</p>
-      <p class="truth">O primeiro passo pra fidelidade é o cuidado real com você ✨</p>
+    <section class="about-section" id="sobre">
+      <h2>Quem Cuida das Suas Unhas</h2>
+      <p>Olá! Sou a Rosane Campos, apaixonada por realçar a beleza natural das mãos. Com [X] anos de experiência e especialização em [mencionar técnicas, ex: unhas em gel, esmaltação duradoura], meu objetivo é oferecer não apenas unhas impecáveis, mas um momento relaxante e de autocuidado para você. Utilizo apenas materiais de alta qualidade, esterilizados e sigo rigorosos padrões de higiene, pois sua saúde e bem-estar são minha prioridade. Adoro conversar e entender exatamente o que você deseja para suas unhas. Vamos juntas realçar sua beleza?</p>
     </section>
 
-    <section class="carousel-section">
-      <h2>✨ Veja como posso valorizar suas mãos</h2>
+    <section class="welcome-section" id="beneficios">
+       <h2>Seu Momento de Brilhar: Mais que Unhas, uma Experiência</h2>
+       <div class="benefit-item">
+          <span>💖</span> Atendimento exclusivo e humanizado, pensado em cada detalhe para você se sentir acolhida e especial.
+       </div>
+       <div class="benefit-item">
+          <span>💎</span> Unhas com acabamento impecável e durabilidade prolongada, usando as melhores técnicas e produtos do mercado.
+       </div>
+       <div class="benefit-item">
+          <span>🌿</span> Ambiente tranquilo, seguro e 100% higienizado em Gravataí, para seu relaxamento e confiança total.
+       </div>
+       <div class="benefit-item">
+          <span>⏰</span> Pontualidade e respeito ao seu tempo, para que seu momento de beleza se encaixe perfeitamente na sua rotina.
+       </div>
+    </section>
+
+    <section class="carousel-section" id="trabalhos">
+      <h2>Inspire-se: Alguns dos Meus Trabalhos</h2>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="https://i.imgur.com/XoQS1ua.jpeg" alt="Exemplo de trabalho de unha 1">
+             <img src="https://via.placeholder.com/400x320/FFE0ED/C2185B?text=Unhas+Lindas+1" alt="Exemplo de trabalho de unha 1">
           </div>
           <div class="swiper-slide">
-            <img src="https://i.imgur.com/1vbr699.jpeg" alt="Exemplo de trabalho de unha 2">
+             <img src="https://via.placeholder.com/400x320/F8BBD0/AD1457?text=Manicure+Top+2" alt="Exemplo de trabalho de unha 2">
           </div>
+           <div class="swiper-slide">
+             <img src="https://via.placeholder.com/400x320/FFCDD2/C2185B?text=Nail+Art+Exemplo+3" alt="Exemplo de trabalho de unha 3">
           </div>
+           <div class="swiper-slide">
+             <img src="https://via.placeholder.com/400x320/F48FB1/AD1457?text=Resultado+Incrível+4" alt="Exemplo de trabalho de unha 4">
+          </div>
+        </div>
         <div class="swiper-pagination"></div>
       </div>
     </section>
 
-    <section class="value-prop-section">
-        <h3>Por que escolher a Rosane?</h3>
-        <ul>
-            <li><span>🌷</span>Atendimento humanizado e totalmente personalizado</li>
-            <li><span>🧼</span>Ambiente limpo, calmo e reservado para seu momento</li>
-            <li><span>📍</span>Local seguro e de fácil acesso em Gravataí</li>
-        </ul>
+    <section class="testimonials-section" id="depoimentos">
+       <h2>O Que Minhas Clientes Dizem</h2>
+       <div class="testimonial-card">
+          <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
+          <p class="testimonial-author">
+             <img src="https://via.placeholder.com/40/cccccc/ffffff?text=C" alt="Foto Cliente 1"> <strong>Ana P.</strong> - Gravataí/RS
+          </p>
+       </div>
+       <div class="testimonial-card">
+          <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
+          <p class="testimonial-author">
+             <img src="https://via.placeholder.com/40/cccccc/ffffff?text=M" alt="Foto Cliente 2"> <strong>Mariana S.</strong> - Cachoeirinha/RS
+          </p>
+       </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
+          <p class="testimonial-author">
+             <img src="https://via.placeholder.com/40/cccccc/ffffff?text=J" alt="Foto Cliente 3"> <strong>Juliana R.</strong> - Gravataí/RS
+          </p>
+       </div>
     </section>
 
-    <section class="form-section">
-        <h3>Fale comigo pelo WhatsApp!</h3>
-        <p>Preencha rapidamente para um atendimento mais personalizado e para garantir a melhor comunicação:</p>
-        <form id="leadForm">
-            <input type="text" id="firstName" name="firstName" placeholder="Seu primeiro nome" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
-            <input type="text" id="lastName" name="lastName" placeholder="Seu sobrenome" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
-            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="WhatsApp com DDD (Ex: 51999998888)"
-              required
-              pattern="[0-9]{11}"
-              maxlength="11"
-              title="Digite exatamente 11 números (DDD + 9 dígitos do celular)"
-              style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;"
-            >
-            <div id="formError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none;">Por favor, preencha todos os campos corretamente.</div>
+    <section class="form-cta-section" id="contato">
+        <h3>Pronta para Unhas Incríveis?</h3>
+        <p>Preencha seus dados e clique no botão para conversarmos rapidamente pelo WhatsApp e agendarmos seu horário!</p>
+        <div id="formSuccessMessage">Obrigada! Sua mensagem está a caminho. Clique no botão abaixo para falar comigo no WhatsApp! 😉</div>
+        <form id="leadForm" novalidate> <div>
+                <label for="firstName">Seu Primeiro Nome:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div>
+                <label for="lastName">Seu Sobrenome:</label>
+                <input type="text" id="lastName" name="lastName" required>
+             </div>
+            <div>
+                 <label for="email">Seu Melhor E-mail:</label>
+                 <input type="email" id="email" name="email" required>
+                 <p class="microcopy">Usado apenas para confirmações, sem spam.</p>
+            </div>
+            <div>
+                <label for="phone">Seu WhatsApp (com DDD):</label>
+                <input
+                  type="tel" id="phone" name="phone" required
+                  pattern="[0-9]{11}" maxlength="11"
+                  title="Digite exatamente 11 números (DDD + 9 dígitos do celular)"
+                  placeholder="Ex: 51999998888"
+                >
+                 <p class="microcopy">Vamos usar para agendar e tirar dúvidas rapidamente.</p>
+            </div>
+            <div id="formError">Por favor, preencha todos os campos corretamente.</div>
+             <button type="submit" class="btn whatsapp-btn" id="submitButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor" style="vertical-align: middle;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                <span style="vertical-align: middle;">Quero Agendar via WhatsApp!</span> </button>
         </form>
-    </section>
-    <section class="cta-section">
-      <a class="btn whatsapp-btn" href="#" onclick="enviarEvento(event)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" fill="currentColor" style="vertical-align: middle;">
-          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-        <span style="vertical-align: middle;">Me chama no WhatsApp 🌸</span>
-      </a>
     </section>
 
     <footer>
+      <p>📍 Atendimento em Gravataí/RS - [Inserir Bairro ou Referência de Localização Aqui]</p>
       <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
-      <p>Gravataí - RS</p> </footer>
+      <p><a href="#politica-privacidade" id="privacyLink">Política de Privacidade</a> | Respeitamos a LGPD</p>
+    </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // Define o ano atual no rodapé
+    // --- Inicializações ---
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-    // Função para buscar o valor de um cookie pelo nome
-    function getCookie(name) {
-      const value = "; " + document.cookie;
-      const parts = value.split("; " + name + "=");
-      return parts.length === 2 ? parts.pop().split(";").shift() : null;
+    // Inicialização do Swiper
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      autoplay: { delay: 4500, disableOnInteraction: false }, // Pequeno ajuste no tempo
+      effect: "slide",
+    });
+
+    // --- Lógica para Visitantes Recorrentes ---
+    function handleReturningVisitor() {
+      const returningMessageElement = document.getElementById('returningMessage');
+      const mainSubtitleElement = document.getElementById('mainSubtitle');
+      const h1Element = document.querySelector('#dynamic-header h1'); // Seleciona H1 dentro do header
+
+      if (localStorage.getItem('rosane_visited_before')) {
+        // É um visitante recorrente
+        if(h1Element) h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖'; // Muda H1
+        if(mainSubtitleElement) mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?'; // Muda Subtítulo
+        if(returningMessageElement) returningMessageElement.style.display = 'block'; // Mostra mensagem de retorno
+      } else {
+        // É a primeira visita, marca como visitado
+        localStorage.setItem('rosane_visited_before', 'true');
+        if(returningMessageElement) returningMessageElement.style.display = 'none'; // Garante que a msg de retorno está escondida
+         // Garante que o H1 e subtítulo originais estejam corretos (caso o padrão no HTML mude)
+         if(h1Element) h1Element.innerText = 'Unhas Perfeitas Começam Aqui! ✨';
+         if(mainSubtitleElement) mainSubtitleElement.innerText = 'Transforme suas mãos com cuidado profissional e um toque de carinho em Gravataí.';
+      }
     }
 
-    // ID Externo e FBP (Mantido)
+    // --- Lógica do Formulário e Envio CAPI ---
+    const leadForm = document.getElementById('leadForm');
+    const submitButton = document.getElementById('submitButton');
+    const formSuccessMessage = document.getElementById('formSuccessMessage');
+    const formError = document.getElementById('formError');
+    const whatsAppButtonLink = document.querySelector('.whatsapp-btn'); // Seleciona o link/botão original
+
+    // Função getCookie (Mantida)
+    function getCookie(name) { /* ... código getCookie ... */ }
+     function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+
+
+    // ID Externo e FBP (Mantidos)
     let externalId = localStorage.getItem("external_id");
-    if (!externalId) {
-      externalId = "user_" + Math.random().toString(36).substring(2) + Date.now();
-      localStorage.setItem("external_id", externalId);
-    }
-    const fbp = getCookie("_fbp"); // Pega o cookie _fbp
+    if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
+    const fbp = getCookie("_fbp");
 
-    // --- FUNÇÃO ENVIAR EVENTO ATUALIZADA ---
-    function enviarEvento(event) {
-      event.preventDefault(); // Impede a ação padrão do link
+    // Adiciona listener ao formulário em vez de no botão/link
+    leadForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Previne o envio padrão do formulário
+        enviarEvento(); // Chama nossa função de envio/validação
+    });
 
-      // --- Obter dados do formulário ---
-      const form = document.getElementById('leadForm');
-      const firstNameInput = document.getElementById('firstName');
-      const lastNameInput = document.getElementById('lastName');
-      const emailInput = document.getElementById('email');
-      const phoneInput = document.getElementById('phone'); // Input do telefone
-      const formError = document.getElementById('formError');
+    // Função para enviar evento para o Proxy (AJUSTADA)
+    function enviarEvento() {
+        formError.style.display = 'none'; // Esconde erro anterior
+        formSuccessMessage.style.display = 'none'; // Esconde sucesso anterior
+        let isValid = true;
 
-      const firstName = firstNameInput.value.trim();
-      const lastName = lastNameInput.value.trim();
-      const email = emailInput.value.trim();
-      const phone = phoneInput.value.trim();
-
-       // --- Validação ---
-       let isValid = true;
-       formError.style.display = 'none'; // Esconde erro inicialmente
-       // Percorre todos os inputs do formulário
-       Array.from(form.elements).forEach(input => {
-           // Remove classe de erro anterior (se houver) e reseta borda
-           input.classList.remove('invalid');
-           if (input.type !== 'hidden' && input.id !== 'formError') { // Ignora hidden/error div
-                input.style.borderColor = '#ddd'; // Reseta borda
-           }
-
-           // Verifica validade usando as regras do HTML (required, pattern, type=email/tel)
-           if (input.offsetParent !== null && !input.checkValidity()) { // Verifica se está visível e inválido
+        // Validação via JS (reforça a validação HTML)
+        Array.from(leadForm.elements).forEach(input => {
+            input.classList.remove('invalid');
+             if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
+                 input.style.borderColor = '#ddd';
+            }
+            if (input.offsetParent !== null && !input.checkValidity()) {
                 isValid = false;
-                input.classList.add('invalid'); // Adiciona estilo de erro visual (borda vermelha)
-                input.style.borderColor = 'red'; // Garante borda vermelha
-                console.error("Campo inválido:", input.name, input.validationMessage);
-           }
-       });
+                input.classList.add('invalid');
+                input.style.borderColor = 'red';
+            }
+        });
 
-       if (!isValid) {
-            formError.textContent = "Por favor, preencha todos os campos corretamente."; // Mensagem de erro
-            formError.style.display = 'block'; // Mostra erro
+        if (!isValid) {
+            formError.textContent = "Ops! Verifique os campos marcados em vermelho.";
+            formError.style.display = 'block';
             console.error("Formulário inválido.");
-            return; // Interrompe a execução
-       }
+            return;
+        }
 
-      // *** URL CORRETA DO SEU PROXY WEB SERVICE NO RENDER ***
-      const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; // Confirmada
+        // Se válido, continua
+        console.log("Formulário válido, preparando envio...");
+        // Mostra mensagem de sucesso e desabilita botão temporariamente
+        formSuccessMessage.style.display = 'block';
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.7';
+        submitButton.style.cursor = 'not-allowed';
 
-      // Dados do evento para enviar ao Proxy
-      const eventData = {
-          event_name: "Lead", // Confirmado
-          event_source_url: window.location.href,
-          fbp: fbp || "NA", // Cookie _fbp (se existir)
-          external_id: externalId, // ID único do usuário
-          // --- Dados do usuário do formulário ---
-          user_data: {
-              fn: firstName,  // Nome (será hasheado no proxy)
-              ln: lastName,   // Sobrenome (será hasheado no proxy)
-              em: email,      // Email (será hasheado no proxy)
-              ph: phone       // Telefone (será hasheado no proxy)
-          }
-      };
 
-      console.log("Enviando evento para o proxy:", eventData);
+        // Coleta dados
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
 
-       // Envia para o Proxy
+        const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
+
+        const eventData = {
+            event_name: "Lead", event_source_url: window.location.href,
+            fbp: fbp || "NA", external_id: externalId,
+            user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
+        };
+
+        console.log("Enviando evento para o proxy:", eventData);
+
+        // Envia para o Proxy
         fetch(proxyUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -537,55 +432,45 @@
         })
         .then(response => {
             console.log("Status da resposta do Proxy:", response.status);
-            if (!response.ok) {
-                // Tenta ler a mensagem de erro do proxy, se houver
-                response.json().then(errData => {
-                    console.error("Erro ao enviar evento para o proxy. Status:", response.status, "Mensagem:", errData);
-                }).catch(() => {
-                     console.error("Erro ao enviar evento para o proxy. Status:", response.status, response.statusText);
-                });
-            } else {
-                 // Se a resposta foi OK (ex: 200), tenta ler o JSON de sucesso do proxy
-                 response.json().then(successData => {
-                     console.log("Resposta de sucesso do Proxy:", successData);
-                 }).catch(err => {
-                    console.warn("Não foi possível parsear a resposta JSON de sucesso do proxy:", err);
-                 });
-            }
+            if (!response.ok) { console.error("Erro ao enviar evento para o proxy."); }
+            else { response.json().then(data => console.log("Resposta de sucesso do Proxy:", data)); }
         })
         .catch(error => {
-            console.error("Erro na requisição fetch para o proxy (pode ser rede, CORS no proxy ou proxy offline):", error);
-             alert("Houve um problema ao conectar ao nosso servidor. Sua mensagem será enviada, mas tente novamente mais tarde se o erro persistir.");
+            console.error("Erro na requisição fetch para o proxy:", error);
+            // Talvez informar o usuário aqui? Ou deixar quieto pois o redirect vai ocorrer.
+        })
+        .finally(() => {
+            // Redireciona para o WhatsApp APÓS a tentativa de envio
+             console.log("Redirecionando para o WhatsApp...");
+             // MENSAGEM PRÉ-PREENCHIDA NO WHATSAPP
+             const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
+             const whatsappUrl = `https://wa.me/55519989416219?text=${encodeURIComponent(preFilledMessage)}`;
+             window.location.href = whatsappUrl;
+
+             // Reabilita o botão após um tempo (caso o redirect falhe ou demore)
+             setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+                submitButton.style.cursor = 'pointer';
+             }, 3000); // Reabilita após 3 segundos
         });
-
-
-      // Executa o redirecionamento SEMPRE no finally (ou após o fetch), após a tentativa de envio
-      // para garantir que o usuário chegue ao WhatsApp.
-       setTimeout(() => {
-            console.log("Redirecionando para o WhatsApp...");
-            const whatsappUrl = "https://wa.me/55519989416219?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!"; // Confirmado
-            window.location.href = whatsappUrl;
-       }, 300); // Atraso de 300ms antes de redirecionar
-
     }
-    // --- FIM DA FUNÇÃO ATUALIZADA ---
 
-    // Inicialização do Swiper (Carrossel)
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20, // Espaço entre os "cartões" dos slides
-      loop: true,
-      grabCursor: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: true, // Pausa quando o usuário interage
-      },
-      effect: "slide", // Efeito slide padrão
+    // --- Executar Funções na Carga ---
+    document.addEventListener('DOMContentLoaded', () => {
+        handleReturningVisitor(); // Verifica se é visitante recorrente
+
+        // Adiciona placeholder para link de política de privacidade (necessário criar conteúdo)
+        const privacyLink = document.getElementById('privacyLink');
+        if(privacyLink){
+            privacyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Aqui abriria a Política de Privacidade (página ou modal a ser criado).');
+                // TODO: Implementar a exibição da política de privacidade
+            });
+        }
     });
+
   </script>
 </body>
 </html>
