@@ -75,36 +75,40 @@
     }
 
     /* Seção Sobre Mim */
-    .about-section p { font-size: 1rem; color: #555; line-height: 1.7; text-align: left; } /* Garante alinhamento à esquerda */
+    .about-section p { font-size: 1rem; color: #555; line-height: 1.7; text-align: left; }
+    .about-section strong { color: #C2185B; } /* Destaca os placeholders */
+
 
     /* Seção Benefícios */
     .welcome-section h2 { color: #444; text-align: center; }
     .welcome-section .benefit-item {
-        font-size: 1.05rem; color: #555; /* Removido font-weight 700 para dar destaque ao título/emoji */
-        margin-bottom: 1.2rem; /* Aumenta espaço entre itens */
+        font-size: 1.05rem; color: #555;
+        margin-bottom: 1.2rem;
         line-height: 1.5;
-        display: flex; align-items: center; /* Alterado para 'center' para melhor alinhamento vertical emoji/texto */
+        display: flex;
+        align-items: baseline; /* AJUSTADO: Para melhor alinhamento texto-emoji */
         text-align: left;
-        gap: 0.8rem;
+        gap: 0.6rem; /* AJUSTADO: Reduzido o gap */
     }
-    /* Estilo para o Título do Benefício (após o emoji) */
-    .benefit-item strong {
-        font-weight: 700; /* Coloca negrito no título */
-        color: #444; /* Pode ajustar a cor se desejar */
-        margin-right: 0.3rem; /* Pequeno espaço antes da descrição */
+    /* Estilo para o Título do Benefício (dentro do div) */
+    .benefit-item div strong { /* Seletor mais específico */
+        font-weight: 700;
+        color: #444;
+        margin-right: 0.3rem;
     }
-    /* Estilo para o emoji - conforme sua sugestão */
+    /* Estilo para o emoji */
     .welcome-section .benefit-item span {
-      font-size: 1.2rem; /* Tamanho ajustado */
-      display: inline-flex; /* Usar inline-flex para alinhar melhor */
+      font-size: 1.2rem;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px; /* Largura ajustada */
-      height: 28px; /* Altura para consistência */
+      width: 24px; /* Largura mantida */
+      /* height: 28px; <= Removido, altura será definida pelo conteúdo */
       text-align: center;
-      /* vertical-align: middle; <= Removido, flex align-items:center é melhor */
-      color: #E91E63; /* Cor mantida */
-      margin-right: 0.2rem; /* Espaço após emoji */
+      color: #E91E63;
+      margin-right: 0.2rem;
+      /* Adiciona um pouco de espaço abaixo para alinhar melhor com baseline */
+      /* padding-bottom: 0.1em;  <= Testar se necessário */
     }
 
     /* Seção Carrossel */
@@ -115,12 +119,11 @@
     .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; }
     .swiper-pagination-bullet { background-color: rgba(0, 0, 0, 0.4); opacity: 1; width: 10px; height: 10px; }
     .swiper-pagination-bullet-active { background-color: #E91E63; transform: scale(1.1); }
-    /* Microtexto abaixo do carrossel */
     .carousel-caption {
         font-size: 0.9rem;
         color: #555;
         text-align: center;
-        margin-top: 1.5rem; /* Espaço acima do texto */
+        margin-top: 1.5rem;
     }
 
     /* Seção Depoimentos */
@@ -136,30 +139,29 @@
     .form-cta-section {
         background-color: rgba(255, 255, 255, 0.85); padding: 2.5rem 1.5rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); margin-bottom: 3rem;
-        /* text-align: center; <= Removido para alinhar form à esquerda */
     }
-    .form-cta-section h3 { /* Título do formulário centralizado */
+    .form-cta-section h3 {
         font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.6rem; color: #333;
         margin-bottom: 1rem; line-height: 1.3; text-align: center;
     }
-    .form-cta-section .form-subtitle { /* Subtítulo centralizado */
+    .form-cta-section .form-subtitle {
          font-size: 1rem; color: #555; margin-bottom: 2rem; line-height: 1.5;
          max-width: 90%; margin-left: auto; margin-right: auto; text-align: center;
     }
     #leadForm {
         display: flex; flex-direction: column;
-        gap: 1rem; /* Ajustado conforme sugestão */
+        gap: 1rem;
         margin-bottom: 1.5rem;
-        max-width: 450px; /* Limita largura do form para melhor leitura */
-        margin-left: auto; /* Centraliza o bloco do form */
-        margin-right: auto; /* Centraliza o bloco do form */
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
     }
     #leadForm label { display: block; text-align: left; font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; color: #444; }
     #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] {
       padding: 0.9rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;
       font-family: 'Lato', sans-serif; transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      width: 100%; /* Ajustado conforme sugestão */
-      max-width: 100%; /* Garante que não ultrapasse */
+      width: 100%;
+      max-width: 100%;
     }
     #leadForm input:focus { outline: none; border-color: #C2185B; box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.4); }
     #leadForm input.invalid-typing { border-color: orange; }
@@ -171,58 +173,60 @@
         padding: 1rem; border-radius: 8px; font-weight: bold;
         margin-bottom: 1.5rem; display: none; text-align: center;
      }
-     /* Estilo para os selos no rodapé da seção form (agora é footer) */
-     /* .trust-seals { ... } <= Removido daqui, movido para o footer global */
 
     /* Botão CTA Principal */
     .whatsapp-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; width: auto; /* Removido width: auto para permitir full-width no mobile */
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem;
       padding: 1rem 2.5rem;
       background: linear-gradient(to right, #E91E63, #C2185B); border: none; border-radius: 50px; font-family: 'Poppins', sans-serif;
       font-size: 1.2rem; font-weight: 700; text-decoration: none; color: #fff;
       box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); transition: all 0.3s ease; cursor: pointer;
       text-transform: uppercase; letter-spacing: 0.5px;
-      margin-left: auto; /* Centraliza o botão dentro do form */
-      margin-right: auto; /* Centraliza o botão dentro do form */
-      max-width: 100%; /* Evita que o botão estoure */
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      /* width: auto; <= Mantido auto por padrão */
     }
-    .whatsapp-btn svg { width: 24px; height: 24px; }
+    .whatsapp-btn svg { width: 24px; height: 24px; vertical-align: middle;} /* Garante alinhamento do SVG */
+    .whatsapp-btn span { vertical-align: middle; } /* Garante alinhamento do texto */
+
     @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
     .whatsapp-btn:hover, .whatsapp-btn:focus { background: linear-gradient(to right, #C2185B, #AD1457); transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none; }
 
     /* Botão Flutuante WhatsApp */
-    #floating-whatsapp-button {
+    #floating-whatsapp-button { /* ... (sem alterações) ... */ }
+        /* (código mantido igual à versão anterior) */
         position: fixed; bottom: 20px; right: 20px; z-index: 1000;
         background-color: #25D366; color: white;
         width: 60px; height: 60px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+
      #floating-whatsapp-button:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
      #floating-whatsapp-button svg { width: 30px; height: 30px; fill: white; }
 
     /* Rodapé */
     footer {
-        margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid rgba(0, 0, 0, 0.1); /* Linha divisória já existe */
+        margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid rgba(0, 0, 0, 0.1);
         font-size: 0.9rem; color: #555;
         text-align: center;
     }
     footer p { margin-bottom: 0.5rem; }
+    footer strong { color: #C2185B; } /* Destaca placeholder no footer */
     footer a { color: #E91E63; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-    /* Estilo para selos no rodapé - conforme sua sugestão */
     .footer-seals {
         font-size: 0.85rem;
         color: #777;
-        margin-top: 1.5rem; /* Aumenta espaço acima */
-        padding-top: 1.5rem; /* Adiciona padding acima */
-        border-top: 1px dashed #ddd; /* Linha tracejada acima dos selos */
-        max-width: 450px; /* Alinha com a largura do form */
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px dashed #ddd;
+        max-width: 450px;
         margin-left: auto;
         margin-right: auto;
     }
-    .footer-seals span { margin: 0 0.5rem; } /* Mantém estilo para ícones se usar */
+    .footer-seals span { margin: 0 0.5rem; }
 
     /* Ajustes Mobile */
     @media (max-width: 480px) {
@@ -233,17 +237,18 @@
       section h2, .form-cta-section h3 { font-size: 1.4rem; }
       .form-cta-section .form-subtitle { font-size: 0.95rem; }
       .swiper-slide img { height: 280px; }
-      /* Botão principal com largura total no mobile */
       .whatsapp-btn {
           font-size: 1.1rem;
-          padding: 0.9rem 1.5rem; /* Ajusta padding lateral para caber texto */
-          display: block; /* Muda para block para ocupar largura */
+          padding: 0.9rem 1.5rem;
+          display: block; /* Ocupa a linha inteira */
           width: 100%; /* Ocupa largura do container do form */
       }
       #floating-whatsapp-button { width: 55px; height: 55px; bottom: 15px; right: 15px; }
       #floating-whatsapp-button svg { width: 28px; height: 28px; }
-      .about-section p { text-align: left; } /* Mantém esquerda no mobile */
-      #leadForm { padding: 0 0.5rem; } /* Adiciona pequeno padding lateral ao form no mobile */
+      .about-section p { text-align: left; }
+      #leadForm { padding: 0 0.5rem; max-width: 100%;} /* Form ocupa mais espaço no mobile */
+      .welcome-section .benefit-item { flex-direction: column; align-items: flex-start; gap: 0.3rem;} /* Força empilhamento no mobile */
+      .welcome-section .benefit-item span { margin-bottom: 0.2rem; } /* Espaço abaixo do emoji no mobile */
     }
   </style>
 </head>
@@ -338,11 +343,11 @@
             <div id="formError">Ops! Verifique os campos marcados em vermelho.</div>
 
             <button type="submit" class="btn whatsapp-btn" id="submitButton">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor" style="vertical-align: middle;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                <span style="vertical-align: middle;">Quero minhas unhas lindas com a Rosane 💅</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                <span>Quero minhas unhas lindas com a Rosane 💅</span>
             </button>
         </form>
-         </section>
+    </section>
 
     <footer>
       <p>📍 Atendimento em Gravataí/RS – <strong>[Inserir Bairro ou Referência Aqui, ex: Próximo ao Centro]</strong></p>
@@ -363,192 +368,206 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // --- Inicializações ---
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-    // Inicialização do Swiper
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      autoplay: { delay: 4500, disableOnInteraction: false },
-      effect: "slide",
-    });
-
-    // --- Lógica para Visitantes Recorrentes ---
-    function handleReturningVisitor() { /* ... (código mantido igual) ... */ }
-        // (código da função handleReturningVisitor permanece o mesmo da versão anterior)
-        const returningMessageElement = document.getElementById('returningMessage');
-        const mainSubtitleElement = document.getElementById('mainSubtitle');
-        const h1Element = document.querySelector('#dynamic-header h1');
-        const formTitleElement = document.getElementById('formTitle'); // Título da seção do formulário
-
-        if (localStorage.getItem('rosane_visited_before')) {
-            // É um visitante recorrente
-            if(h1Element) h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
-            if(mainSubtitleElement) mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
-            if(returningMessageElement) returningMessageElement.style.display = 'block';
-            // Muda também o título do formulário para recorrente
-            if(formTitleElement) formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
-        } else {
-            // É a primeira visita, marca como visitado
-            localStorage.setItem('rosane_visited_before', 'true');
-            if(returningMessageElement) returningMessageElement.style.display = 'none';
-            // Garante textos originais da primeira visita
-            if(h1Element) h1Element.innerText = 'Aqui suas unhas viram autoestima 💅'; // Texto H1 novo
-            if(mainSubtitleElement) mainSubtitleElement.innerText = 'Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.'; // Texto Subtítulo novo
-            if(formTitleElement) formTitleElement.innerText = 'Esse pode ser o dia em que você vai se apaixonar pelas suas mãos 💅'; // Texto Form novo
-        }
-    }
-
-
-    // --- Lógica do Formulário e Envio CAPI ---
-    const leadForm = document.getElementById('leadForm');
-    const submitButton = document.getElementById('submitButton');
-    const formSuccessMessage = document.getElementById('formSuccessMessage');
-    const formError = document.getElementById('formError');
-    const phoneInput = document.getElementById('phone'); // Input do telefone para validação live
-
-    // == Validação 'live' do telefone ==
-     if(phoneInput) { /* ... (código mantido igual) ... */ }
-        // (código da validação live do telefone permanece o mesmo da versão anterior)
-        phoneInput.addEventListener('input', () => {
-            // Remove caracteres não numéricos (caso colem algo)
-            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
-            // Verifica se tem 11 dígitos ou não (mas só aplica estilo se tiver algo digitado)
-            if (phoneInput.value.length > 0 && !/^[0-9]{11}$/.test(phoneInput.value)) {
-                phoneInput.classList.add('invalid-typing'); // Adiciona classe para estilo (borda laranja)
-                phoneInput.classList.remove('invalid-submit'); // Remove erro de envio se houver
-                phoneInput.style.borderColor = 'orange'; // Aplica borda laranja diretamente
-            } else {
-                phoneInput.classList.remove('invalid-typing');
-                phoneInput.style.borderColor = ''; // Remove borda laranja se válido ou vazio (volta ao padrão)
-                // Se estava com erro de submit e agora está válido, remove o erro de submit
-                if (phoneInput.classList.contains('invalid-submit') && /^[0-9]{11}$/.test(phoneInput.value)) {
-                    phoneInput.classList.remove('invalid-submit');
-                }
-            }
-        });
-     }
-
-    // Função getCookie (Mantida)
-    function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
-
-    // ID Externo e FBP (Mantidos)
-    let externalId = localStorage.getItem("external_id");
-    if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
-    const fbp = getCookie("_fbp");
-
-    // Adiciona listener ao formulário
-    leadForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Previne envio padrão
-        enviarEvento();
-    });
-
-    // Função para enviar evento para o Proxy
-    function enviarEvento() {
-        formError.style.display = 'none';
-        formSuccessMessage.style.display = 'none';
-        let isValid = true;
-
-        // Validação final no submit
-        Array.from(leadForm.elements).forEach(input => {
-             input.classList.remove('invalid-submit'); // Remove erro de submit anterior
-             if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
-                 // Reseta a borda para o padrão #ccc, exceto se for a validação 'live' laranja
-                 if(input.style.borderColor !== 'orange') {
-                      input.style.borderColor = '#ccc'; // Volta para o cinza padrão
-                 }
-                 input.classList.remove('invalid-submit');
-             }
-             // Verifica validade apenas em campos visíveis
-             if (input.offsetParent !== null && !input.checkValidity()) {
-                 isValid = false;
-                 input.classList.add('invalid-submit'); // Adiciona classe de erro de submit
-                 input.style.borderColor = 'red'; // Garante borda vermelha
-             }
-         });
-
-        if (!isValid) {
-            formError.textContent = "Ops! Verifique os campos marcados em vermelho.";
-            formError.style.display = 'block';
-            console.error("Formulário inválido no submit.");
-            return;
-        }
-
-        console.log("Formulário válido, preparando envio CAPI...");
-        formSuccessMessage.innerHTML = "💌 Tudo certo! Só um momento..."; // Mensagem inicial
-        formSuccessMessage.style.display = 'block';
-        submitButton.disabled = true;
-        submitButton.style.opacity = '0.7';
-        submitButton.style.cursor = 'not-allowed';
-
-        // Coleta dados
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-
-        const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
-
-        const eventData = {
-            event_name: "Lead", event_source_url: window.location.href,
-            fbp: fbp || "NA", external_id: externalId,
-            user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
-        };
-
-        console.log("Enviando evento CAPI para o proxy:", eventData);
-
-        // Envia para o Proxy
-        fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
-        .then(response => {
-            console.log("Status da resposta do Proxy (CAPI):", response.status);
-            return response.json().then(data => ({ok: response.ok, data, status: response.status }));
-        })
-        .then(({ok, data, status}) => {
-              if (!ok) {
-                  console.error(`Erro retornado pelo Proxy (CAPI) - Status ${status}:`, data);
-                  formSuccessMessage.style.display = 'none';
-                  formError.textContent = `Houve um erro (${status}). Tente novamente. ${data?.message || ''}`;
-                  formError.style.display = 'block';
-              } else {
-                  console.log("Resposta de sucesso do Proxy (CAPI):", data);
-                  formSuccessMessage.innerHTML = "💌 Perfeito! Preparando para abrir o WhatsApp..."; // Mensagem Ajustada
-                  console.log("Redirecionando para o WhatsApp...");
-                  const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
-                  const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`; // Número Corrigido
-
-                  setTimeout(() => {
-                      try {
-                          window.location.href = whatsappUrl;
-                      } catch (e) {
-                          console.error("Falha ao tentar redirecionar para o WhatsApp:", e);
-                          formSuccessMessage.style.display = 'none';
-                          formError.textContent = "Não foi possível abrir o WhatsApp automaticamente. Verifique se está instalado.";
-                          formError.style.display = 'block';
-                      }
-                  }, 1000);
-              }
-        })
-        .catch(error => {
-            console.error("Erro crítico na requisição fetch para o proxy:", error);
-            formSuccessMessage.style.display = 'none';
-            formError.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
-            formError.style.display = 'block';
-        })
-        .finally(() => {
-              setTimeout(() => {
-                  submitButton.disabled = false;
-                  submitButton.style.opacity = '1';
-                  submitButton.style.cursor = 'pointer';
-              }, 5000);
-        });
-    }
-
     // --- Executar Funções na Carga ---
     document.addEventListener('DOMContentLoaded', () => {
-        handleReturningVisitor();
-        // Listener da política de privacidade removido.
-    });
+        // --- Inicializações ---
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+        // AJUSTE: Inicialização do Swiper movida para DENTRO do DOMContentLoaded
+        try {
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true,
+                pagination: { el: ".swiper-pagination", clickable: true },
+                autoplay: { delay: 4500, disableOnInteraction: false },
+                effect: "slide",
+            });
+            console.log("Swiper inicializado com sucesso.");
+        } catch (e) {
+            console.error("Erro ao inicializar o Swiper:", e);
+        }
+
+
+        // --- Lógica para Visitantes Recorrentes ---
+        handleReturningVisitor(); // Chama a função após o DOM estar pronto
+
+        // --- Lógica do Formulário ---
+        // (O código das funções getCookie, handleReturningVisitor, enviarEvento e a configuração dos listeners do formulário vêm aqui, exatamente como na versão anterior)
+
+        // Função getCookie (Mantida)
+        function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+
+        // ID Externo e FBP (Mantidos)
+        let externalId = localStorage.getItem("external_id");
+        if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
+        const fbp = getCookie("_fbp");
+
+
+        // Elementos do formulário (definidos aqui para garantir que existem no DOM)
+        const leadForm = document.getElementById('leadForm');
+        const submitButton = document.getElementById('submitButton');
+        const formSuccessMessage = document.getElementById('formSuccessMessage');
+        const formError = document.getElementById('formError');
+        const phoneInput = document.getElementById('phone');
+
+        // == Validação 'live' do telefone ==
+        if(phoneInput) {
+            phoneInput.addEventListener('input', () => {
+                phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+                if (phoneInput.value.length > 0 && !/^[0-9]{11}$/.test(phoneInput.value)) {
+                    phoneInput.classList.add('invalid-typing');
+                    phoneInput.classList.remove('invalid-submit');
+                    phoneInput.style.borderColor = 'orange';
+                } else {
+                    phoneInput.classList.remove('invalid-typing');
+                    phoneInput.style.borderColor = '';
+                    if (phoneInput.classList.contains('invalid-submit') && /^[0-9]{11}$/.test(phoneInput.value)) {
+                        phoneInput.classList.remove('invalid-submit');
+                    }
+                }
+            });
+        } else {
+            console.error("Elemento #phone não encontrado.");
+        }
+
+        // Adiciona listener ao formulário
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                enviarEvento(); // Chama a função de envio/validação
+            });
+        } else {
+            console.error("Elemento #leadForm não encontrado.");
+        }
+
+
+        // Função para enviar evento para o Proxy (definida dentro do DOMContentLoaded para ter acesso às vars)
+        function enviarEvento() {
+            if (!leadForm || !submitButton || !formSuccessMessage || !formError) {
+                console.error("Elementos do formulário não encontrados na função enviarEvento.");
+                return;
+            }
+
+            formError.style.display = 'none';
+            formSuccessMessage.style.display = 'none';
+            let isValid = true;
+
+            Array.from(leadForm.elements).forEach(input => {
+                input.classList.remove('invalid-submit');
+                if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
+                    if(input.style.borderColor !== 'orange') {
+                        input.style.borderColor = '#ccc';
+                    }
+                    input.classList.remove('invalid-submit');
+                }
+                if (input.offsetParent !== null && !input.checkValidity()) {
+                    isValid = false;
+                    input.classList.add('invalid-submit');
+                    input.style.borderColor = 'red';
+                }
+            });
+
+            if (!isValid) {
+                formError.textContent = "Ops! Verifique os campos marcados em vermelho.";
+                formError.style.display = 'block';
+                console.error("Formulário inválido no submit.");
+                return;
+            }
+
+            console.log("Formulário válido, preparando envio CAPI...");
+            formSuccessMessage.innerHTML = "💌 Tudo certo! Só um momento...";
+            formSuccessMessage.style.display = 'block';
+            submitButton.disabled = true;
+            submitButton.style.opacity = '0.7';
+            submitButton.style.cursor = 'not-allowed';
+
+            const firstName = document.getElementById('firstName')?.value.trim() || '';
+            const lastName = document.getElementById('lastName')?.value.trim() || '';
+            const email = document.getElementById('email')?.value.trim() || '';
+            const phone = document.getElementById('phone')?.value.trim() || '';
+
+            const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
+            const eventData = {
+                event_name: "Lead", event_source_url: window.location.href,
+                fbp: fbp || "NA", external_id: externalId,
+                user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
+            };
+
+            console.log("Enviando evento CAPI para o proxy:", eventData);
+
+            fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
+            .then(response => {
+                console.log("Status da resposta do Proxy (CAPI):", response.status);
+                return response.json().then(data => ({ok: response.ok, data, status: response.status }));
+            })
+            .then(({ok, data, status}) => {
+                  if (!ok) {
+                      console.error(`Erro retornado pelo Proxy (CAPI) - Status ${status}:`, data);
+                      formSuccessMessage.style.display = 'none';
+                      formError.textContent = `Houve um erro (${status}). Tente novamente. ${data?.message || ''}`;
+                      formError.style.display = 'block';
+                  } else {
+                      console.log("Resposta de sucesso do Proxy (CAPI):", data);
+                      formSuccessMessage.innerHTML = "💌 Perfeito! Preparando para abrir o WhatsApp...";
+                      console.log("Redirecionando para o WhatsApp...");
+                      const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
+                      const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
+
+                      setTimeout(() => {
+                          try {
+                              window.location.href = whatsappUrl;
+                          } catch (e) {
+                              console.error("Falha ao tentar redirecionar para o WhatsApp:", e);
+                              formSuccessMessage.style.display = 'none';
+                              formError.textContent = "Não foi possível abrir o WhatsApp automaticamente. Verifique se está instalado.";
+                              formError.style.display = 'block';
+                          }
+                      }, 1000);
+                  }
+            })
+            .catch(error => {
+                console.error("Erro crítico na requisição fetch para o proxy:", error);
+                formSuccessMessage.style.display = 'none';
+                formError.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
+                formError.style.display = 'block';
+            })
+            .finally(() => {
+                  setTimeout(() => {
+                      submitButton.disabled = false;
+                      submitButton.style.opacity = '1';
+                      submitButton.style.cursor = 'pointer';
+                  }, 5000);
+            });
+        } // Fim da função enviarEvento
+
+        // Função handleReturningVisitor (definida aqui para clareza, pode ser fora também)
+        function handleReturningVisitor() {
+            const returningMessageElement = document.getElementById('returningMessage');
+            const mainSubtitleElement = document.getElementById('mainSubtitle');
+            const h1Element = document.querySelector('#dynamic-header h1');
+            const formTitleElement = document.getElementById('formTitle');
+
+            if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) {
+                console.error("Elementos do cabeçalho/formulário não encontrados em handleReturningVisitor.");
+                return;
+            }
+
+
+            if (localStorage.getItem('rosane_visited_before')) {
+                h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
+                mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
+                returningMessageElement.style.display = 'block';
+                formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
+            } else {
+                localStorage.setItem('rosane_visited_before', 'true');
+                returningMessageElement.style.display = 'none';
+                h1Element.innerText = 'Aqui suas unhas viram autoestima 💅';
+                mainSubtitleElement.innerText = 'Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.';
+                formTitleElement.innerText = 'Esse pode ser o dia em que você vai se apaixonar pelas suas mãos 💅';
+            }
+        } // Fim da função handleReturningVisitor
+
+
+    }); // Fim do DOMContentLoaded listener
 
   </script>
 </body>
