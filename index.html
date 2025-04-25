@@ -33,347 +33,561 @@
     src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/>
   </noscript>
   <style>
-    /* Reset Básico e Estilos Gerais */
+    /* 1. Sistema de Variáveis Globais (Tipografia, Cores, Espaçamento) */
+    :root {
+      /* Fontes */
+      --font-title: 'Poppins', sans-serif;
+      --font-text: 'Lato', sans-serif;
+
+      /* Tamanhos de Fonte (Escala) */
+      --text-base-size: 1rem; /* 16px */
+      --text-scale-ratio: 1.2; /* Fator de escala */
+      --text-sm: calc(var(--text-base-size) / var(--text-scale-ratio)); /* ~0.83rem */
+      --text-md: var(--text-base-size); /* 1rem */
+      --text-lg: calc(var(--text-base-size) * var(--text-scale-ratio)); /* 1.2rem */
+      --text-xl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio)); /* ~1.44rem */
+      --text-xxl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio)); /* ~1.73rem */
+      --text-display: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio)); /* ~2.07rem */
+
+
+      /* Cores Principais */
+      --color-primary: #C2185B;
+      --color-secondary: #E91E63;
+      --color-text: #333;
+      --color-text-muted: #555;
+      --color-text-light: #777;
+      --color-background-light: #fff;
+      --color-background-gradient-start: #ffe0ed;
+      --color-background-gradient-end: #f9cfe0;
+      --color-success: #006400;
+      --color-error: red;
+      --color-warning: orange;
+      --color-border: #ccc;
+      --color-border-light: #ddd;
+      --color-whatsapp: #25D366;
+
+      /* Espaçamento (Escala de 0.5rem = 8px) */
+      --space-xs: 0.5rem;  /* 8px */
+      --space-sm: 1rem;    /* 16px */
+      --space-md: 1.5rem;  /* 24px */
+      --space-lg: 2rem;    /* 32px */
+      --space-xl: 3rem;    /* 48px */
+      --space-xxl: 4rem;   /* 64px */
+
+      /* Outros */
+      --border-radius: 8px;
+      --border-radius-lg: 15px;
+      --border-radius-pill: 50px;
+      --shadow-sm: 0 4px 10px rgba(0,0,0,0.08);
+      --shadow-md: 0 5px 18px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 2. Reset e Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html { font-size: var(--text-base-size); scroll-behavior: smooth; }
     body {
-      font-family: 'Lato', sans-serif; font-weight: 400; line-height: 1.6; color: #333;
-      background: linear-gradient(to bottom, #ffe0ed, #f9cfe0);
-      padding: 2rem 0 5rem 0;
+      font-family: var(--font-text);
+      font-size: var(--text-md);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: linear-gradient(to bottom, var(--color-background-gradient-start), var(--color-background-gradient-end));
+      padding-top: var(--space-lg); /* Espaço no topo */
+      padding-bottom: var(--space-xxl); /* Espaço abaixo (considerando botão flutuante) */
       overflow-x: hidden;
     }
-    .container { max-width: 550px; margin: 0 auto; padding: 0 1rem; }
+
+    /* 3. Container Consistente */
+    .container {
+      max-width: 560px; /* Largura máxima definida */
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--space-sm); /* Padding consistente (1rem / 16px) */
+      padding-right: var(--space-sm);
+      width: 100%; /* Garante que o padding funcione */
+    }
+
+    /* 4. Tipografia Padronizada */
+    h1, h2, h3 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: var(--space-md); /* Espaçamento padrão abaixo dos títulos */
+    }
+    h1 { font-size: var(--text-xxl); margin-bottom: var(--space-sm); } /* Tamanho e margem específicos para H1 */
+    h2 { font-size: var(--text-xl); } /* H2 um pouco menor */
+    h3 { font-size: var(--text-lg); } /* H3 para títulos de formulário, etc. */
+
+    p, label, li, span, div { /* Aplica a fonte de texto padrão */
+       font-family: var(--font-text);
+    }
+
+    p { /* Estilo base para parágrafos */
+      font-size: var(--text-md);
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm); /* Espaço padrão abaixo de parágrafos */
+      text-align: left; /* Padrão à esquerda */
+    }
+    p:last-child { margin-bottom: 0; } /* Remove margem do último parágrafo em um bloco */
+
+    /* Parágrafos que devem ser visualmente centralizados (bloco de texto) */
+    .text-block-centered {
+        max-width: 480px; /* Limita largura para leitura */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left; /* Texto alinhado à esquerda dentro do bloco */
+        margin-bottom: var(--space-md); /* Espaço abaixo desses blocos */
+    }
+
+    a { color: var(--color-secondary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: 700; color: var(--color-primary); } /* Estilo padrão para strong */
+
+    /* 5. Estrutura das Seções (Ritmo Vertical) */
+    .section {
+      padding: var(--space-lg) 0; /* Padding vertical apenas */
+      margin-bottom: var(--space-xl); /* Espaço entre seções */
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+      /* Adiciona padding interno horizontal que respeita o container */
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+    .section:last-of-type {
+       margin-bottom: 0; /* Remove margem da última seção antes do footer */
+    }
+    /* Ajuste para o container principal não ter padding duplo */
+    /* Seções agora controlam seu padding interno */
+    .container > .section {
+       /* Herda padding do container, não precisa de padding horizontal aqui */
+       /* padding-left: 0; padding-right: 0; */ /* <= Decisão: manter padding interno da section ou não? Vamos manter por enquanto */
+    }
+
+
+    /* 6. Componentes Específicos (Refatorados) */
 
     /* Header */
-    .profile-header {
-        margin-bottom: 2rem;
-        text-align: center;
-    }
+    .profile-header { text-align: center; margin-bottom: var(--space-lg); }
     .profile-pic {
-      width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem auto; display: block;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); border: 4px solid white;
+      width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+      margin: 0 auto var(--space-md) auto; display: block;
+      box-shadow: var(--shadow-lg); border: 4px solid var(--color-background-light);
     }
-    h1 {
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.9rem;
-      color: #C2185B; margin-bottom: 0.5rem; line-height: 1.3;
+    .subtext-principal { /* Aplica estilo de bloco centralizado */
+      font-size: var(--text-lg);
+      color: var(--color-text); /* Texto principal um pouco mais escuro */
     }
     .returning-visitor-message {
-        font-size: 1rem; color: #D81B60; font-weight: 700; margin: 0.5rem auto 1rem auto; max-width: 90%;
-        display: none; padding: 0.5rem; background-color: rgba(255,255,255,0.7); border-radius: 8px;
-        border: 1px dashed #E91E63;
-    }
-    .subtext-principal {
-      font-size: 1.1rem; color: #444; margin: 0.5rem auto 2rem auto; max-width: 90%;
-      font-weight: 400; line-height: 1.5;
+        font-size: var(--text-md); color: var(--color-secondary); font-weight: 700;
+        margin: var(--space-sm) auto var(--space-md) auto; max-width: 90%;
+        display: none; padding: var(--space-xs) var(--space-sm);
+        background-color: rgba(255,255,255,0.8); border-radius: var(--border-radius);
+        border: 1px dashed var(--color-secondary);
     }
 
-    /* Seções Padrão */
-    section { border-radius: 15px; margin: 3rem auto; max-width: 95%; padding: 2rem 1.5rem; background-color: rgba(255, 255, 255, 0.7); box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08); }
-    section h2 {
-        font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem; color: #C2185B; margin-bottom: 1.5rem;
-        text-align: center;
+    /* Sobre Mim */
+    .about-section h2 { color: var(--color-primary); }
+    .about-section p { color: var(--color-text-muted); /* Herda de p base */ }
+
+    /* Benefícios */
+    .welcome-section h2 { color: var(--color-text); } /* Título mais neutro */
+    .benefit-item {
+      display: flex;
+      align-items: flex-start; /* Alinha pelo topo */
+      gap: var(--space-sm); /* Espaço entre emoji e texto */
+      margin-bottom: var(--space-md); /* Espaço entre itens */
+      text-align: left;
     }
-
-    /* Seção Sobre Mim */
-    .about-section p { font-size: 1rem; color: #555; line-height: 1.7; text-align: left; }
-    .about-section strong { color: #C2185B; } /* Destaca os placeholders */
-
-
-    /* Seção Benefícios */
-    .welcome-section h2 { color: #444; text-align: center; }
-    .welcome-section .benefit-item {
-        font-size: 1.05rem; color: #555;
-        margin-bottom: 1.2rem;
+    .benefit-item strong { /* Título do benefício */
+        font-family: var(--font-title); /* Fonte de título */
+        font-weight: 600;
+        color: var(--color-text);
+        display: block; /* Faz o título ocupar a linha */
+        margin-bottom: var(--space-xs); /* Espaço abaixo do título */
+        font-size: var(--text-md); /* Tamanho base */
+    }
+    .benefit-item p { /* Descrição do benefício */
+        font-size: var(--text-sm); /* Descrição menor */
+        color: var(--color-text-muted);
         line-height: 1.5;
-        display: flex;
-        align-items: baseline; /* AJUSTADO: Para melhor alinhamento texto-emoji */
-        text-align: left;
-        gap: 0.6rem; /* AJUSTADO: Reduzido o gap */
+        margin-bottom: 0; /* Remove margem inferior da descrição */
     }
-    /* Estilo para o Título do Benefício (dentro do div) */
-    .benefit-item div strong { /* Seletor mais específico */
-        font-weight: 700;
-        color: #444;
-        margin-right: 0.3rem;
-    }
-    /* Estilo para o emoji */
-    .welcome-section .benefit-item span {
-      font-size: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px; /* Largura mantida */
-      /* height: 28px; <= Removido, altura será definida pelo conteúdo */
+    /* Emoji Controlado */
+    .emoji {
+      font-size: 1.5rem; /* Tamanho maior para destaque */
+      display: inline-block; /* Mantém inline, mas controlável */
+      width: 1.5em; /* Largura baseada no font-size */
+      height: 1.5em; /* Altura igual */
+      line-height: 1.5em; /* Centraliza verticalmente (ajuste fino se necessário) */
       text-align: center;
-      color: #E91E63;
-      margin-right: 0.2rem;
-      /* Adiciona um pouco de espaço abaixo para alinhar melhor com baseline */
-      /* padding-bottom: 0.1em;  <= Testar se necessário */
+      flex-shrink: 0; /* Não permite que o emoji encolha */
+      color: var(--color-secondary); /* Cor do emoji */
     }
 
-    /* Seção Carrossel */
-    .carousel-section h2 { color: #444; text-align: center; }
-    .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); padding-bottom: 40px; overflow: hidden;}
-    .swiper-slide { background-color: #fff; border-radius: 8px; padding: 0; box-shadow: none; overflow: hidden; }
-    .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; object-position: center; border-radius: 8px; border: none; }
+
+    /* Carrossel */
+    .carousel-section h2 { color: var(--color-text); }
+    .swiper { width: 100%; /* Ocupa container */ max-width: 400px; /* Limite interno */ margin: 0 auto; position: relative; border-radius: var(--border-radius); box-shadow: var(--shadow-md); padding-bottom: 40px; overflow: hidden; }
+    .swiper-slide { background-color: var(--color-background-light); border-radius: var(--border-radius); overflow: hidden; }
+    .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; }
     .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; }
     .swiper-pagination-bullet { background-color: rgba(0, 0, 0, 0.4); opacity: 1; width: 10px; height: 10px; }
-    .swiper-pagination-bullet-active { background-color: #E91E63; transform: scale(1.1); }
+    .swiper-pagination-bullet-active { background-color: var(--color-secondary); transform: scale(1.1); }
     .carousel-caption {
-        font-size: 0.9rem;
-        color: #555;
-        text-align: center;
-        margin-top: 1.5rem;
+        font-size: var(--text-sm); color: var(--color-text-muted);
+        text-align: center; margin-top: var(--space-md);
     }
 
-    /* Seção Depoimentos */
-    .testimonials-section h2 { text-align: center; }
-    .testimonial-card { background-color: #fff; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: left; }
-    .testimonial-card:last-child { margin-bottom: 0; }
-    .testimonial-quote { font-style: italic; color: #555; margin-bottom: 1rem; position: relative; padding-left: 25px; }
-     .testimonial-quote::before { content: '“'; font-size: 2.5rem; color: #E91E63; position: absolute; left: -5px; top: -10px; font-family: 'Poppins', sans-serif;}
-    .testimonial-author { font-weight: 700; color: #E91E63; text-align: right; display: flex; align-items: center; justify-content: flex-end; }
-    .testimonial-author img { width: 40px; height: 40px; border-radius: 50%; margin-right: 0.5rem; object-fit: cover; border: 1px solid #eee; }
+    /* Depoimentos */
+    .testimonials-section h2 { color: var(--color-primary); }
+    .testimonial-card {
+        background-color: var(--color-background-light); border-radius: var(--border-radius-lg);
+        padding: var(--space-md); margin-bottom: var(--space-md);
+        box-shadow: var(--shadow-sm); text-align: left;
+    }
+    .testimonial-quote {
+        font-style: italic; color: var(--color-text-muted);
+        margin-bottom: var(--space-sm); position: relative; padding-left: 30px; /* Mais espaço para aspas */
+        font-size: var(--text-md);
+    }
+     .testimonial-quote::before {
+        content: '“'; font-size: 3rem; /* Aspas maiores */ color: var(--color-secondary);
+        position: absolute; left: -5px; top: -15px; /* Ajuste posição */
+        font-family: var(--font-title); opacity: 0.8;
+      }
+    .testimonial-author {
+        font-weight: 700; color: var(--color-secondary); text-align: right;
+        display: flex; align-items: center; justify-content: flex-end;
+        gap: var(--space-xs); font-size: var(--text-sm);
+     }
+    .testimonial-author img {
+        width: 40px; height: 40px; border-radius: 50%;
+        object-fit: cover; border: 1px solid var(--color-border-light);
+     }
 
-    /* Seção Formulário e CTA */
+    /* Formulário */
     .form-cta-section {
-        background-color: rgba(255, 255, 255, 0.85); padding: 2.5rem 1.5rem;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); margin-bottom: 3rem;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: var(--space-lg) var(--space-md); /* Padding interno */
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--border-radius-lg);
+        margin-bottom: var(--space-xl);
     }
-    .form-cta-section h3 {
-        font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.6rem; color: #333;
-        margin-bottom: 1rem; line-height: 1.3; text-align: center;
-    }
+    .form-cta-section h3 { font-size: var(--text-xl); color: var(--color-text); }
     .form-cta-section .form-subtitle {
-         font-size: 1rem; color: #555; margin-bottom: 2rem; line-height: 1.5;
-         max-width: 90%; margin-left: auto; margin-right: auto; text-align: center;
+         font-size: var(--text-md); color: var(--color-text-muted);
+         margin-bottom: var(--space-lg); /* Mais espaço antes do form */
+         text-align: center;
+         max-width: 90%; margin-left: auto; margin-right: auto;
     }
     #leadForm {
         display: flex; flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        max-width: 450px;
-        margin-left: auto;
-        margin-right: auto;
+        gap: var(--space-sm); /* Espaço entre campos */
+        margin-bottom: var(--space-lg); /* Espaço antes do botão */
+        max-width: 450px; margin-left: auto; margin-right: auto;
     }
-    #leadForm label { display: block; text-align: left; font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; color: #444; }
-    #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] {
-      padding: 0.9rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;
-      font-family: 'Lato', sans-serif; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    #leadForm label {
+        display: block; text-align: left; font-weight: 700;
+        margin-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--color-text);
+    }
+    #leadForm input[type="text"],
+    #leadForm input[type="email"],
+    #leadForm input[type="tel"] {
+      padding: var(--space-sm); border: 1px solid var(--color-border);
+      border-radius: var(--border-radius); font-size: var(--text-md);
+      font-family: var(--font-text); transition: border-color 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: 100%;
     }
-    #leadForm input:focus { outline: none; border-color: #C2185B; box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.4); }
-    #leadForm input.invalid-typing { border-color: orange; }
-    #leadForm input.invalid-submit { border-color: red; }
-    .microcopy { font-size: 0.85rem; color: #666; text-align: left; margin-top: 0.25rem; margin-bottom: 1rem; }
-    #formError { color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none; text-align: center; font-weight: bold; }
+    #leadForm input:focus {
+        outline: none; border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.3); /* Cor primária com opacidade */
+     }
+    #leadForm input.invalid-typing { border-color: var(--color-warning); }
+    #leadForm input.invalid-submit { border-color: var(--color-error); }
+    .microcopy {
+        font-size: var(--text-sm); color: var(--color-text-light);
+        text-align: left; margin-top: var(--space-xs); margin-bottom: 0; /* Remove margem inferior padrão de p */
+    }
+    #formError {
+        color: var(--color-error); font-size: var(--text-sm); margin-top: var(--space-xs);
+        display: none; text-align: center; font-weight: bold;
+    }
     #formSuccessMessage {
-        color: #006400; background-color: #e6ffed; border: 1px solid #90ee90;
-        padding: 1rem; border-radius: 8px; font-weight: bold;
-        margin-bottom: 1.5rem; display: none; text-align: center;
+        color: var(--color-success); background-color: #e6ffed; border: 1px solid #90ee90;
+        padding: var(--space-sm); border-radius: var(--border-radius); font-weight: bold;
+        margin-bottom: var(--space-md); display: none; text-align: center;
+        font-size: var(--text-md);
      }
 
-    /* Botão CTA Principal */
+    /* Botão Principal */
     .whatsapp-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(to right, #E91E63, #C2185B); border: none; border-radius: 50px; font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem; font-weight: 700; text-decoration: none; color: #fff;
-      box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); transition: all 0.3s ease; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-lg); /* Padding vertical/horizontal */
+      background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+      border: none; border-radius: var(--border-radius-pill);
+      font-family: var(--font-title); font-size: var(--text-lg); font-weight: 700;
+      text-decoration: none; color: var(--color-background-light);
+      box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+      transition: all 0.3s ease; cursor: pointer;
       text-transform: uppercase; letter-spacing: 0.5px;
-      margin-left: auto;
-      margin-right: auto;
+      width: auto; /* Padrão auto */
       max-width: 100%;
-      /* width: auto; <= Mantido auto por padrão */
+      text-align: center; /* Garante texto centralizado se for block */
     }
-    .whatsapp-btn svg { width: 24px; height: 24px; vertical-align: middle;} /* Garante alinhamento do SVG */
-    .whatsapp-btn span { vertical-align: middle; } /* Garante alinhamento do texto */
+    .whatsapp-btn svg { width: var(--text-lg); height: var(--text-lg); fill: currentColor; vertical-align: middle;}
+    .whatsapp-btn span { vertical-align: middle; }
 
     @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
-    .whatsapp-btn:hover, .whatsapp-btn:focus { background: linear-gradient(to right, #C2185B, #AD1457); transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none; }
+    .whatsapp-btn:hover, .whatsapp-btn:focus {
+        background: linear-gradient(to right, var(--color-primary), #AD1457); /* Cor mais escura no hover */
+        transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none;
+     }
+     /* Botão dentro do formulário - centralizar */
+     #leadForm .whatsapp-btn {
+        display: block; /* Para poder centralizar com margem auto */
+        width: fit-content; /* Largura baseada no conteúdo */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: var(--space-sm); /* Espaço acima do botão */
+     }
+
 
     /* Botão Flutuante WhatsApp */
-    #floating-whatsapp-button { /* ... (sem alterações) ... */ }
-        /* (código mantido igual à versão anterior) */
-        position: fixed; bottom: 20px; right: 20px; z-index: 1000;
-        background-color: #25D366; color: white;
-        width: 60px; height: 60px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
+    #floating-whatsapp-button {
+        position: fixed;
+        bottom: var(--space-md); /* Usa variável de espaçamento */
+        right: var(--space-md);
+        z-index: 1000;
+        background-color: var(--color-whatsapp);
+        color: var(--color-background-light);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex; /* Mantido flex para centralizar SVG */
+        align-items: center;
+        justify-content: center;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Garante que não está escondido por padrão */
+        visibility: visible;
+        opacity: 1;
+    }
      #floating-whatsapp-button:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
-     #floating-whatsapp-button svg { width: 30px; height: 30px; fill: white; }
+     #floating-whatsapp-button svg { width: 30px; height: 30px; fill: currentColor; }
 
     /* Rodapé */
     footer {
-        margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid rgba(0, 0, 0, 0.1);
-        font-size: 0.9rem; color: #555;
+        margin-top: var(--space-xl); /* Espaço antes do footer */
+        padding: var(--space-lg) 0; /* Padding vertical */
+        border-top: 1px solid var(--color-border-light);
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
         text-align: center;
     }
-    footer p { margin-bottom: 0.5rem; }
-    footer strong { color: #C2185B; } /* Destaca placeholder no footer */
-    footer a { color: #E91E63; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer p { margin-bottom: var(--space-xs); font-size: var(--text-sm); }
+    footer strong { color: var(--color-primary); }
     .footer-seals {
-        font-size: 0.85rem;
-        color: #777;
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px dashed #ddd;
-        max-width: 450px;
-        margin-left: auto;
-        margin-right: auto;
+        font-size: var(--text-sm);
+        color: var(--color-text-light);
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px dashed var(--color-border-light);
+        max-width: 450px; margin-left: auto; margin-right: auto;
     }
-    .footer-seals span { margin: 0 0.5rem; }
+    .footer-seals span { margin: 0 var(--space-xs); } /* Espaço entre selos */
 
-    /* Ajustes Mobile */
-    @media (max-width: 480px) {
-      html { font-size: 15.5px; }
-      h1 { font-size: 1.7rem; }
-      .container { padding: 0 0.8rem; }
-      .profile-pic { width: 120px; height: 120px; }
-      section h2, .form-cta-section h3 { font-size: 1.4rem; }
-      .form-cta-section .form-subtitle { font-size: 0.95rem; }
-      .swiper-slide img { height: 280px; }
-      .whatsapp-btn {
-          font-size: 1.1rem;
-          padding: 0.9rem 1.5rem;
-          display: block; /* Ocupa a linha inteira */
-          width: 100%; /* Ocupa largura do container do form */
+
+    /* Ajustes Mobile (Exemplo: até 600px) */
+    @media (max-width: 600px) {
+      :root { /* Pode ajustar a base do texto no mobile se necessário */
+        /* --text-base-size: 0.95rem; */
       }
-      #floating-whatsapp-button { width: 55px; height: 55px; bottom: 15px; right: 15px; }
-      #floating-whatsapp-button svg { width: 28px; height: 28px; }
-      .about-section p { text-align: left; }
-      #leadForm { padding: 0 0.5rem; max-width: 100%;} /* Form ocupa mais espaço no mobile */
-      .welcome-section .benefit-item { flex-direction: column; align-items: flex-start; gap: 0.3rem;} /* Força empilhamento no mobile */
-      .welcome-section .benefit-item span { margin-bottom: 0.2rem; } /* Espaço abaixo do emoji no mobile */
+       h1 { font-size: var(--text-xl); }
+       h2 { font-size: var(--text-lg); }
+       h3 { font-size: calc(var(--text-lg) * 0.95); } /* Pouco menor que H2 */
+
+       .container { padding-left: var(--space-sm); padding-right: var(--space-sm); } /* Garante padding mínimo */
+       .section { padding: var(--space-md) var(--space-sm); } /* Menor padding interno nas seções */
+
+       .profile-pic { width: 120px; height: 120px; margin-bottom: var(--space-sm); }
+
+       .benefit-item { gap: var(--space-sm); } /* Ajusta gap do benefício */
+       .emoji { font-size: 1.3rem; } /* Emoji um pouco menor */
+
+       .swiper-slide img { height: 280px; } /* Imagem do carrossel menor */
+
+       #leadForm { max-width: 100%; gap: var(--space-sm); } /* Form ocupa tudo, gap menor */
+        #leadForm input[type="text"],
+        #leadForm input[type="email"],
+        #leadForm input[type="tel"] { padding: var(--space-sm); } /* Padding interno menor */
+
+       .whatsapp-btn { /* Botão principal full width */
+          display: block; /* Garante que ocupe a linha */
+          width: 100%;
+          font-size: var(--text-md); /* Fonte menor no mobile */
+          padding: var(--space-sm) var(--space-md);
+       }
+       #leadForm .whatsapp-btn { width: 100%; } /* Garante que o botão no form também seja full */
+
+       #floating-whatsapp-button { /* Botão flutuante um pouco menor e mais próximo */
+          width: 55px; height: 55px;
+          bottom: var(--space-sm); right: var(--space-sm);
+       }
+       #floating-whatsapp-button svg { width: 28px; height: 28px; }
+
+       .footer-seals { max-width: 100%; }
     }
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="profile-header">
-      <div id="dynamic-header">
-        <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
-        <h1>Aqui suas unhas viram autoestima 💅</h1>
-        <p class="returning-visitor-message" id="returningMessage">🎁 Presente pra você que voltou: Nail art filha única grátis!</p>
-        <p class="subtext-principal" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
-      </div>
-    </header>
+    <div class="container">
 
-    <section class="about-section" id="sobre">
-      <h2>Conheça a Rosane: Paixão em Cuidar de Você</h2>
-      <p>Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1, ex: Unhas de Gel]</strong> e <strong>[Técnica 2, ex: Esmaltação de Longa Duração]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima, utilizando materiais descartáveis ou devidamente esterilizados. Adoro entender o seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar e descobrir juntas o tratamento perfeito para suas mãos?</p>
-    </section>
+        <header class="profile-header">
+            <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
+            <h1>Aqui suas unhas viram autoestima 💅</h1>
+            <p class="returning-visitor-message" id="returningMessage">🎁 Presente pra você que voltou: Nail art filha única grátis!</p>
+            <p class="subtext-principal text-block-centered" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
+        </header>
 
-    <section class="welcome-section" id="beneficios">
-        <h2>Por Que Escolher a Rosane? Sua Experiência Única</h2>
-        <div class="benefit-item"><span>💖</span> <div><strong>Atendimento Personalizado:</strong> Aqui você não é só mais uma. Escuto seus desejos e cuido de você com carinho e exclusividade.</div></div>
-        <div class="benefit-item"><span>💎</span> <div><strong>Qualidade e Durabilidade:</strong> Uso apenas produtos de alta linha e técnicas aprimoradas para unhas que duram e impressionam.</div></div>
-        <div class="benefit-item"><span>🌿</span> <div><strong>Higiene e Segurança:</strong> Ambiente 100% seguro, materiais esterilizados e foco total na sua saúde e bem-estar.</div></div>
-        <div class="benefit-item"><span>⏰</span> <div><strong>Seu Tempo é Precioso:</strong> Respeito total aos horários agendados para que seu momento de beleza seja tranquilo e sem atrasos.</div></div>
-    </section>
+        <section class="about-section section" id="sobre">
+            <h2>Conheça a Rosane: Paixão em Cuidar de Você</h2>
+            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1, ex: Unhas de Gel]</strong> e <strong>[Técnica 2, ex: Esmaltação de Longa Duração]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima, utilizando materiais descartáveis ou devidamente esterilizados. Adoro entender o seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar e descobrir juntas o tratamento perfeito para suas mãos?</p>
+        </section>
 
-    <section class="carousel-section" id="trabalhos">
-      <h2>Meu Trabalho: Carinho em Cada Detalhe</h2>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Manicure Profissional - Exemplo 1"></div>
-          <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Unhas Decoradas - Exemplo 2"></div>
-          <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Esmaltação em Gel - Exemplo 3"></div>
-          <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Nail Art Delicada - Exemplo 4"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <p class="carousel-caption">Todas as fotos são trabalhos reais feitos com carinho ❤️</p>
-    </section>
-
-    <section class="testimonials-section" id="depoimentos">
-        <h2>A Opinião de Quem Confia no Meu Trabalho</h2>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
-          <p class="testimonial-author">
-             <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Ana P.">
-             <strong>Ana P.</strong> - Gravataí/RS
-          </p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
-          <p class="testimonial-author">
-             <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Mariana S.">
-             <strong>Mariana S.</strong> - Cachoeirinha/RS
-          </p>
-        </div>
-         <div class="testimonial-card">
-          <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
-          <p class="testimonial-author">
-             <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Juliana R.">
-             <strong>Juliana R.</strong> - Gravataí/RS
-          </p>
-        </div>
-    </section>
-
-    <section class="form-cta-section" id="contato">
-        <h3 id="formTitle">Esse pode ser o dia em que você vai se apaixonar pelas suas mãos 💅</h3>
-        <p class="form-subtitle">É rápido e fácil! Preencha abaixo e vamos conversar pelo WhatsApp para encontrar o horário perfeito para você.</p>
-
-        <div id="formSuccessMessage">💌 Tudo certo! Preparando para abrir o WhatsApp...</div>
-
-        <form id="leadForm" novalidate>
-            <div>
-                <label for="firstName">Seu Primeiro Nome:</label>
-                <input type="text" id="firstName" name="firstName" required>
+        <section class="welcome-section section" id="beneficios">
+            <h2>Por Que Escolher a Rosane?</h2>
+            <div class="benefit-item">
+                <span class="emoji">💖</span>
+                <div>
+                    <strong>Atendimento Personalizado</strong>
+                    <p>Aqui você não é só mais uma. Escuto seus desejos e cuido de você com carinho e exclusividade.</p>
+                </div>
             </div>
-            <div>
-                <label for="lastName">Seu Sobrenome:</label>
-                <input type="text" id="lastName" name="lastName" required>
-             </div>
-            <div>
-                 <label for="email">Seu Melhor E-mail:</label>
-                 <input type="email" id="email" name="email" required>
-                 <p class="microcopy">Usamos apenas para confirmação. Sem spam.</p>
+            <div class="benefit-item">
+                <span class="emoji">💎</span>
+                <div>
+                    <strong>Qualidade e Durabilidade</strong>
+                    <p>Uso apenas produtos de alta linha e técnicas aprimoradas para unhas que duram e impressionam.</p>
+                </div>
             </div>
-            <div>
-                <label for="phone">Seu WhatsApp (com DDD):</label>
-                <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Digite exatamente 11 números (DDD + 9 dígitos do celular)" placeholder="Ex: 51999998888">
-                <p class="microcopy">É por aqui que vamos agendar rapidinho!</p>
+            <div class="benefit-item">
+                <span class="emoji">🌿</span>
+                 <div>
+                    <strong>Higiene e Segurança</strong>
+                    <p>Ambiente 100% seguro, materiais esterilizados e foco total na sua saúde e bem-estar.</p>
+                 </div>
             </div>
-            <div id="formError">Ops! Verifique os campos marcados em vermelho.</div>
+            <div class="benefit-item">
+                <span class="emoji">⏰</span>
+                <div>
+                    <strong>Seu Tempo é Precioso</strong>
+                    <p>Respeito total aos horários agendados para que seu momento de beleza seja tranquilo e sem atrasos.</p>
+                </div>
+            </div>
+        </section>
 
-            <button type="submit" class="btn whatsapp-btn" id="submitButton">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                <span>Quero minhas unhas lindas com a Rosane 💅</span>
-            </button>
-        </form>
-    </section>
+        <section class="carousel-section section" id="trabalhos">
+            <h2>Meu Trabalho: Carinho em Cada Detalhe</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Manicure Profissional - Exemplo 1"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Unhas Decoradas - Exemplo 2"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Esmaltação em Gel - Exemplo 3"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Nail Art Delicada - Exemplo 4"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <p class="carousel-caption">Todas as fotos são trabalhos reais feitos com carinho ❤️</p>
+        </section>
 
-    <footer>
-      <p>📍 Atendimento em Gravataí/RS – <strong>[Inserir Bairro ou Referência Aqui, ex: Próximo ao Centro]</strong></p>
-      <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
-      <p><a href="politica-privacidade.html" id="privacyLink" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | Respeitamos a LGPD</p>
-      <div class="footer-seals">
-          <span>🔒 Seus dados estão seguros</span> | <span>❤️ +500 unhas feitas com amor</span>
-      </div>
-    </footer>
-  </div>
+        <section class="testimonials-section section" id="depoimentos">
+            <h2>A Opinião de Quem Confia</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
+                <p class="testimonial-author">
+                    <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Ana P.">
+                    <strong>Ana P.</strong> - Gravataí/RS
+                </p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
+                <p class="testimonial-author">
+                    <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Mariana S.">
+                    <strong>Mariana S.</strong> - Cachoeirinha/RS
+                </p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
+                <p class="testimonial-author">
+                    <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Juliana R.">
+                    <strong>Juliana R.</strong> - Gravataí/RS
+                </p>
+            </div>
+        </section>
 
-  <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-     target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-     </svg>
-  </a>
+        <section class="form-cta-section section" id="contato">
+            <h3 id="formTitle">Apaixone-se pelas suas mãos 💅</h3>
+            <p class="form-subtitle">Preencha abaixo e vamos conversar pelo WhatsApp para agendar seu horário!</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            <div id="formSuccessMessage">💌 Perfeito! Preparando para abrir o WhatsApp...</div>
 
-  <script>
+            <form id="leadForm" novalidate>
+                <div>
+                    <label for="firstName">Seu Primeiro Nome:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div>
+                    <label for="lastName">Seu Sobrenome:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                 </div>
+                <div>
+                     <label for="email">Seu Melhor E-mail:</label>
+                     <input type="email" id="email" name="email" required>
+                     <p class="microcopy">Usamos apenas para confirmação. Sem spam.</p>
+                </div>
+                <div>
+                    <label for="phone">Seu WhatsApp (com DDD):</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Digite exatamente 11 números (DDD + 9 dígitos do celular)" placeholder="Ex: 51999998888">
+                    <p class="microcopy">É por aqui que vamos agendar rapidinho!</p>
+                </div>
+                <div id="formError">Ops! Verifique os campos marcados.</div>
+
+                <button type="submit" class="btn whatsapp-btn" id="submitButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                    <span>Agendar meu horário</span> </button>
+            </form>
+        </section>
+
+        <footer>
+            <p>📍 Atendimento em Gravataí/RS – <strong>[Inserir Bairro ou Referência Aqui]</strong></p>
+            <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
+            <p><a href="politica-privacidade.html" id="privacyLink" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | Respeitamos a LGPD</p>
+            <div class="footer-seals">
+                <span>🔒 Seus dados estão seguros</span> | <span>❤️ +500 unhas feitas com amor</span>
+            </div>
+        </footer>
+
+    </div><a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+        target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
     // --- Executar Funções na Carga ---
     document.addEventListener('DOMContentLoaded', () => {
         // --- Inicializações ---
         document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-        // AJUSTE: Inicialização do Swiper movida para DENTRO do DOMContentLoaded
+        // Inicialização do Swiper
         try {
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true,
@@ -386,40 +600,63 @@
             console.error("Erro ao inicializar o Swiper:", e);
         }
 
-
         // --- Lógica para Visitantes Recorrentes ---
-        handleReturningVisitor(); // Chama a função após o DOM estar pronto
+        handleReturningVisitor();
 
         // --- Lógica do Formulário ---
-        // (O código das funções getCookie, handleReturningVisitor, enviarEvento e a configuração dos listeners do formulário vêm aqui, exatamente como na versão anterior)
+        setupForm(); // Chama função para configurar o formulário
 
-        // Função getCookie (Mantida)
-        function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
-
-        // ID Externo e FBP (Mantidos)
-        let externalId = localStorage.getItem("external_id");
-        if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
-        const fbp = getCookie("_fbp");
+    }); // Fim do DOMContentLoaded listener
 
 
-        // Elementos do formulário (definidos aqui para garantir que existem no DOM)
+    // --- Funções Auxiliares ---
+
+    function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+
+    function handleReturningVisitor() {
+        const returningMessageElement = document.getElementById('returningMessage');
+        const mainSubtitleElement = document.getElementById('mainSubtitle');
+        const h1Element = document.querySelector('.profile-header h1'); // Seletor mais específico
+        const formTitleElement = document.getElementById('formTitle');
+
+        // Verifica se todos os elementos existem antes de manipulá-los
+        if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) {
+            console.error("Elementos do cabeçalho/formulário não encontrados em handleReturningVisitor.");
+            return;
+        }
+
+        if (localStorage.getItem('rosane_visited_before')) {
+            h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
+            mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
+            returningMessageElement.style.display = 'block';
+            formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
+        } else {
+            localStorage.setItem('rosane_visited_before', 'true');
+            returningMessageElement.style.display = 'none';
+            // Garante textos originais (já estão no HTML, não precisa redefinir)
+        }
+    }
+
+    function setupForm() {
         const leadForm = document.getElementById('leadForm');
-        const submitButton = document.getElementById('submitButton');
-        const formSuccessMessage = document.getElementById('formSuccessMessage');
-        const formError = document.getElementById('formError');
         const phoneInput = document.getElementById('phone');
 
-        // == Validação 'live' do telefone ==
+        if (!leadForm) {
+            console.error("Elemento #leadForm não encontrado.");
+            return;
+        }
+
+        // Validação 'live' do telefone
         if(phoneInput) {
             phoneInput.addEventListener('input', () => {
                 phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
                 if (phoneInput.value.length > 0 && !/^[0-9]{11}$/.test(phoneInput.value)) {
                     phoneInput.classList.add('invalid-typing');
                     phoneInput.classList.remove('invalid-submit');
-                    phoneInput.style.borderColor = 'orange';
+                    phoneInput.style.borderColor = 'var(--color-warning)'; // Usa variável
                 } else {
                     phoneInput.classList.remove('invalid-typing');
-                    phoneInput.style.borderColor = '';
+                    phoneInput.style.borderColor = ''; // Volta ao padrão
                     if (phoneInput.classList.contains('invalid-submit') && /^[0-9]{11}$/.test(phoneInput.value)) {
                         phoneInput.classList.remove('invalid-submit');
                     }
@@ -429,146 +666,109 @@
             console.error("Elemento #phone não encontrado.");
         }
 
-        // Adiciona listener ao formulário
-        if (leadForm) {
-            leadForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                enviarEvento(); // Chama a função de envio/validação
-            });
-        } else {
-            console.error("Elemento #leadForm não encontrado.");
+        // Listener de submit
+        leadForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            enviarEvento(leadForm); // Passa o form como argumento
+        });
+    }
+
+
+    function enviarEvento(formElement) {
+        const submitButton = formElement.querySelector('#submitButton');
+        const formSuccessMessage = formElement.querySelector('#formSuccessMessage');
+        const formError = formElement.querySelector('#formError');
+
+        if (!submitButton || !formSuccessMessage || !formError) {
+            console.error("Botão ou mensagens não encontrados no formulário.");
+            return;
         }
 
+        formError.style.display = 'none';
+        formSuccessMessage.style.display = 'none';
+        let isValid = true;
 
-        // Função para enviar evento para o Proxy (definida dentro do DOMContentLoaded para ter acesso às vars)
-        function enviarEvento() {
-            if (!leadForm || !submitButton || !formSuccessMessage || !formError) {
-                console.error("Elementos do formulário não encontrados na função enviarEvento.");
-                return;
+        // Validação
+        Array.from(formElement.elements).forEach(input => {
+            input.classList.remove('invalid-submit');
+            if (input.type !== 'button' && input.type !== 'submit' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
+                 if(input.style.borderColor !== 'var(--color-warning)') { // Evita resetar o warning
+                      input.style.borderColor = 'var(--color-border)'; // Usa variável
+                 }
+                 input.classList.remove('invalid-submit');
             }
+            if (input.offsetParent !== null && typeof input.checkValidity === 'function' && !input.checkValidity()) {
+                isValid = false;
+                input.classList.add('invalid-submit');
+                input.style.borderColor = 'var(--color-error)'; // Usa variável
+            }
+        });
 
-            formError.style.display = 'none';
+
+        if (!isValid) {
+            formError.textContent = "Ops! Verifique os campos marcados.";
+            formError.style.display = 'block';
+            console.error("Formulário inválido.");
+            return;
+        }
+
+        // Preparação para Envio
+        formSuccessMessage.innerHTML = "💌 Tudo certo! Enviando...";
+        formSuccessMessage.style.display = 'block';
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.7';
+        submitButton.style.cursor = 'not-allowed';
+
+        const firstName = formElement.querySelector('#firstName')?.value.trim() || '';
+        const lastName = formElement.querySelector('#lastName')?.value.trim() || '';
+        const email = formElement.querySelector('#email')?.value.trim() || '';
+        const phone = formElement.querySelector('#phone')?.value.trim() || '';
+        const fbp = getCookie("_fbp");
+        let externalId = localStorage.getItem("external_id");
+        if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
+
+
+        const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
+        const eventData = {
+            event_name: "Lead", event_source_url: window.location.href,
+            fbp: fbp || "NA", external_id: externalId,
+            user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
+        };
+
+        console.log("Enviando CAPI:", eventData);
+
+        // Envio Fetch
+        fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
+        .then(response => response.json().then(data => ({ok: response.ok, data, status: response.status })))
+        .then(({ok, data, status}) => {
+              if (!ok) {
+                  throw new Error(`Erro ${status} do Proxy: ${data?.message || 'Erro desconhecido'}`);
+              }
+              console.log("Sucesso CAPI:", data);
+              formSuccessMessage.innerHTML = "💌 Perfeito! Abrindo WhatsApp...";
+
+              const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações.`;
+              const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
+
+              setTimeout(() => { window.location.href = whatsappUrl; }, 500); // Delay menor
+
+        })
+        .catch(error => {
+            console.error("Falha no envio CAPI ou redirect:", error);
             formSuccessMessage.style.display = 'none';
-            let isValid = true;
+            formError.textContent = `Erro ao enviar. Tente de novo. (${error.message})`;
+            formError.style.display = 'block';
+        })
+        .finally(() => {
+              // Reabilita botão após um tempo, independentemente do resultado
+              setTimeout(() => {
+                  submitButton.disabled = false;
+                  submitButton.style.opacity = '1';
+                  submitButton.style.cursor = 'pointer';
+              }, 4000); // Tempo um pouco menor
+        });
+    }
 
-            Array.from(leadForm.elements).forEach(input => {
-                input.classList.remove('invalid-submit');
-                if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
-                    if(input.style.borderColor !== 'orange') {
-                        input.style.borderColor = '#ccc';
-                    }
-                    input.classList.remove('invalid-submit');
-                }
-                if (input.offsetParent !== null && !input.checkValidity()) {
-                    isValid = false;
-                    input.classList.add('invalid-submit');
-                    input.style.borderColor = 'red';
-                }
-            });
-
-            if (!isValid) {
-                formError.textContent = "Ops! Verifique os campos marcados em vermelho.";
-                formError.style.display = 'block';
-                console.error("Formulário inválido no submit.");
-                return;
-            }
-
-            console.log("Formulário válido, preparando envio CAPI...");
-            formSuccessMessage.innerHTML = "💌 Tudo certo! Só um momento...";
-            formSuccessMessage.style.display = 'block';
-            submitButton.disabled = true;
-            submitButton.style.opacity = '0.7';
-            submitButton.style.cursor = 'not-allowed';
-
-            const firstName = document.getElementById('firstName')?.value.trim() || '';
-            const lastName = document.getElementById('lastName')?.value.trim() || '';
-            const email = document.getElementById('email')?.value.trim() || '';
-            const phone = document.getElementById('phone')?.value.trim() || '';
-
-            const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
-            const eventData = {
-                event_name: "Lead", event_source_url: window.location.href,
-                fbp: fbp || "NA", external_id: externalId,
-                user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
-            };
-
-            console.log("Enviando evento CAPI para o proxy:", eventData);
-
-            fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
-            .then(response => {
-                console.log("Status da resposta do Proxy (CAPI):", response.status);
-                return response.json().then(data => ({ok: response.ok, data, status: response.status }));
-            })
-            .then(({ok, data, status}) => {
-                  if (!ok) {
-                      console.error(`Erro retornado pelo Proxy (CAPI) - Status ${status}:`, data);
-                      formSuccessMessage.style.display = 'none';
-                      formError.textContent = `Houve um erro (${status}). Tente novamente. ${data?.message || ''}`;
-                      formError.style.display = 'block';
-                  } else {
-                      console.log("Resposta de sucesso do Proxy (CAPI):", data);
-                      formSuccessMessage.innerHTML = "💌 Perfeito! Preparando para abrir o WhatsApp...";
-                      console.log("Redirecionando para o WhatsApp...");
-                      const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
-                      const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
-
-                      setTimeout(() => {
-                          try {
-                              window.location.href = whatsappUrl;
-                          } catch (e) {
-                              console.error("Falha ao tentar redirecionar para o WhatsApp:", e);
-                              formSuccessMessage.style.display = 'none';
-                              formError.textContent = "Não foi possível abrir o WhatsApp automaticamente. Verifique se está instalado.";
-                              formError.style.display = 'block';
-                          }
-                      }, 1000);
-                  }
-            })
-            .catch(error => {
-                console.error("Erro crítico na requisição fetch para o proxy:", error);
-                formSuccessMessage.style.display = 'none';
-                formError.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
-                formError.style.display = 'block';
-            })
-            .finally(() => {
-                  setTimeout(() => {
-                      submitButton.disabled = false;
-                      submitButton.style.opacity = '1';
-                      submitButton.style.cursor = 'pointer';
-                  }, 5000);
-            });
-        } // Fim da função enviarEvento
-
-        // Função handleReturningVisitor (definida aqui para clareza, pode ser fora também)
-        function handleReturningVisitor() {
-            const returningMessageElement = document.getElementById('returningMessage');
-            const mainSubtitleElement = document.getElementById('mainSubtitle');
-            const h1Element = document.querySelector('#dynamic-header h1');
-            const formTitleElement = document.getElementById('formTitle');
-
-            if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) {
-                console.error("Elementos do cabeçalho/formulário não encontrados em handleReturningVisitor.");
-                return;
-            }
-
-
-            if (localStorage.getItem('rosane_visited_before')) {
-                h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
-                mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
-                returningMessageElement.style.display = 'block';
-                formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
-            } else {
-                localStorage.setItem('rosane_visited_before', 'true');
-                returningMessageElement.style.display = 'none';
-                h1Element.innerText = 'Aqui suas unhas viram autoestima 💅';
-                mainSubtitleElement.innerText = 'Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.';
-                formTitleElement.innerText = 'Esse pode ser o dia em que você vai se apaixonar pelas suas mãos 💅';
-            }
-        } // Fim da função handleReturningVisitor
-
-
-    }); // Fim do DOMContentLoaded listener
-
-  </script>
+    </script>
 </body>
 </html>
