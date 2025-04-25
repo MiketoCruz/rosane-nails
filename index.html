@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unhas Perfeitas e Autoestima com Rosane Campos em Gravataí</title> <meta name="description" content="Manicure especialista em unhas que elevam sua autoestima. Atendimento personalizado e seguro em Gravataí. Agende seu momento e sinta-se linda!"> <meta name="facebook-domain-verification" content="mp1oj81t2mrqjgo4ofnrbrldsd16z3" />
+  <title>Unhas Perfeitas e Autoestima com Rosane Campos em Gravataí</title>
+  <meta name="description" content="Manicure especialista em unhas que elevam sua autoestima. Atendimento personalizado e seguro em Gravataí. Agende seu momento e sinta-se linda!">
+  <meta name="facebook-domain-verification" content="mp1oj81t2mrqjgo4ofnrbrldsd16z3" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,13 +39,17 @@
     body {
       font-family: 'Lato', sans-serif; font-weight: 400; line-height: 1.6; color: #333;
       background: linear-gradient(to bottom, #ffe0ed, #f9cfe0);
-      text-align: center; padding: 2rem 0 5rem 0; /* Aumenta padding inferior por causa do botão flutuante */
+      /* text-align: center; <= REMOVIDO DAQUI */
+      padding: 2rem 0 5rem 0; /* Aumenta padding inferior por causa do botão flutuante */
       overflow-x: hidden;
     }
     .container { max-width: 550px; margin: 0 auto; padding: 0 1rem; }
 
     /* Header */
-    .profile-header { margin-bottom: 2rem; }
+    .profile-header {
+        margin-bottom: 2rem;
+        text-align: center; /* ADICIONADO */
+    }
     .profile-pic {
       width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem auto; display: block;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); border: 4px solid white;
@@ -64,7 +70,10 @@
 
     /* Seções Padrão */
     section { border-radius: 15px; margin: 3rem auto; max-width: 95%; padding: 2rem 1.5rem; background-color: rgba(255, 255, 255, 0.7); box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08); }
-    section h2 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem; color: #C2185B; margin-bottom: 1.5rem; }
+    section h2 {
+        font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem; color: #C2185B; margin-bottom: 1.5rem;
+        text-align: center; /* ADICIONADO */
+    }
 
     /* Seção Sobre Mim */
     .about-section p { font-size: 1rem; color: #555; line-height: 1.7; text-align: justify; }
@@ -95,7 +104,11 @@
     .testimonial-author img { width: 40px; height: 40px; border-radius: 50%; margin-right: 0.5rem; object-fit: cover; border: 1px solid #eee; }
 
     /* Seção Formulário e CTA */
-    .form-cta-section { background-color: rgba(255, 255, 255, 0.85); padding: 2.5rem 1.5rem; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); margin-bottom: 3rem;}
+    .form-cta-section {
+        background-color: rgba(255, 255, 255, 0.85); padding: 2.5rem 1.5rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); margin-bottom: 3rem;
+        text-align: center; /* ADICIONADO */
+    }
     .form-cta-section h3 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.6rem; color: #333; margin-bottom: 1rem; line-height: 1.3; }
     .form-cta-section .form-subtitle { font-size: 1rem; color: #555; margin-bottom: 2rem; line-height: 1.5; max-width: 90%; margin-left: auto; margin-right: auto;}
     #leadForm { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem; }
@@ -164,7 +177,11 @@
     } */
 
     /* Rodapé */
-    footer { margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid rgba(0, 0, 0, 0.1); font-size: 0.9rem; color: #555; }
+    footer {
+        margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 0.9rem; color: #555;
+        text-align: center; /* ADICIONADO */
+    }
     footer p { margin-bottom: 0.5rem; }
     footer a { color: #E91E63; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
@@ -176,11 +193,12 @@
       .container { padding: 0 0.8rem; }
       .profile-pic { width: 120px; height: 120px; }
       section h2, .form-cta-section h3 { font-size: 1.4rem; }
-       .form-cta-section .form-subtitle { font-size: 0.95rem; }
+      .form-cta-section .form-subtitle { font-size: 0.95rem; }
       .swiper-slide img { height: 280px; }
       .whatsapp-btn { font-size: 1.1rem; padding: 0.9rem 2rem; }
-       #floating-whatsapp-button { width: 55px; height: 55px; bottom: 15px; right: 15px; } /* Menor no mobile */
-       #floating-whatsapp-button svg { width: 28px; height: 28px; }
+      #floating-whatsapp-button { width: 55px; height: 55px; bottom: 15px; right: 15px; } /* Menor no mobile */
+      #floating-whatsapp-button svg { width: 28px; height: 28px; }
+      .about-section p { text-align: left; } /* ADICIONADO: Evita justificação ruim em telas pequenas */
     }
   </style>
 </head>
@@ -188,8 +206,10 @@
   <div class="container">
     <header class="profile-header">
       <div id="dynamic-header">
-        <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic"> <h1>Aqui suas unhas viram autoestima 💅</h1>
-        <p class="returning-visitor-message" id="returningMessage">🎁 Presente pra você que voltou: Nail art filha única grátis!</p> <p class="subtext-principal" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
+        <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
+        <h1>Aqui suas unhas viram autoestima 💅</h1>
+        <p class="returning-visitor-message" id="returningMessage">🎁 Presente pra você que voltou: Nail art filha única grátis!</p>
+        <p class="subtext-principal" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
       </div>
     </header>
 
@@ -199,11 +219,11 @@
     </section>
 
     <section class="welcome-section" id="beneficios">
-       <h2>Por Que Escolher a Rosane? Sua Experiência Única</h2>
-       <div class="benefit-item"><span>💖</span> **Atendimento Personalizado:** Aqui você não é só mais uma. Escuto seus desejos e cuido de você com carinho e exclusividade.</div>
-       <div class="benefit-item"><span>💎</span> **Qualidade e Durabilidade:** Uso apenas produtos de alta linha e técnicas aprimoradas para unhas que duram e impressionam.</div>
-       <div class="benefit-item"><span>🌿</span> **Higiene e Segurança:** Ambiente 100% seguro, materiais esterilizados e foco total na sua saúde e bem-estar.</div>
-       <div class="benefit-item"><span>⏰</span> **Seu Tempo é Precioso:** Respeito total aos horários agendados para que seu momento de beleza seja tranquilo e sem atrasos.</div>
+        <h2>Por Que Escolher a Rosane? Sua Experiência Única</h2>
+        <div class="benefit-item"><span>💖</span> **Atendimento Personalizado:** Aqui você não é só mais uma. Escuto seus desejos e cuido de você com carinho e exclusividade.</div>
+        <div class="benefit-item"><span>💎</span> **Qualidade e Durabilidade:** Uso apenas produtos de alta linha e técnicas aprimoradas para unhas que duram e impressionam.</div>
+        <div class="benefit-item"><span>🌿</span> **Higiene e Segurança:** Ambiente 100% seguro, materiais esterilizados e foco total na sua saúde e bem-estar.</div>
+        <div class="benefit-item"><span>⏰</span> **Seu Tempo é Precioso:** Respeito total aos horários agendados para que seu momento de beleza seja tranquilo e sem atrasos.</div>
     </section>
 
     <section class="carousel-section" id="trabalhos">
@@ -220,28 +240,28 @@
     </section>
 
     <section class="testimonials-section" id="depoimentos">
-       <h2>A Opinião de Quem Confia no Meu Trabalho</h2>
-       <div class="testimonial-card">
+        <h2>A Opinião de Quem Confia no Meu Trabalho</h2>
+        <div class="testimonial-card">
           <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
           <p class="testimonial-author">
              <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Ana P.">
              <strong>Ana P.</strong> - Gravataí/RS
           </p>
-       </div>
-       <div class="testimonial-card">
+        </div>
+        <div class="testimonial-card">
           <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
           <p class="testimonial-author">
              <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Mariana S.">
              <strong>Mariana S.</strong> - Cachoeirinha/RS
           </p>
-       </div>
-        <div class="testimonial-card">
+        </div>
+         <div class="testimonial-card">
           <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
           <p class="testimonial-author">
              <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Juliana R.">
              <strong>Juliana R.</strong> - Gravataí/RS
           </p>
-       </div>
+        </div>
     </section>
 
     <section class="form-cta-section" id="contato">
@@ -262,26 +282,33 @@
             <div>
                  <label for="email">Seu Melhor E-mail:</label>
                  <input type="email" id="email" name="email" required>
-                 <p class="microcopy">Usamos apenas para confirmações importantes, ok? Sem spam.</p> </div>
+                 <p class="microcopy">Usamos apenas para confirmações importantes, ok? Sem spam.</p>
+            </div>
             <div>
                 <label for="phone">Seu WhatsApp (com DDD):</label>
                 <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Digite exatamente 11 números (DDD + 9 dígitos do celular)" placeholder="Ex: 51999998888">
-                <p class="microcopy">É por aqui que vamos agendar e tirar suas dúvidas rapidinho!</p> </div>
+                <p class="microcopy">É por aqui que vamos agendar e tirar suas dúvidas rapidinho!</p>
+            </div>
             <div id="formError">Ops! Verifique os campos marcados em vermelho.</div>
 
             <button type="submit" class="btn whatsapp-btn" id="submitButton">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor" style="vertical-align: middle;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                <span style="vertical-align: middle;">Quero minhas unhas lindas com a Rosane 💅</span> </button>
+                <span style="vertical-align: middle;">Quero minhas unhas lindas com a Rosane 💅</span>
+            </button>
         </form>
         <div class="trust-seals">
-           <span>🔒 Seus dados protegidos</span> | <span>💖 +500 unhas atendidas com amor</span> </div>
+            <span>🔒 Seus dados protegidos</span> | <span>💖 +500 unhas atendidas com amor</span>
+        </div>
     </section>
 
     <footer>
-      <p>📍 Atendimento em Gravataí/RS - **[Inserir Bairro ou Referência Aqui]**</p> <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
-      <p><a href="#politica-privacidade" id="privacyLink" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | Respeitamos a LGPD</p>
+      <p>📍 Atendimento em Gravataí/RS - **[Inserir Bairro ou Referência Aqui]**</p>
+      <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
+      <p><a href="politica-privacidade.html" id="privacyLink" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | Respeitamos a LGPD</p>
     </footer>
-  </div> <a href="https://wa.me/555197549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+  </div>
+
+  <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
      target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp">
      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
      </svg>
@@ -333,7 +360,7 @@
     const formError = document.getElementById('formError');
     const phoneInput = document.getElementById('phone'); // Input do telefone para validação live
 
-    // == NOVO: Validação 'live' do telefone ==
+    // == Validação 'live' do telefone ==
      if(phoneInput) {
         phoneInput.addEventListener('input', () => {
           // Remove caracteres não numéricos (caso colem algo)
@@ -345,7 +372,7 @@
              phoneInput.style.borderColor = 'orange'; // Aplica borda laranja diretamente
           } else {
             phoneInput.classList.remove('invalid-typing');
-             phoneInput.style.borderColor = ''; // Remove borda laranja se válido ou vazio
+             phoneInput.style.borderColor = ''; // Remove borda laranja se válido ou vazio (volta ao padrão)
              // Se estava com erro de submit e agora está válido, remove o erro de submit
              if (phoneInput.classList.contains('invalid-submit') && /^[0-9]{11}$/.test(phoneInput.value)) {
                  phoneInput.classList.remove('invalid-submit');
@@ -377,12 +404,14 @@
         // Validação final no submit
         Array.from(leadForm.elements).forEach(input => {
             input.classList.remove('invalid-submit'); // Remove erro de submit anterior
-             if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
-                 if(input.style.borderColor !== 'orange') { // Só reseta se não for o erro live do telefone
-                     input.style.borderColor = '#ddd';
-                 }
-                 input.classList.remove('invalid-submit');
+            if (input.type !== 'hidden' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
+                // Reseta a borda para o padrão #ccc, exceto se for a validação 'live' laranja
+                if(input.style.borderColor !== 'orange') {
+                     input.style.borderColor = '#ccc'; // Volta para o cinza padrão
+                }
+                input.classList.remove('invalid-submit');
             }
+            // Verifica validade apenas em campos visíveis
             if (input.offsetParent !== null && !input.checkValidity()) {
                 isValid = false;
                 input.classList.add('invalid-submit'); // Adiciona classe de erro de submit
@@ -411,13 +440,13 @@
         const phone = document.getElementById('phone').value.trim();
 
         const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
-        const eventData = { /* ... eventData como antes ... */ };
-         eventData = {
-             event_name: "Lead", event_source_url: window.location.href,
-             fbp: fbp || "NA", external_id: externalId,
-             user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
-         };
 
+        // **** CORREÇÃO: Linha redundante removida ****
+        const eventData = {
+            event_name: "Lead", event_source_url: window.location.href,
+            fbp: fbp || "NA", external_id: externalId,
+            user_data: { fn: firstName, ln: lastName, em: email, ph: phone }
+        };
 
         console.log("Enviando evento CAPI para o proxy:", eventData);
 
@@ -425,25 +454,37 @@
         fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
         .then(response => {
             console.log("Status da resposta do Proxy (CAPI):", response.status);
-            return response.json().then(data => ({ok: response.ok, data})); // Processa JSON
+            // Mesmo se não for OK, tenta parsear JSON para obter mensagem de erro do proxy
+            return response.json().then(data => ({ok: response.ok, data, status: response.status }));
         })
-        .then(({ok, data}) => {
-             if (!ok) {
-                console.error("Erro retornado pelo Proxy (CAPI):", data);
-                formSuccessMessage.style.display = 'none'; // Esconde msg de sucesso se deu erro
-                formError.textContent = "Houve um erro ao enviar. Tente novamente.";
-                formError.style.display = 'block';
-             } else {
-                 console.log("Resposta de sucesso do Proxy (CAPI):", data);
-                 // Atualiza mensagem de sucesso ANTES do redirect
-                 formSuccessMessage.innerHTML = "💌 Perfeito! Agora clique no botão do WhatsApp que vai abrir!";
-                 // Inicia o redirecionamento
-                 console.log("Redirecionando para o WhatsApp...");
-                 const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
-                 const whatsappUrl = `https://wa.me/555197549708?text=${encodeURIComponent(preFilledMessage)}`; // NÚMERO CORRETO?? Verifique!
-                 // Pequeno delay antes do redirect para usuário ler a msg
-                 setTimeout(() => { window.location.href = whatsappUrl; }, 1000); // 1 segundo delay
-             }
+        .then(({ok, data, status}) => {
+              if (!ok) {
+                  console.error(`Erro retornado pelo Proxy (CAPI) - Status ${status}:`, data);
+                  formSuccessMessage.style.display = 'none'; // Esconde msg de sucesso se deu erro
+                  // Tenta usar mensagem de erro do proxy, se disponível
+                  formError.textContent = `Houve um erro (${status}). Tente novamente. ${data?.message || ''}`;
+                  formError.style.display = 'block';
+              } else {
+                  console.log("Resposta de sucesso do Proxy (CAPI):", data);
+                  // **** CORREÇÃO: Mensagem de sucesso atualizada ****
+                  formSuccessMessage.innerHTML = "💌 Perfeito! Preparando para abrir o WhatsApp...";
+                  // Inicia o redirecionamento
+                  console.log("Redirecionando para o WhatsApp...");
+                  const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações sobre agendamento.`;
+                  // **** CORREÇÃO: Número do WhatsApp Atualizado ****
+                  const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
+                  // Pequeno delay antes do redirect para usuário ler a msg
+                  setTimeout(() => {
+                      try {
+                          window.location.href = whatsappUrl;
+                      } catch (e) {
+                          console.error("Falha ao tentar redirecionar para o WhatsApp:", e);
+                          formSuccessMessage.style.display = 'none';
+                          formError.textContent = "Não foi possível abrir o WhatsApp automaticamente. Verifique se está instalado.";
+                          formError.style.display = 'block';
+                      }
+                  }, 1000); // 1 segundo delay
+              }
         })
         .catch(error => {
             console.error("Erro crítico na requisição fetch para o proxy:", error);
@@ -452,14 +493,12 @@
             formError.style.display = 'block';
         })
         .finally(() => {
-             // Reabilita o botão após um tempo maior, caso algo falhe
-             setTimeout(() => {
-                submitButton.disabled = false;
-                submitButton.style.opacity = '1';
-                submitButton.style.cursor = 'pointer';
-                // Esconde msg de sucesso se ainda estiver visível (caso redirect falhe)
-                // formSuccessMessage.style.display = 'none';
-             }, 5000); // Reabilita após 5 segundos
+              // Reabilita o botão após um tempo maior, caso algo falhe (inclusive falha no redirect)
+              setTimeout(() => {
+                  submitButton.disabled = false;
+                  submitButton.style.opacity = '1';
+                  submitButton.style.cursor = 'pointer';
+              }, 5000); // Reabilita após 5 segundos
         });
     }
 
@@ -467,15 +506,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         handleReturningVisitor(); // Verifica se é visitante recorrente
 
-        // Placeholder para link de política de privacidade
-        const privacyLink = document.getElementById('privacyLink');
-        if(privacyLink){
-            privacyLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                // == SUBSTITUIR POR LINK REAL OU MODAL COM A POLÍTICA ==
-                alert('Política de Privacidade\n\nColetamos seu nome, sobrenome, e-mail e telefone através deste formulário com a finalidade exclusiva de facilitar o agendamento dos nossos serviços de manicure e comunicação relacionada. Seus dados são armazenados de forma segura e não são compartilhados com terceiros sem seu consentimento, exceto quando necessário para a prestação do serviço ou por obrigação legal. Você tem o direito de acessar, corrigir ou solicitar a exclusão dos seus dados a qualquer momento, entrando em contato conosco. Ao enviar o formulário, você concorda com esta política.\n\n(Este é um texto básico, consulte um profissional para uma política completa e adequada à LGPD).');
-            });
-        }
+        // **** CORREÇÃO: Removido o listener do alert da política de privacidade ****
+        // O link no footer agora é um link HTML normal.
     });
 
   </script>
