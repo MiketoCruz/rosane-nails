@@ -217,10 +217,72 @@
         font-size: 1.2rem;
     }
 
+    /* ===== ESTILOS PARA NOVA SEÇÃO DE FORMULÁRIO ===== */
+    .form-section {
+        margin-bottom: 2rem;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 1.5rem;
+        border-radius: 15px;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-section h3 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+     .form-section p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+    }
+
+    #leadForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: left; /* Alinha placeholders e texto digitado à esquerda */
+    }
+
+    #leadForm input[type="text"],
+    #leadForm input[type="email"],
+    #leadForm input[type="tel"] {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
+        transition: border-color 0.3s ease;
+    }
+    #leadForm input:focus {
+        outline: none;
+        border-color: #E91E63;
+    }
+
+    /* Estilo para inputs inválidos (via JS) */
+    #leadForm input.invalid {
+        border-color: red;
+    }
+
+     #formError {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        display: none; /* Começa escondido */
+        text-align: center; /* Centraliza a mensagem de erro */
+     }
+    /* ===== FIM DOS ESTILOS PARA FORMULÁRIO ===== */
+
 
     /* Seção do Botão de Ação (CTA) */
     .cta-section {
-      margin: 3rem 0; /* Mais espaço vertical */
+      margin: 1rem 0 3rem 0; /* Diminui margem superior após form, mantém inferior */
     }
 
     /* Definição da Animação Pulse */
@@ -285,12 +347,21 @@
       h1 {
         font-size: 1.5rem;
       }
-      .value-prop-section h3 {
+       .value-prop-section h3 {
          font-size: 1.15rem;
       }
-       .value-prop-section li {
+        .value-prop-section li {
          font-size: 0.95rem;
       }
+       .form-section h3 { /* Ajuste do form para telas menores */
+            font-size: 1.1rem;
+        }
+        #leadForm input[type="text"],
+        #leadForm input[type="email"],
+        #leadForm input[type="tel"] {
+            font-size: 0.95rem;
+            padding: 0.7rem;
+        }
       .whatsapp-btn {
         font-size: 1rem;
         padding: 0.8rem 1.6rem;
@@ -328,6 +399,7 @@
         <div class="swiper-pagination"></div>
       </div>
     </section>
+
     <section class="value-prop-section">
         <h3>Por que escolher a Rosane?</h3>
         <ul>
@@ -337,6 +409,17 @@
         </ul>
     </section>
 
+    <section class="form-section">
+        <h3>Fale comigo pelo WhatsApp!</h3>
+        <p>Preencha rapidamente para um atendimento mais personalizado e para garantir a melhor comunicação:</p>
+        <form id="leadForm">
+            <input type="text" id="firstName" name="firstName" placeholder="Seu primeiro nome" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Seu sobrenome" required>
+            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
+            <input type="tel" id="phone" name="phone" placeholder="Seu WhatsApp (só números: 519...)" required pattern="[0-9]{10,11}" title="Digite DDD + Número (10 ou 11 dígitos, sem espaços ou traços)">
+            <div id="formError">Por favor, preencha todos os campos corretamente.</div>
+        </form>
+    </section>
     <section class="cta-section">
       <a class="btn whatsapp-btn" href="#" onclick="enviarEvento(event)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" fill="currentColor" style="vertical-align: middle;">
@@ -348,7 +431,7 @@
 
     <footer>
       <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design. Todos os direitos reservados.</p>
-    </footer>
+      <p>Gravataí - RS</p> </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -357,7 +440,7 @@
     // Define o ano atual no rodapé
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-    // Função para buscar o valor de um cookie pelo nome (Mantida)
+    // Função para buscar o valor de um cookie pelo nome
     function getCookie(name) {
       const value = "; " + document.cookie;
       const parts = value.split("; " + name + "=");
@@ -370,40 +453,109 @@
       externalId = "user_" + Math.random().toString(36).substring(2) + Date.now();
       localStorage.setItem("external_id", externalId);
     }
-    const fbp = getCookie("_fbp");
+    const fbp = getCookie("_fbp"); // Pega o cookie _fbp
 
-    // Função para enviar evento para o Proxy (Mantida)
+    // --- FUNÇÃO ENVIAR EVENTO ATUALIZADA ---
     function enviarEvento(event) {
-      event.preventDefault();
-      const proxyUrl = "https://rosane-proxy.onrender.com/api/conversion"; // CONFIRME SE ESSA É A URL CORRETA!
+      event.preventDefault(); // Impede a ação padrão do link
+
+      // --- Obter dados do formulário ---
+      const form = document.getElementById('leadForm');
+      const firstNameInput = document.getElementById('firstName');
+      const lastNameInput = document.getElementById('lastName');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const formError = document.getElementById('formError');
+
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim(); // O pattern no HTML ajuda a validar o formato
+
+       // --- Validação básica ---
+       let isValid = true;
+       formError.style.display = 'none'; // Esconde erro inicialmente
+       [firstNameInput, lastNameInput, emailInput, phoneInput].forEach(input => {
+           input.classList.remove('invalid'); // Remove estilo de erro anterior
+           if (!input.checkValidity()) { // Usa a validação do navegador (required, pattern, type=email/tel)
+                isValid = false;
+                input.classList.add('invalid'); // Adiciona estilo de erro
+                console.error("Campo inválido:", input.name, input.validationMessage);
+           }
+       });
+
+       if (!isValid) {
+            formError.textContent = "Por favor, preencha todos os campos corretamente."; // Mensagem de erro
+            formError.style.display = 'block'; // Mostra erro
+            console.error("Formulário inválido.");
+            return; // Interrompe a execução
+       }
+
+      // !!! IMPORTANTE: SUBSTITUA PELA URL REAL DO SEU PROXY QUANDO CRIÁ-LO !!!
+      const proxyUrl = "URL_DO_SEU_PROXY_AQUI/api/conversion";
+
+      // Dados do evento para enviar ao Proxy
       const eventData = {
-        event_name: "Lead",
-        event_source_url: window.location.href,
-        fbp: fbp || "NA",
-        external_id: externalId
+          event_name: "Lead", // Confirmado
+          event_source_url: window.location.href,
+          fbp: fbp || "NA", // Cookie _fbp (se existir)
+          external_id: externalId, // ID único do usuário
+          // --- Dados do usuário do formulário ---
+          user_data: {
+              fn: firstName,  // Nome (será hasheado no proxy)
+              ln: lastName,   // Sobrenome (será hasheado no proxy)
+              em: email,      // Email (será hasheado no proxy)
+              ph: phone       // Telefone (será hasheado no proxy)
+              // O proxy deve adicionar: client_ip_address, client_user_agent
+          }
+          // O proxy deve adicionar: event_time, action_source ('website')
       };
 
-      console.log("Enviando evento:", eventData);
+      console.log("Enviando evento para o proxy:", eventData);
 
-      fetch(proxyUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(eventData)
-      })
-      .then(response => {
-         console.log("Proxy response status:", response.status);
-         if (!response.ok) { console.error("Erro ao enviar evento para o proxy."); }
-      })
-      .catch(error => {
-        console.error("Erro na requisição fetch para o proxy:", error);
-      })
-      .finally(() => {
-        console.log("Redirecionando para o WhatsApp...");
-        // CONFIRME SE ESTE É O LINK CORRETO!
-        const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!";
-        window.location.href = whatsappUrl;
-      });
+      // Verifica se a URL do proxy foi definida (medida de segurança)
+       if (proxyUrl === "URL_DO_SEU_PROXY_AQUI/api/conversion") {
+             console.error("ALERTA: URL do Proxy não foi definida no código! O evento NÃO será enviado para a API de Conversões.");
+             // Não impede o redirect, mas avisa no console. Poderia impedir se quisesse.
+             // alert("Configuração pendente. Contate o suporte."); // Exemplo se quisesse avisar usuário
+       } else {
+           // Envia para o Proxy apenas se a URL foi alterada
+            fetch(proxyUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(eventData)
+            })
+            .then(response => {
+                console.log("Status da resposta do Proxy:", response.status);
+                if (!response.ok) {
+                    // Tenta ler a mensagem de erro do proxy, se houver
+                    response.json().then(errData => {
+                        console.error("Erro ao enviar evento para o proxy. Status:", response.status, "Mensagem:", errData);
+                    }).catch(() => {
+                         console.error("Erro ao enviar evento para o proxy. Status:", response.status, response.statusText);
+                    });
+                } else {
+                    console.log("Evento enviado ao proxy com sucesso.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro na requisição fetch para o proxy (pode ser rede ou CORS):", error);
+                // Poderia informar o usuário que o rastreamento falhou, mas o redirect ainda ocorrerá.
+                // alert("Houve um problema ao registrar sua visita. Por favor, tente novamente se necessário.");
+            });
+       }
+
+      // Executa o redirecionamento SEMPRE no finally, após a tentativa de fetch (ou se a URL não foi definida)
+      // para garantir que o usuário chegue ao WhatsApp.
+      // Usamos um pequeno delay para dar chance ao fetch de iniciar/completar em alguns casos.
+       setTimeout(() => {
+            console.log("Redirecionando para o WhatsApp...");
+            const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!"; // Confirmado
+            window.location.href = whatsappUrl;
+       }, 200); // Atraso de 200ms antes de redirecionar
+
     }
+    // --- FIM DA FUNÇÃO ATUALIZADA ---
 
     // Inicialização do Swiper (Carrossel)
     var swiper = new Swiper(".mySwiper", {
