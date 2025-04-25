@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta name="facebook-domain-verification" content="mp1oj81t2mrqjgo4ofnrbrldsd16z3" />
-<meta name="google-site-verification" content="ZC4fOs41_tTz0BM3-JsecczK7G3d-OBkGWIy-g9ifdg" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rosane Campos Nail Design</title>
@@ -414,11 +413,21 @@
         <h3>Fale comigo pelo WhatsApp!</h3>
         <p>Preencha rapidamente para um atendimento mais personalizado e para garantir a melhor comunicação:</p>
         <form id="leadForm">
-            <input type="text" id="firstName" name="firstName" placeholder="Seu primeiro nome" required>
-            <input type="text" id="lastName" name="lastName" placeholder="Seu sobrenome" required>
-            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
-            <input type="tel" id="phone" name="phone" placeholder="Seu WhatsApp (só números: 519...)" required pattern="[0-9]{10,11}" title="Digite DDD + Número (10 ou 11 dígitos, sem espaços ou traços)">
-            <div id="formError">Por favor, preencha todos os campos corretamente.</div>
+            <input type="text" id="firstName" name="firstName" placeholder="Seu primeiro nome" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+            <input type="text" id="lastName" name="lastName" placeholder="Seu sobrenome" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="WhatsApp com DDD (Ex: 51999998888)"
+              required
+              pattern="[0-9]{11}"
+              maxlength="11"
+              title="Digite exatamente 11 números (DDD + 9 dígitos do celular)"
+              style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;"
+            >
+            <div id="formError" style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: none;">Por favor, preencha todos os campos corretamente.</div>
         </form>
     </section>
     <section class="cta-section">
@@ -465,22 +474,30 @@
       const firstNameInput = document.getElementById('firstName');
       const lastNameInput = document.getElementById('lastName');
       const emailInput = document.getElementById('email');
-      const phoneInput = document.getElementById('phone');
+      const phoneInput = document.getElementById('phone'); // Input do telefone
       const formError = document.getElementById('formError');
 
       const firstName = firstNameInput.value.trim();
       const lastName = lastNameInput.value.trim();
       const email = emailInput.value.trim();
-      const phone = phoneInput.value.trim(); // O pattern no HTML ajuda a validar o formato
+      const phone = phoneInput.value.trim();
 
-       // --- Validação básica ---
+       // --- Validação ---
        let isValid = true;
        formError.style.display = 'none'; // Esconde erro inicialmente
-       [firstNameInput, lastNameInput, emailInput, phoneInput].forEach(input => {
-           input.classList.remove('invalid'); // Remove estilo de erro anterior
-           if (!input.checkValidity()) { // Usa a validação do navegador (required, pattern, type=email/tel)
+       // Percorre todos os inputs do formulário
+       Array.from(form.elements).forEach(input => {
+           // Remove classe de erro anterior (se houver) e reseta borda
+           input.classList.remove('invalid');
+           if (input.type !== 'hidden' && input.id !== 'formError') { // Ignora hidden/error div
+                input.style.borderColor = '#ddd'; // Reseta borda
+           }
+
+           // Verifica validade usando as regras do HTML (required, pattern, type=email/tel)
+           if (input.offsetParent !== null && !input.checkValidity()) { // Verifica se está visível e inválido
                 isValid = false;
-                input.classList.add('invalid'); // Adiciona estilo de erro
+                input.classList.add('invalid'); // Adiciona estilo de erro visual (borda vermelha)
+                input.style.borderColor = 'red'; // Garante borda vermelha
                 console.error("Campo inválido:", input.name, input.validationMessage);
            }
        });
@@ -493,7 +510,7 @@
        }
 
       // *** URL CORRETA DO SEU PROXY WEB SERVICE NO RENDER ***
-      const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; // <--- CORRIGIDO!
+      const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; // Confirmada
 
       // Dados do evento para enviar ao Proxy
       const eventData = {
@@ -507,9 +524,7 @@
               ln: lastName,   // Sobrenome (será hasheado no proxy)
               em: email,      // Email (será hasheado no proxy)
               ph: phone       // Telefone (será hasheado no proxy)
-              // O proxy deve adicionar: client_ip_address, client_user_agent
           }
-          // O proxy deve adicionar: event_time, action_source ('website')
       };
 
       console.log("Enviando evento para o proxy:", eventData);
@@ -540,19 +555,17 @@
         })
         .catch(error => {
             console.error("Erro na requisição fetch para o proxy (pode ser rede, CORS no proxy ou proxy offline):", error);
-            // Poderia informar o usuário que o rastreamento falhou, mas o redirect ainda ocorrerá.
              alert("Houve um problema ao conectar ao nosso servidor. Sua mensagem será enviada, mas tente novamente mais tarde se o erro persistir.");
         });
 
 
       // Executa o redirecionamento SEMPRE no finally (ou após o fetch), após a tentativa de envio
       // para garantir que o usuário chegue ao WhatsApp.
-      // Usamos um pequeno delay para dar chance ao fetch de iniciar/completar em alguns casos.
        setTimeout(() => {
             console.log("Redirecionando para o WhatsApp...");
-            const whatsappUrl = "https://wa.me/5551998501604?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!"; // Confirmado
+            const whatsappUrl = "https://wa.me/55519989416219?text=Oi%20Rosane!%20Vi%20sua%20página%20e%20quero%20saber%20mais%20sobre%20as%20unhas!"; // Confirmado
             window.location.href = whatsappUrl;
-       }, 300); // Aumentei um pouco o atraso para 300ms
+       }, 300); // Atraso de 300ms antes de redirecionar
 
     }
     // --- FIM DA FUNÇÃO ATUALIZADA ---
