@@ -48,7 +48,7 @@
         }
         /* 2. Reset e Base (Mantido) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: var(--text-base-size); scroll-behavior: smooth; }
+        html { font-size: var(--text-base-size); scroll-behavior: smooth; } /* scroll-behavior: smooth adicionado */
         body {
             font-family: var(--font-text); font-size: var(--text-md); line-height: 1.6;
             color: var(--color-text); background: linear-gradient(to bottom, var(--color-background-gradient-start), var(--color-background-gradient-end));
@@ -89,7 +89,6 @@
         .profile-header { text-align: center; margin-bottom: var(--space-lg); }
         .profile-pic { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-lg); border: 4px solid var(--color-background-light); }
         .subtext-principal { font-size: var(--text-lg); color: var(--color-text); }
-        /* AJUSTE: Texto da mensagem de visitante recorrente */
         .returning-visitor-message {
             font-size: var(--text-md); color: var(--color-secondary); font-weight: 700;
             margin: var(--space-sm) auto var(--space-md) auto; max-width: 90%; display: none;
@@ -97,37 +96,32 @@
             border-radius: var(--border-radius); border: 1px dashed var(--color-secondary);
         }
 
-
-        /* Sobre Mim (Com foto e botão) */
-        .about-section { text-align: center; } /* Centraliza o conteúdo da seção */
+        /* Sobre Mim (Com foto e botão PARA O FORMULÁRIO) */
+        .about-section { text-align: center; }
         .about-section h2 { color: var(--color-primary); margin-bottom: var(--space-md); }
-        /* NOVO: Estilo para foto na seção sobre */
         .about-photo {
              width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
              margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-sm);
              border: 3px solid var(--color-background-light);
         }
-        .about-section p { color: var(--color-text-muted); margin-top: 0; text-align: center; max-width: 480px; margin-left: auto; margin-right: auto; } /* Texto centralizado */
+        .about-section p { color: var(--color-text-muted); margin-top: 0; text-align: center; max-width: 480px; margin-left: auto; margin-right: auto; }
         .about-section strong { color: var(--color-primary); }
-        /* NOVO: Estilo para o botão WhatsApp dentro da seção sobre */
-        .about-section .whatsapp-btn {
+        .about-section .whatsapp-btn { /* Estilo compartilhado com outros botões .whatsapp-btn */
             margin-top: var(--space-md);
-            display: inline-block; /* Para centralizar corretamente */
-            width: fit-content; /* Ajusta largura ao conteúdo */
+            display: inline-block;
+            width: fit-content;
         }
 
-
-        /* Benefícios (Com links de WhatsApp específicos) */
+        /* Benefícios (Com links de WhatsApp específicos - Mantido) */
         .welcome-section h2 { color: var(--color-text); }
         .benefit-item { display: flex; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-md); text-align: left; }
         .benefit-item strong {
-            font-family: var(--font-title); font-weight: 700; /* Deixando negrito por padrão */
+            font-family: var(--font-title); font-weight: 700;
             color: var(--color-text); display: block;
-            margin-bottom: var(--space-xs); font-size: var(--text-lg); /* Aumentando o tamanho */
+            margin-bottom: var(--space-xs); font-size: var(--text-lg);
         }
         .benefit-item p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin-bottom: var(--space-xs); }
         .emoji { font-size: 1.8rem; display: inline-block; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; flex-shrink: 0; color: var(--color-secondary); }
-        /* NOVO: Estilo para o link CTA específico do benefício */
         .benefit-cta {
             display: inline-block;
             margin-top: var(--space-xs);
@@ -144,29 +138,27 @@
             border-bottom-color: var(--color-secondary);
         }
 
-        /* Carrossel (Com legendas internas) */
+        /* Carrossel (Com legendas internas - Mantido) */
         .carousel-section h2 { color: var(--color-text); }
-        .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: var(--border-radius); box-shadow: var(--shadow-md); /* Remove padding-bottom */ overflow: hidden; }
-        .swiper-slide { background-color: var(--color-background-light); border-radius: var(--border-radius); overflow: hidden; position: relative; /* Para legenda absoluta */ }
+        .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: var(--border-radius); box-shadow: var(--shadow-md); overflow: hidden; }
+        .swiper-slide { background-color: var(--color-background-light); border-radius: var(--border-radius); overflow: hidden; position: relative; }
         .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; }
-        /* NOVO: Estilo para legenda DENTRO do slide */
         .swiper-slide .carousel-caption-inner {
              position: absolute;
              bottom: 0;
              left: 0;
              width: 100%;
-             background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-             color: #fff; /* Texto branco */
+             background-color: rgba(0, 0, 0, 0.6);
+             color: #fff;
              font-size: var(--text-sm);
              padding: var(--space-xs) var(--space-sm);
              text-align: center;
-             margin: 0; /* Remove margens padrão do P */
+             margin: 0;
              line-height: 1.4;
         }
-        .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; z-index: 10; /* Garante que fique sobre a legenda */}
+        .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; z-index: 10; padding-bottom: 5px; /* Adiciona espaço se a legenda interna estiver muito próxima */ }
         .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.6); opacity: 1; width: 10px; height: 10px; }
         .swiper-pagination-bullet-active { background-color: var(--color-background-light); transform: scale(1.1); }
-        /* Legenda GERAL abaixo do carrossel (Mantida) */
         .carousel-caption-footer { font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; margin-top: var(--space-md); }
 
 
@@ -188,13 +180,23 @@
         .microcopy { font-size: var(--text-sm); color: var(--color-text-light); text-align: left; margin-top: var(--space-xs); margin-bottom: var(--space-xs); display: block; }
         #formError { color: var(--color-error); font-size: var(--text-sm); margin-top: var(--space-xs); display: none; text-align: center; font-weight: bold; }
         #formSuccessMessage { color: var(--color-success); background-color: #e6ffed; border: 1px solid #90ee90; padding: var(--space-sm); border-radius: var(--border-radius); font-weight: bold; margin-bottom: var(--space-md); display: none; text-align: center; font-size: var(--text-md); }
-        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); background: linear-gradient(to right, var(--color-secondary), var(--color-primary)); border: none; border-radius: var(--border-radius-pill); font-family: var(--font-title); font-size: var(--text-lg); font-weight: 700; text-decoration: none; color: var(--color-background-light); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); transition: all 0.3s ease; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; width: auto; max-width: 100%; text-align: center; }
-        .whatsapp-btn svg { width: var(--text-lg); height: var(--text-lg); fill: currentColor; vertical-align: middle;} .whatsapp-btn span { vertical-align: middle; }
+        /* Estilo Geral para Botão .whatsapp-btn */
+        .whatsapp-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-lg); background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+            border: none; border-radius: var(--border-radius-pill); font-family: var(--font-title); font-size: var(--text-lg);
+            font-weight: 700; text-decoration: none; color: var(--color-background-light); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
+            width: auto; max-width: 100%; text-align: center;
+         }
+        .whatsapp-btn svg { width: var(--text-lg); height: var(--text-lg); fill: currentColor; vertical-align: middle;}
+        .whatsapp-btn span { vertical-align: middle; }
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
         .whatsapp-btn:hover, .whatsapp-btn:focus { background: linear-gradient(to right, var(--color-primary), #AD1457); transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none; }
+        /* Botão específico do formulário */
         #leadForm .whatsapp-btn { display: block; width: fit-content; margin-left: auto; margin-right: auto; margin-top: var(--space-sm); }
 
-        /* Botão Flutuante (Com animação sutil da versão anterior) */
+        /* Botão Flutuante (Mantido) */
          @keyframes subtle-pulse {
             0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
             50% { transform: scale(1.03); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
@@ -206,7 +208,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); text-decoration: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             visibility: visible; opacity: 1;
-            animation: subtle-pulse 2.5s infinite ease-in-out; /* Mantendo a animação */
+            animation: subtle-pulse 2.5s infinite ease-in-out;
         }
         #floating-whatsapp-button:hover {
             transform: scale(1.1);
@@ -215,7 +217,7 @@
         }
         #floating-whatsapp-button svg { width: 30px; height: 30px; fill: currentColor; }
 
-        /* Rodapé (Com links sociais) */
+        /* Rodapé (Mantido) */
         footer {
             margin-top: var(--space-xl); padding: var(--space-lg) 0;
             border-top: 1px solid var(--color-border-light);
@@ -225,7 +227,6 @@
         footer strong { color: var(--color-primary); }
         footer a { color: #d81b60; font-weight: 500; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
-        /* NOVO: Estilos para links sociais no rodapé (reutilizado) */
         .social-links { margin-top: var(--space-sm); margin-bottom: var(--space-sm); }
         .social-links a { color: var(--color-text-muted); font-size: 1.5rem; margin: 0 var(--space-xs); transition: color 0.3s ease; }
         .social-links a:hover { color: var(--color-secondary); text-decoration: none; }
@@ -241,27 +242,28 @@
         .footer-seals span + span { margin-left: var(--space-xs); }
         .footer-seals span + span::before { content: "|"; margin-right: var(--space-xs); color: var(--color-border-light); }
 
-        /* Ajustes Mobile (Mantido) */
+        /* Ajustes Mobile (Ajustes nos botões e títulos) */
         @media (max-width: 600px) {
             h1 { font-size: var(--text-xl); }
             h2 { font-size: var(--text-lg); }
             h3 { font-size: calc(var(--text-lg) * 0.95); }
             .section { padding: var(--space-md) var(--space-sm); margin-bottom: var(--space-lg);}
             .profile-pic { width: 120px; height: 120px; margin-bottom: var(--space-sm); }
-             /* Ajuste foto sobre mobile */
             .about-photo { width: 80px; height: 80px; }
             .benefit-item { gap: var(--space-sm); flex-direction: column; align-items: flex-start; }
-             /* Ajuste título benefício mobile */
-            .benefit-item strong { font-size: var(--text-md); }
+            .benefit-item strong { font-size: var(--text-md); } /* Título do benefício menor no mobile */
             .emoji { margin-bottom: var(--space-xs); }
             .swiper-slide img { height: 280px; }
-             /* Ajuste legenda interna mobile */
             .swiper-slide .carousel-caption-inner { font-size: calc(var(--text-sm) * 0.9); padding: var(--space-xs); }
-            #leadForm { max-width: 100%; gap: var(--space-sm); } #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); }
+            #leadForm { max-width: 100%; gap: var(--space-sm); }
+            #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); }
+            /* Ajuste geral para botões no mobile */
             .whatsapp-btn { display: block; width: 100%; font-size: var(--text-md); padding: var(--space-sm) var(--space-md); }
-            /* Ajuste botões específicos mobile */
-            #leadForm .whatsapp-btn, .about-section .whatsapp-btn { width: 100%; }
-            #floating-whatsapp-button { width: 55px; height: 55px; bottom: var(--space-sm); right: var(--space-sm); } #floating-whatsapp-button svg { width: 28px; height: 28px; }
+            /* Garante que os botões específicos ocupem 100% */
+             #leadForm .whatsapp-btn, .about-section .whatsapp-btn { width: 100%; margin-left: auto; margin-right: auto;}
+
+            #floating-whatsapp-button { width: 55px; height: 55px; bottom: var(--space-sm); right: var(--space-sm); }
+            #floating-whatsapp-button svg { width: 28px; height: 28px; }
             .footer-seals { max-width: 100%; }
             .text-block-centered { max-width: 100%; }
             .container { padding-left: var(--space-sm); padding-right: var(--space-sm); }
@@ -274,7 +276,7 @@
         <header class="profile-header">
             <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
             <h1>Aqui suas unhas viram autoestima 💅</h1>
-             <p class="returning-visitor-message" id="returningMessage">
+            <p class="returning-visitor-message" id="returningMessage">
                  🎁 Que bom te ver de novo! Agende e ganhe uma nail art filha única grátis!
             </p>
             <p class="subtext-principal text-block-centered" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
@@ -282,10 +284,10 @@
 
         <section class="about-section section" id="sobre">
             <h2>Conheça a Rosane</h2>
-             <img src="https://www.youtube.com/watch?v=cvnA6lz4-zo" alt="Foto da Rosane Campos" class="about-photo">
+            <img src="https://www.youtube.com/watch?v=cvnA6lz4-zo" alt="Foto da Rosane Campos" class="about-photo">
             <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1]</strong> e <strong>[Técnica 2]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
-             <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Vi%20sua%20página%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-                 Fale comigo no WhatsApp! 😉
+             <a href="#contato" class="whatsapp-btn">
+                 Quero agendar meu horário!
              </a>
         </section>
 
@@ -296,7 +298,7 @@
                 <div>
                     <strong>Atendimento Personalizado</strong>
                     <p>Aqui você não é só mais uma. Cuidado e exclusividade.</p>
-                     <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20personalizado." target="_blank" rel="noopener noreferrer" class="benefit-cta">Saiba mais sobre meu atendimento &rarr;</a>
+                    <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20personalizado." target="_blank" rel="noopener noreferrer" class="benefit-cta">Saiba mais sobre meu atendimento &rarr;</a>
                 </div>
             </div>
             <div class="benefit-item">
@@ -304,7 +306,7 @@
                 <div>
                     <strong>Qualidade e Durabilidade</strong>
                     <p>Produtos de alta linha e técnicas que impressionam.</p>
-                     <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Quais%20produtos%20você%20usa%3F" target="_blank" rel="noopener noreferrer" class="benefit-cta">Conheça os produtos que uso &rarr;</a>
+                    <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Quais%20produtos%20você%20usa%3F" target="_blank" rel="noopener noreferrer" class="benefit-cta">Conheça os produtos que uso &rarr;</a>
                 </div>
             </div>
             <div class="benefit-item">
@@ -312,7 +314,7 @@
                 <div>
                     <strong>Higiene e Segurança</strong>
                     <p>Ambiente 100% seguro e foco total na sua saúde.</p>
-                     <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Como%20funciona%20a%20higiene%20no%20seu%20espa%C3%A7o%3F" target="_blank" rel="noopener noreferrer" class="benefit-cta">Veja meus protocolos de segurança &rarr;</a>
+                    <a href="https://wa.me/[SEUNUMEROWHATSAPP]?text=Ol%C3%A1%20Rosane!%20Como%20funciona%20a%20higiene%20no%20seu%20espa%C3%A7o%3F" target="_blank" rel="noopener noreferrer" class="benefit-cta">Veja meus protocolos de segurança &rarr;</a>
                 </div>
             </div>
             <div class="benefit-item">
@@ -348,7 +350,7 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-             <p class="carousel-caption-footer">Fotos de trabalhos reais feitos com carinho ❤️</p>
+            <p class="carousel-caption-footer">Fotos de trabalhos reais feitos com carinho ❤️</p>
         </section>
 
         <section class="testimonials-section section" id="depoimentos">
@@ -436,10 +438,10 @@
         const formTitleElement = document.getElementById('formTitle');
         if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) { console.error("Elementos não encontrados em handleReturningVisitor."); return; }
         if (localStorage.getItem('rosane_visited_before')) {
-            h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖'; // Pode ajustar este texto
-            mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?'; // Pode ajustar este texto
-            returningMessageElement.style.display = 'block'; // Mostra a mensagem de brinde
-            formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉'; // Ajusta título do formulário
+            h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
+            mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
+            returningMessageElement.style.display = 'block';
+            formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
         } else { localStorage.setItem('rosane_visited_before', 'true'); returningMessageElement.style.display = 'none'; }
     }
 
@@ -525,17 +527,15 @@
                     if (!ok) { throw new Error(`Erro ${status}: ${data?.message || 'API Error'}`); }
                      console.log("Sucesso CAPI:", data);
                     formSuccessMessage.innerHTML = "💌 Perfeito! Abrindo WhatsApp...";
-                    // Redirecionamento WhatsApp após sucesso do CAPI (com nome preenchido)
                     const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações.`;
                     const whatsappUrl = `https://wa.me/[SEUNUMEROWHATSAPP]?text=${encodeURIComponent(preFilledMessage)}`; // Usa o número correto aqui
-                     setTimeout(() => { window.location.href = whatsappUrl; }, 500); // Abre WhatsApp
+                     setTimeout(() => { window.location.href = whatsappUrl; }, 500);
                 })
                 .catch(error => {
                     console.error("Falha no envio/redirect:", error);
                     formSuccessMessage.style.display = 'none'; formError.textContent = `Erro: ${error.message}. Tente novamente.`; formError.style.display = 'block';
                 })
                 .finally(() => {
-                    // Reabilita o botão após um tempo, mesmo se houver erro ou sucesso
                     setTimeout(() => { submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer'; }, 4000);
                 });
             });
