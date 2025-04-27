@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://i.imgur.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -23,709 +24,227 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/></noscript>
 
     <style>
-        /* 1. Sistema de Variáveis Globais */
+        /* 1. Sistema de Variáveis Globais (Mantido) */
         :root {
             --font-title: 'Poppins', sans-serif;
             --font-text: 'Lato', sans-serif;
-            --text-base-size: 1rem;
-            --text-scale-ratio: 1.2;
-            --text-sm: calc(var(--text-base-size) / var(--text-scale-ratio));
-            --text-md: var(--text-base-size);
+            --text-base-size: 1rem; --text-scale-ratio: 1.2;
+            --text-sm: calc(var(--text-base-size) / var(--text-scale-ratio)); --text-md: var(--text-base-size);
             --text-lg: calc(var(--text-base-size) * var(--text-scale-ratio));
             --text-xl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio));
             --text-xxl: calc(var(--text-base-size) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-            --color-primary: #C2185B;
-            --color-secondary: #E91E63;
-            --color-text: #333;
-            --color-text-muted: #555;
-            --color-text-light: #777;
-            --color-background-light: #fff;
-            --color-background-gradient-start: #ffe0ed;
-            --color-background-gradient-end: #f9cfe0;
-            --color-success: #006400;
-            --color-error: red;
-            --color-warning: orange;
-            --color-border: #ccc;
-            --color-border-light: #ddd;
+            --color-primary: #C2185B; --color-secondary: #E91E63; --color-text: #333;
+            --color-text-muted: #555; --color-text-light: #777; --color-background-light: #fff;
+            --color-background-gradient-start: #ffe0ed; --color-background-gradient-end: #f9cfe0;
+            --color-success: #006400; --color-error: red; --color-warning: orange;
+            --color-border: #ccc; --color-border-light: #ddd;
             --color-whatsapp: #25D366;
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-xxl: 4rem;
-            --border-radius: 8px;
-            --border-radius-lg: 15px;
-            --border-radius-pill: 50px;
-            --shadow-sm: 0 4px 10px rgba(0,0,0,0.08);
-            --shadow-md: 0 5px 18px rgba(0,0,0,0.08);
+            --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 1.5rem;
+            --space-lg: 2rem; --space-xl: 3rem; --space-xxl: 4rem;
+            --border-radius: 8px; --border-radius-lg: 15px; --border-radius-pill: 50px;
+            --shadow-sm: 0 4px 10px rgba(0,0,0,0.08); --shadow-md: 0 5px 18px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
-
-        /* 2. Reset e Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: var(--text-base-size);
-            scroll-behavior: smooth;
-        }
-
+        /* 2. Reset e Base (Mantido) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: var(--text-base-size); scroll-behavior: smooth; }
         body {
-            font-family: var(--font-text);
-            font-size: var(--text-md);
-            line-height: 1.6;
-            color: var(--color-text);
-            background: linear-gradient(to bottom, var(--color-background-gradient-start), var(--color-background-gradient-end));
-            padding-top: var(--space-lg);
-            padding-bottom: var(--space-xxl);
-            overflow-x: hidden;
+            font-family: var(--font-text); font-size: var(--text-md); line-height: 1.6;
+            color: var(--color-text); background: linear-gradient(to bottom, var(--color-background-gradient-start), var(--color-background-gradient-end));
+            padding-top: var(--space-lg); padding-bottom: var(--space-xxl); overflow-x: hidden;
         }
-
-        /* 3. Container Consistente */
+        /* 3. Container Consistente (Mantido com padding 20px) */
         .container {
-            max-width: 560px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-            width: 100%;
+            max-width: 560px; margin-left: auto; margin-right: auto;
+            padding-left: 20px; padding-right: 20px; width: 100%;
         }
-
         /* 4. Tipografia Padronizada */
         h1, h2, h3 {
-            font-family: var(--font-title);
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--color-primary);
-            text-align: center;
+            font-family: var(--font-title); font-weight: 700; line-height: 1.3;
+            color: var(--color-primary); text-align: center; margin-bottom: var(--space-md);
         }
+        h1 { font-size: var(--text-xxl); margin-bottom: var(--space-sm); }
+        /* AJUSTADO: Aumenta tamanho do H2 */
+        h2 { font-size: var(--text-xxl); }
+        h3 { font-size: var(--text-lg); }
+        p, label, li, span, div { font-family: var(--font-text); }
+        p { font-size: var(--text-md); line-height: 1.6; color: var(--color-text-muted); margin-bottom: var(--space-sm); text-align: left; }
+        p:last-child { margin-bottom: 0; }
+        .text-block-centered { max-width: 480px; margin-left: auto; margin-right: auto; text-align: left; margin-bottom: var(--space-md); }
+        a { color: var(--color-secondary); text-decoration: none; } a:hover { text-decoration: underline; }
+        strong { font-weight: 700; color: var(--color-primary); }
 
-        h1 {
-            font-size: var(--text-xxl);
-            /* Mais espaço abaixo do título principal */
-            margin-bottom: var(--space-md);
-        }
-
-        h2 {
-            font-size: var(--text-xl);
-            /* Ajuste no espaçamento abaixo dos títulos de seção */
-            margin-bottom: var(--space-lg);
-        }
-
-        h3 {
-            font-size: var(--text-lg);
-        }
-
-        p, label, li, span, div {
-            font-family: var(--font-text);
-        }
-
-        p {
-            font-size: var(--text-md);
-            line-height: 1.6;
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-sm);
-            text-align: left;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        .text-block-centered {
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-            margin-bottom: var(--space-md);
-        }
-
-        a {
-            color: var(--color-secondary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        strong {
-            font-weight: 700;
-            color: var(--color-primary);
-        }
-
-        /* 5. Estrutura das Seções */
+        /* 5. Estrutura das Seções (Ajuste na margem inferior) */
         .section {
             padding: var(--space-lg) var(--space-md);
-            margin-bottom: var(--space-xxl);
+            /* AJUSTADO: Aumenta um pouco mais a margem inferior para mais respiro */
+            margin-bottom: calc(var(--space-xxl) + 1rem); /* Era --space-xxl */
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
+            border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);
         }
-
-        .section:last-of-type {
-            margin-bottom: 0;
-        }
+        .section:last-of-type { margin-bottom: 0; }
 
         /* 6. Componentes Específicos */
 
-        /* Header */
-        .profile-header {
-            text-align: center;
-            margin-bottom: var(--space-lg);
-        }
-
-        .profile-pic {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto var(--space-md) auto;
-            display: block;
-            box-shadow: var(--shadow-lg);
-            border: 4px solid var(--color-background-light);
-        }
-
-        .subtext-principal {
-            font-size: var(--text-lg);
-            color: var(--color-text);
-        }
-
-        .returning-visitor-message {
-            font-size: var(--text-md);
-            color: var(--color-secondary);
-            font-weight: 700;
-            margin: var(--space-sm) auto var(--space-md) auto;
-            max-width: 90%;
-            display: none;
-            padding: var(--space-xs) var(--space-sm);
-            background-color: rgba(255,255,255,0.8);
-            border-radius: var(--border-radius);
-            border: 1px dashed var(--color-secondary);
-        }
+        /* Header (Mantido) */
+        .profile-header { text-align: center; margin-bottom: var(--space-lg); }
+        .profile-pic { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-lg); border: 4px solid var(--color-background-light); }
+        .subtext-principal { font-size: var(--text-lg); color: var(--color-text); }
+        .returning-visitor-message { font-size: var(--text-md); color: var(--color-secondary); font-weight: 700; margin: var(--space-sm) auto var(--space-md) auto; max-width: 90%; display: none; padding: var(--space-xs) var(--space-sm); background-color: rgba(255,255,255,0.8); border-radius: var(--border-radius); border: 1px dashed var(--color-secondary); }
 
         /* Sobre Mim */
-        .about-section h2 {
-            color: var(--color-primary);
-            margin-bottom: var(--space-lg);
-        }
+        .about-section h2 { color: var(--color-primary); margin-bottom: var(--space-lg); }
+        .about-section p { color: var(--color-text-muted); margin-top: 0; }
+        .about-section strong { color: var(--color-primary); }
 
-        .about-section p {
-            color: var(--color-text-muted);
-            margin-top: 0;
-            /* text-align: justify; */
-        }
-
-        .about-section strong {
-            color: var(--color-primary);
-        }
-
-        /* Benefícios */
-        .welcome-section h2 {
-            color: var(--color-text);
-            /* Ajuste no espaçamento abaixo do título 'Por que escolher a Rosane?' */
-            margin-bottom: var(--space-md);
-            font-size: var(--text-xl);
-            font-weight: bold;
-        }
-
+        /* Benefícios (Ajustes de espaçamento, peso e CTA) */
+        .welcome-section h2 { color: var(--color-primary); } /* Usa cor primária para mais destaque */
         .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-md);
+            display: flex; align-items: flex-start;
+            /* AJUSTADO: Aumenta espaço entre ícone e texto */
+            gap: var(--space-md); /* Era --space-sm */
+            margin-bottom: var(--space-lg); /* Aumenta espaço entre itens */
             text-align: left;
         }
-
         .benefit-item strong {
             font-family: var(--font-title);
-            font-weight: 600;
-            color: var(--color-text);
-            display: block;
-            margin-bottom: var(--space-xs);
-            font-size: var(--text-md);
+            /* AJUSTADO: Aumenta peso da fonte */
+            font-weight: 700; /* Era 600 */
+            color: var(--color-text); display: block;
+            margin-bottom: var(--space-xs); font-size: var(--text-md);
         }
-
-        .benefit-item p {
-            font-size: var(--text-sm);
-            color: var(--color-text-muted);
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
-
-        .emoji {
-            font-size: 1.5rem;
-            display: inline-block;
-            width: 1.5em;
-            height: 1.5em;
-            line-height: 1.5em;
-            text-align: center;
-            flex-shrink: 0;
-            color: var(--color-secondary);
-        }
-
-        .benefit-cta {
+        .benefit-item p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin-bottom: var(--space-xs); /* Adiciona pequeno espaço antes do CTA */ }
+        .emoji { font-size: 1.8rem; /* Ligeiramente maior */ display: inline-block; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; flex-shrink: 0; color: var(--color-secondary); }
+        /* NOVO: Estilo para o link CTA dentro dos benefícios */
+        .benefit-item .cta-link {
+            display: inline-block; /* Para permitir padding e margin */
             margin-top: var(--space-xs);
-        }
-
-        /* Carrossel */
-        .carousel-section h2 {
-            color: var(--color-text);
-        }
-
-        .swiper {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            position: relative;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            padding-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .swiper-slide {
-            background-color: var(--color-background-light);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-        }
-
-        .swiper-pagination {
-            position: absolute;
-            bottom: 10px !important;
-            left: 0;
-            width: 100%;
-        }
-
-        .swiper-pagination-bullet {
-            background-color: rgba(0, 0, 0, 0.4);
-            opacity: 1;
-            width: 10px;
-            height: 10px;
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: var(--color-secondary);
-            transform: scale(1.1);
-        }
-
-        .carousel-caption {
             font-size: var(--text-sm);
-            color: var(--color-text-muted);
-            text-align: center;
-            margin-top: var(--space-md);
-        }
-
-        /* Depoimentos */
-        .testimonials-section h2 {
-            color: var(--color-primary);
-        }
-
-        .testimonial-card {
-            background-color: var(--color-background-light);
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-md);
-            margin-bottom: var(--space-md);
-            box-shadow: var(--shadow-sm);
-            text-align: left;
-        }
-
-        .testimonial-quote {
-            font-style: italic;
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-sm);
-            position: relative;
-            padding-left: 30px;
-            font-size: var(--text-md);
-        }
-
-        .testimonial-quote::before {
-            content: '“';
-            font-size: 3rem;
-            color: var(--color-secondary);
-            position: absolute;
-            left: -5px;
-            top: -15px;
-            font-family: var(--font-title);
-            opacity: 0.8;
-        }
-
-        .testimonial-author {
             font-weight: 700;
             color: var(--color-secondary);
-            text-align: right;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: var(--space-xs);
-            font-size: var(--text-sm);
-        }
-
-        .testimonial-author img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--color-border-light);
-        }
-
-        /* Formulário */
-        .form-cta-section {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: var(--space-lg) var(--space-md);
-            box-shadow: var(--shadow-lg);
-            border-radius: var(--border-radius-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .form-cta-section h3 {
-            font-size: var(--text-xl);
-            color: var(--color-text);
-        }
-
-        .form-cta-section .form-subtitle {
-            font-size: var(--text-md);
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-lg);
-            text-align: center;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #leadForm {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-lg);
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #leadForm label {
-            display: block;
-            text-align: left;
-            font-weight: 700;
-            margin-bottom: var(--space-xs);
-            font-size: var(--text-sm);
-            color: var(--color-text);
-        }
-
-        #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] {
-            padding: var(--space-sm);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            font-size: var(--text-md);
-            font-family: var(--font-text);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-        }
-
-        #leadForm input:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.3);
-        }
-
-        #leadForm input.invalid-typing {
-            border-color: var(--color-warning);
-        }
-
-        #leadForm input.invalid-submit {
-            border-color: var(--color-error);
-        }
-
-        .microcopy {
-            font-size: var(--text-sm);
-            color: var(--color-text-light);
-            text-align: left;
-            margin-top: var(--space-xs);
-            margin-bottom: var(--space-xs);
-            display: block;
-        }
-
-        #formError {
-            color: var(--color-error);
-            font-size: var(--text-sm);
-            margin-top: var(--space-xs);
-            display: none;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        #formSuccessMessage {
-            color: var(--color-success);
-            background-color: #e6ffed;
-            border: 1px solid #90ee90;
-            padding: var(--space-sm);
-            border-radius: var(--border-radius);
-            font-weight: bold;
-            margin-bottom: var(--space-md);
-            display: none;
-            text-align: center;
-            font-size: var(--text-md);
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-xs);
-            padding: var(--space-sm) var(--space-lg);
-            background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
-            border: none;
-            border-radius: var(--border-radius-pill);
-            font-family: var(--font-title);
-            font-size: var(--text-lg);
-            font-weight: 700;
             text-decoration: none;
-            color: var(--color-background-light);
-            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            width: auto;
-            max-width: 100%;
-            text-align: center;
+            padding: 2px 0; /* Espaço visual */
+            border-bottom: 1px solid transparent; /* Efeito hover sutil */
+            transition: border-color 0.2s ease;
+        }
+        .benefit-item .cta-link:hover {
+            text-decoration: none;
+            border-bottom-color: var(--color-secondary); /* Sublinhado no hover */
         }
 
-        .whatsapp-btn svg {
-            width: var(--text-lg);
-            height: var(--text-lg);
-            fill: currentColor;
-            vertical-align: middle;
-        }
+        /* Carrossel (Mantido) */
+        .carousel-section h2 { color: var(--color-text); }
+        .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: var(--border-radius); box-shadow: var(--shadow-md); padding-bottom: 40px; overflow: hidden; }
+        .swiper-slide { background-color: var(--color-background-light); border-radius: var(--border-radius); overflow: hidden; } .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; }
+        .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; } .swiper-pagination-bullet { background-color: rgba(0, 0, 0, 0.4); opacity: 1; width: 10px; height: 10px; } .swiper-pagination-bullet-active { background-color: var(--color-secondary); transform: scale(1.1); }
+        .carousel-caption { font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; margin-top: var(--space-md); }
 
-        .whatsapp-btn span {
-            vertical-align: middle;
-        }
+        /* Depoimentos (Mantido) */
+        .testimonials-section h2 { color: var(--color-primary); }
+        .testimonial-card { background-color: var(--color-background-light); border-radius: var(--border-radius-lg); padding: var(--space-md); margin-bottom: var(--space-md); box-shadow: var(--shadow-sm); text-align: left; }
+        .testimonial-quote { font-style: italic; color: var(--color-text-muted); margin-bottom: var(--space-sm); position: relative; padding-left: 30px; font-size: var(--text-md); } .testimonial-quote::before { content: '“'; font-size: 3rem; color: var(--color-secondary); position: absolute; left: -5px; top: -15px; font-family: var(--font-title); opacity: 0.8; }
+        .testimonial-author { font-weight: 700; color: var(--color-secondary); text-align: right; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-xs); font-size: var(--text-sm); } .testimonial-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--color-border-light); }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
-            }
-
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
-            }
-        }
-
+        /* Formulário (Mantido) */
+        .form-cta-section { background-color: rgba(255, 255, 255, 0.85); padding: var(--space-lg) var(--space-md); box-shadow: var(--shadow-lg); border-radius: var(--border-radius-lg); margin-bottom: var(--space-xl); }
+        .form-cta-section h3 { font-size: var(--text-xl); color: var(--color-text); }
+        .form-cta-section .form-subtitle { font-size: var(--text-md); color: var(--color-text-muted); margin-bottom: var(--space-lg); text-align: center; max-width: 90%; margin-left: auto; margin-right: auto; }
+        #leadForm { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-lg); max-width: 450px; margin-left: auto; margin-right: auto; }
+        #leadForm label { display: block; text-align: left; font-weight: 700; margin-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--color-text); }
+        #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: var(--text-md); font-family: var(--font-text); transition: border-color 0.3s ease, box-shadow 0.3s ease; width: 100%; }
+        #leadForm input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.3); }
+        #leadForm input.invalid-typing { border-color: var(--color-warning); } #leadForm input.invalid-submit { border-color: var(--color-error); }
+        .microcopy { font-size: var(--text-sm); color: var(--color-text-light); text-align: left; margin-top: var(--space-xs); margin-bottom: var(--space-xs); display: block; }
+        #formError { color: var(--color-error); font-size: var(--text-sm); margin-top: var(--space-xs); display: none; text-align: center; font-weight: bold; }
+        #formSuccessMessage { color: var(--color-success); background-color: #e6ffed; border: 1px solid #90ee90; padding: var(--space-sm); border-radius: var(--border-radius); font-weight: bold; margin-bottom: var(--space-md); display: none; text-align: center; font-size: var(--text-md); }
+        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); background: linear-gradient(to right, var(--color-secondary), var(--color-primary)); border: none; border-radius: var(--border-radius-pill); font-family: var(--font-title); font-size: var(--text-lg); font-weight: 700; text-decoration: none; color: var(--color-background-light); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); transition: all 0.3s ease; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; width: auto; max-width: 100%; text-align: center; }
+        .whatsapp-btn svg { width: var(--text-lg); height: var(--text-lg); fill: currentColor; vertical-align: middle;} .whatsapp-btn span { vertical-align: middle; }
+        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
+        /* AJUSTADO: Animação de pulso no hover do botão principal */
         .whatsapp-btn:hover, .whatsapp-btn:focus {
             background: linear-gradient(to right, var(--color-primary), #AD1457);
             transform: translateY(-2px);
-            animation: pulse 1.5s infinite;
+            animation: pulse 1.5s infinite; /* Mantém animação pulse no hover */
             outline: none;
         }
+        #leadForm .whatsapp-btn { display: block; width: fit-content; margin-left: auto; margin-right: auto; margin-top: var(--space-sm); }
 
-        #leadForm .whatsapp-btn {
-            display: block;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: var(--space-sm);
+        /* Botão Flutuante (Ajuste com animação) */
+        /* NOVO: Animação para o botão flutuante */
+        @keyframes subtle-pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.03); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+            100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
         }
-
-        /* Botão Flutuante */
         #floating-whatsapp-button {
-            position: fixed;
-            bottom: var(--space-md);
-            right: var(--space-md);
-            z-index: 1000;
-            background-color: var(--color-whatsapp);
-            color: var(--color-background-light);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
+            position: fixed; bottom: var(--space-md); right: var(--space-md); z-index: 1000; background-color: var(--color-whatsapp);
+            color: var(--color-background-light); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); text-decoration: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            visibility: visible;
-            opacity: 1;
+            visibility: visible; opacity: 1;
+            /* AJUSTADO: Aplica animação sutil constante */
+            animation: subtle-pulse 2.5s infinite ease-in-out;
         }
-
         #floating-whatsapp-button:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Mantém o scale maior no hover */
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            animation-play-state: paused; /* Pausa a animação sutil no hover */
         }
+        #floating-whatsapp-button svg { width: 30px; height: 30px; fill: currentColor; }
 
-        #floating-whatsapp-button svg {
-            width: 30px;
-            height: 30px;
-            fill: currentColor;
-        }
-
-        /* Rodapé */
+        /* Rodapé (Ajuste com link social) */
         footer {
-            margin-top: var(--space-xl);
-            padding: var(--space-lg) 0;
+            margin-top: var(--space-xl); padding: var(--space-lg) 0;
             border-top: 1px solid var(--color-border-light);
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            text-align: center;
+            font-size: 0.9rem; color: var(--color-text-muted); text-align: center;
         }
-
-        footer p {
-            margin-bottom: var(--space-xs);
-            font-size: inherit;
+        footer p { margin-bottom: var(--space-xs); font-size: inherit; }
+        footer strong { color: var(--color-primary); }
+        footer a { color: #d81b60; font-weight: 500; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        /* NOVO: Estilos para links sociais no rodapé */
+        .social-links {
+            margin-top: var(--space-sm);
+            margin-bottom: var(--space-sm);
         }
-
-        footer strong {
-            color: var(--color-primary);
+        .social-links a {
+            color: var(--color-text-muted); /* Cor mais neutra */
+            font-size: 1.5rem; /* Tamanho do ícone */
+            margin: 0 var(--space-xs);
+            transition: color 0.3s ease;
         }
-
-        footer a {
-            color: #d81b60;
-            font-weight: 500;
+        .social-links a:hover {
+            color: var(--color-secondary); /* Cor de destaque no hover */
             text-decoration: none;
         }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
         .footer-seals {
-            font-size: var(--text-sm);
-            color: var(--color-text-light);
-            margin-top: var(--space-md);
-            padding-top: var(--space-md);
+            font-size: var(--text-sm); color: var(--color-text-light);
+            margin-top: var(--space-md); padding-top: var(--space-md);
             border-top: 1px dashed var(--color-border-light);
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 450px; margin-left: auto; margin-right: auto;
         }
+        .footer-seals .footer-emoji { display: inline-block; font-size: 1.1em; margin-right: 0.3em; vertical-align: middle; }
+        .footer-seals strong { color: var(--color-text-light); font-weight: normal; }
+        .footer-seals span:not(.footer-emoji) { vertical-align: middle; }
+        .footer-seals span + span { margin-left: var(--space-xs); }
+        .footer-seals span + span::before { content: "|"; margin-right: var(--space-xs); color: var(--color-border-light); }
 
-        .footer-seals .footer-emoji {
-            display: inline-block;
-            font-size: 1.1em;
-            margin-right: 0.3em;
-            vertical-align: middle;
-        }
-
-        .footer-seals strong {
-            color: var(--color-text-light);
-            font-weight: normal;
-        }
-
-        .footer-seals span:not(.footer-emoji) {
-            vertical-align: middle;
-        }
-
-        .footer-seals span + span {
-            margin-left: var(--space-xs);
-        }
-
-        .footer-seals span + span::before {
-            content: "|";
-            margin-right: var(--space-xs);
-            color: var(--color-border-light);
-        }
-
-        /* Ajustes Mobile */
+        /* Ajustes Mobile (Mantido com ajustes anteriores e novos) */
         @media (max-width: 600px) {
-            h1 {
-                font-size: var(--text-xl);
-            }
-
-            h2 {
-                font-size: var(--text-lg);
-            }
-
-            h3 {
-                font-size: calc(var(--text-lg) * 0.95);
-            }
-
-            .section {
-                padding: var(--space-md) var(--space-sm);
-                margin-bottom: var(--space-lg);
-            }
-
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-                margin-bottom: var(--space-sm);
-            }
-
-            .benefit-item {
-                gap: var(--space-sm);
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .emoji {
-                margin-bottom: var(--space-xs);
-            }
-
-            .swiper-slide img {
-                height: 280px;
-            }
-
-            #leadForm {
-                max-width: 100%;
-                gap: var(--space-sm);
-            }
-
-            #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] {
-                padding: var(--space-sm);
-            }
-
-            .whatsapp-btn {
-                display: block;
-                width: 100%;
-                font-size: var(--text-md);
-                padding: var(--space-sm) var(--space-md);
-            }
-
-            #leadForm .whatsapp-btn {
-                width: 100%;
-            }
-
-            #floating-whatsapp-button {
-                width: 55px;
-                height: 55px;
-                bottom: var(--space-sm);
-                right: var(--space-sm);
-            }
-
-            #floating-whatsapp-button svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .footer-seals {
-                max-width: 100%;
-            }
-
-            .text-block-centered {
-                max-width: 100%;
-            }
-
-            .container {
-                padding-left: var(--space-sm);
-                padding-right: var(--space-sm);
-            }
+            h1 { font-size: var(--text-xl); }
+            h2 { font-size: var(--text-xl); } /* Ajusta H2 no mobile também */
+            h3 { font-size: calc(var(--text-lg) * 0.95); }
+            .section { padding: var(--space-md) var(--space-sm); margin-bottom: var(--space-lg);}
+            .profile-pic { width: 120px; height: 120px; margin-bottom: var(--space-sm); }
+            .benefit-item { gap: var(--space-sm); /* Reduz gap no mobile se necessário */ flex-direction: column; align-items: flex-start; }
+            .emoji { margin-bottom: var(--space-xs); }
+            .swiper-slide img { height: 280px; }
+            #leadForm { max-width: 100%; gap: var(--space-sm); } #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); }
+            .whatsapp-btn { display: block; width: 100%; font-size: var(--text-md); padding: var(--space-sm) var(--space-md); } #leadForm .whatsapp-btn { width: 100%; }
+            #floating-whatsapp-button { width: 55px; height: 55px; bottom: var(--space-sm); right: var(--space-sm); } #floating-whatsapp-button svg { width: 28px; height: 28px; }
+            .footer-seals { max-width: 100%; }
+            .text-block-centered { max-width: 100%; }
+            .container { padding-left: var(--space-sm); padding-right: var(--space-sm); }
         }
     </style>
 </head>
@@ -736,47 +255,46 @@
             <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
             <h1>Aqui suas unhas viram autoestima 💅</h1>
             <p class="returning-visitor-message" id="returningMessage">🎁 Presente pra você que voltou: Nail art filha única grátis!</p>
-            <p class="subtext-principal text-block-centered" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
+             <p class="subtext-principal text-block-centered" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
         </header>
 
         <section class="about-section section" id="sobre">
             <h2>Conheça a Rosane</h2>
-            <img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto da Rosane" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-sm);">
-            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[X]</strong> anos de dedicação e especialização em <strong>[Técnica 1]</strong> e <strong>[Técnica 2]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
+            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Com <strong>[INSIRA AQUI]</strong> anos de dedicação e especialização em <strong>[TÉCNICA 1]</strong> e <strong>[TÉCNICA 2]</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
         </section>
 
         <section class="welcome-section section" id="beneficios">
-            <h2 style="font-size: var(--text-xl); font-weight: bold;">Por Que Escolher a Rosane?</h2>
+            <h2>Por Que Escolher a Rosane?</h2>
             <div class="benefit-item">
                 <span class="emoji">💖</span>
                 <div>
-                    <strong style="font-size: var(--text-lg);">Atendimento Personalizado</strong>
+                    <strong>Atendimento Personalizado</strong>
                     <p>Aqui você não é só mais uma. Cuidado e exclusividade.</p>
-                    <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento%20personalizado." class="benefit-cta">Agende seu horário agora!</a>
+                    <a href="#contato" class="cta-link">Fale comigo agora! &rarr;</a>
                 </div>
             </div>
             <div class="benefit-item">
                 <span class="emoji">💎</span>
                 <div>
-                    <strong style="font-size: var(--text-lg);">Qualidade e Durabilidade</strong>
+                    <strong>Qualidade e Durabilidade</strong>
                     <p>Produtos de alta linha e técnicas que impressionam.</p>
-                    <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20saber%20mais%20sobre%20a%20qualidade%20e%20durabilidade%20dos%20seus%20servi%C3%A7os." class="benefit-cta">Saiba mais sobre nossos materiais!</a>
+                     <a href="#contato" class="cta-link">Agende seu horário! &rarr;</a>
                 </div>
             </div>
             <div class="benefit-item">
-                <span class="emoji">🌿</span>
+                 <span class="emoji">🌿</span>
                  <div>
-                    <strong style="font-size: var(--text-lg);">Higiene e Segurança</strong>
+                    <strong>Higiene e Segurança</strong>
                     <p>Ambiente 100% seguro e foco total na sua saúde.</p>
-                    <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20saber%20mais%20sobre%20os%20protocolos%20de%20higiene%20e%20seguran%C3%A7a." class="benefit-cta">Veja nossos protocolos!</a>
+                     <a href="#contato" class="cta-link">Conheça meu espaço! &rarr;</a>
                  </div>
             </div>
             <div class="benefit-item">
                 <span class="emoji">⏰</span>
                 <div>
-                    <strong style="font-size: var(--text-lg);">Seu Tempo é Precioso</strong>
+                    <strong>Seu Tempo é Precioso</strong>
                     <p>Respeito aos horários agendados, sem atrasos.</p>
-                    <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." class="benefit-cta">Agende agora e não perca tempo!</a>
+                     <a href="#contato" class="cta-link">Reserve seu momento! &rarr;</a>
                 </div>
             </div>
         </section>
@@ -785,11 +303,11 @@
             <h2>Meu Trabalho</h2>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Manicure Profissional - Exemplo 1"><p class="carousel-caption">Esmaltação clássica que nunca sai de moda.</p></div>
-                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Unhas Decoradas - Exemplo 2"><p class="carousel-caption">Delicadeza e arte em cada detalhe.</p></div>
-                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Esmaltação em Gel - Exemplo 3"><p class="carousel-caption">Durabilidade e brilho que você merece.</p></div>
-                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Nail Art Delicada - Exemplo 4"><p class="carousel-caption">Sua personalidade nas pontas dos dedos.</p></div>
-                </div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Manicure Profissional - Exemplo 1"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Unhas Decoradas - Exemplo 2"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/XoQS1ua.jpg" alt="Esmaltação em Gel - Exemplo 3"></div>
+                    <div class="swiper-slide"><img src="https://i.imgur.com/1vbr699.jpg" alt="Nail Art Delicada - Exemplo 4"></div>
+                 </div>
                 <div class="swiper-pagination"></div>
             </div>
             <p class="carousel-caption">Fotos de trabalhos reais feitos com carinho ❤️</p>
@@ -803,4 +321,179 @@
             </div>
             <div class="testimonial-card">
                 <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
-                <p class="testimonial-author"><img src="https://i.imgur.com
+                <p class="testimonial-author"><img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Mariana S."><strong>Mariana S.</strong> - Cachoeirinha/RS</p>
+            </div>
+             <div class="testimonial-card">
+                <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
+                <p class="testimonial-author"><img src="https://i.imgur.com/kCFcWBR.jpg" alt="Foto Juliana R."><strong>Juliana R.</strong> - Gravataí/RS</p>
+            </div>
+        </section>
+
+        <section class="form-cta-section section" id="contato">
+            <h3 id="formTitle">Agende seu Horário 💅</h3>
+            <p class="form-subtitle">Preencha abaixo e fale comigo no WhatsApp!</p>
+             <div id="formSuccessMessage">💌 Perfeito! Abrindo WhatsApp...</div>
+
+            <form id="leadForm" novalidate>
+                <div>
+                    <label for="firstName">Primeiro Nome:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                 </div>
+                <div>
+                    <label for="lastName">Sobrenome:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                 </div>
+                <div>
+                     <label for="email">Melhor E-mail:</label>
+                     <input type="email" id="email" name="email" required>
+                     <p class="microcopy">Apenas para confirmações.</p>
+                </div>
+                 <div>
+                    <label for="phone">WhatsApp (com DDD):</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{11}" maxlength="11" title="Ex: 51999998888" placeholder="Ex: 51999998888">
+                    <p class="microcopy">Para agendarmos rapidinho!</p>
+                </div>
+                 <div id="formError">Ops! Verifique os campos marcados.</div>
+
+                <button type="submit" class="btn whatsapp-btn" id="submitButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                    <span>Agendar meu horário</span>
+                </button>
+            </form>
+        </section>
+
+         <footer>
+            <p>📍 Atendimento em Gravataí/RS – <strong>[SEU BAIRRO OU REFERÊNCIA]</strong></p>
+            <div class="social-links">
+                 <a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" title="Fale comigo no WhatsApp">
+                    <i class="fab fa-whatsapp"></i> </a>
+                 <a href="[SEU LINK DO INSTAGRAM AQUI]" target="_blank" rel="noopener noreferrer" title="Siga-me no Instagram">
+                    <i class="fab fa-instagram"></i> </a>
+                 </div>
+            <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design.</p>
+            <p><a href="politica-privacidade.html" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | LGPD</p>
+             <div class="footer-seals">
+                <span>🔒 Dados seguros</span>
+                <span><span class="footer-emoji">❤️</span><strong>+500 Atendimentos</strong></span>
+            </div>
+        </footer>
+
+    </div><a href="https://wa.me/5551997549708?text=Ol%C3%A1%20Rosane!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+    // --- Funções Auxiliares ---
+    function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+
+    function handleReturningVisitor() {
+        const returningMessageElement = document.getElementById('returningMessage');
+        const mainSubtitleElement = document.getElementById('mainSubtitle');
+        const h1Element = document.querySelector('.profile-header h1');
+        const formTitleElement = document.getElementById('formTitle');
+        if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) { console.error("Elementos não encontrados em handleReturningVisitor."); return; }
+        if (localStorage.getItem('rosane_visited_before')) {
+            h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖';
+            mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
+            returningMessageElement.style.display = 'block';
+            formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
+        } else { localStorage.setItem('rosane_visited_before', 'true'); returningMessageElement.style.display = 'none'; }
+    }
+
+    // --- Lógica Principal no DOMContentLoaded ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializações Visuais
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        try {
+            var swiper = new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true }, autoplay: { delay: 4500, disableOnInteraction: false }, effect: "slide" });
+            console.log("Swiper inicializado.");
+        } catch (e) { console.error("Erro Swiper:", e); }
+
+        // Lógica de Visitante
+        handleReturningVisitor();
+
+        // --- Lógica do Formulário (SEM ALTERAÇÕES) ---
+        const leadForm = document.getElementById('leadForm');
+        const submitButton = document.getElementById('submitButton');
+        const formSuccessMessage = document.getElementById('formSuccessMessage');
+        const formError = document.getElementById('formError');
+        const phoneInput = document.getElementById('phone');
+        // Validação Live do Telefone
+        if (phoneInput) {
+            phoneInput.addEventListener('input', () => {
+                phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+                const isValidPhone = /^[0-9]{11}$/.test(phoneInput.value);
+                if (phoneInput.value.length > 0 && !isValidPhone) {
+                     phoneInput.classList.add('invalid-typing'); phoneInput.classList.remove('invalid-submit');
+                    phoneInput.style.borderColor = 'var(--color-warning)';
+                } else {
+                    phoneInput.classList.remove('invalid-typing'); phoneInput.style.borderColor = '';
+                    if (phoneInput.classList.contains('invalid-submit') && isValidPhone) { phoneInput.classList.remove('invalid-submit'); }
+                 }
+            });
+        } else { console.error("Input #phone não encontrado."); }
+
+        // Listener de Submit do Formulário
+        if (leadForm && submitButton && formSuccessMessage && formError) {
+            leadForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                formError.style.display = 'none';
+                formSuccessMessage.style.display = 'none';
+                let isValid = true;
+
+                // Validação Final
+                Array.from(leadForm.elements).forEach(input => {
+                    input.classList.remove('invalid-submit');
+                    if (input.type !== 'button' && input.type !== 'submit' && input.id !== 'formError' && input.id !== 'formSuccessMessage') {
+                         if(input.style.borderColor !== 'var(--color-warning)') { input.style.borderColor = 'var(--color-border)'; }
+                         input.classList.remove('invalid-submit');
+                    }
+                     if (input.offsetParent !== null && typeof input.checkValidity === 'function' && !input.checkValidity()) {
+                        isValid = false; input.classList.add('invalid-submit'); input.style.borderColor = 'var(--color-error)';
+                    }
+                });
+                 if (!isValid) {
+                    formError.textContent = "Ops! Verifique os campos marcados."; formError.style.display = 'block';
+                    console.error("Formulário inválido."); return;
+                }
+
+                // Formulário Válido -> Enviar
+                console.log("Enviando CAPI..."); formSuccessMessage.innerHTML = "💌 Enviando..."; formSuccessMessage.style.display = 'block';
+                submitButton.disabled = true; submitButton.style.opacity = '0.7'; submitButton.style.cursor = 'not-allowed';
+
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const fbp = getCookie("_fbp");
+                let externalId = localStorage.getItem("external_id");
+                if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
+
+                const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; // <- URL INTACTA
+                const eventData = { event_name: "Lead", event_source_url: window.location.href, fbp: fbp || "NA", external_id: externalId, user_data: { fn: firstName, ln: lastName, em: email, ph: phone } };
+                fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
+                .then(response => response.json().then(data => ({ok: response.ok, data, status: response.status })))
+                .then(({ok, data, status}) => {
+                    if (!ok) { throw new Error(`Erro ${status}: ${data?.message || 'API Error'}`); }
+                     console.log("Sucesso CAPI:", data);
+                    formSuccessMessage.innerHTML = "💌 Perfeito! Abrindo WhatsApp...";
+                    const preFilledMessage = `Olá Rosane! Me chamo ${firstName}, vi sua página e gostaria de mais informações.`;
+                    const whatsappUrl = `https://wa.me/5551997549708?text=${encodeURIComponent(preFilledMessage)}`;
+                     setTimeout(() => { window.location.href = whatsappUrl; }, 500);
+                })
+                .catch(error => {
+                    console.error("Falha no envio/redirect:", error);
+                    formSuccessMessage.style.display = 'none'; formError.textContent = `Erro: ${error.message}. Tente novamente.`; formError.style.display = 'block';
+                })
+                .finally(() => {
+                    setTimeout(() => { submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer'; }, 4000);
+                });
+            });
+        } else { console.error("Elementos do formulário não encontrados."); }
+
+    }); // Fim DOMContentLoaded
+    </script>
+</body>
+</html>
