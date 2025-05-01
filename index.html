@@ -393,7 +393,7 @@
     }
 
     // --- Função Async para Efeito de Digitação ---
-    async function typeMessage(element, message, delay = 35) {
+    async function typeMessage(element, message, delay = 100) {
         return new Promise(async (resolve) => {
             element.innerHTML = ""; element.style.whiteSpace = "pre-line";
             for (let i = 0; i < message.length; i++) {
@@ -479,14 +479,14 @@
 
                 // --- Sequência de Mensagens com Await ---
                 try {
-                    await typeMessage(formSuccessMessage, `💖 "Ei... é você aí mesmo? Já senti tua energia antes de te ver."`, 35);
-                    await new Promise(res => setTimeout(res, 500));
+                    await typeMessage(formSuccessMessage, `💖 "Ei... é você aí mesmo? Já senti tua energia antes de te ver."`, 100);
+                    await new Promise(res => setTimeout(res, 800));
 
-                    await typeMessage(formSuccessMessage, `🕊️ "Respira... só de ter chegado até aqui, já provou pra si mesma que merece cuidado. Não só por fora. Mas aqui dentro."`, 35);
-                    await new Promise(res => setTimeout(res, 500));
+                    await typeMessage(formSuccessMessage, `🕊️ "Respira... só de ter chegado até aqui, já provou pra si mesma que merece cuidado. Não só por fora. Mas aqui dentro."`, 100);
+                    await new Promise(res => setTimeout(res, 1500));
 
-                    await typeMessage(formSuccessMessage, `🌷 "Enquanto o mundo corre, explode, cobra e esfria...\neu te vejo. De verdade.\nE tô aqui, no meu cantinho, de mãos limpas e alma quente,\nesperando pra cuidar de ti como tu merece."`, 35);
-                    await new Promise(res => setTimeout(res, 1500)); // Espera 1.5s após a msg final
+                    await typeMessage(formSuccessMessage, `🌷 "Enquanto o mundo corre, explode, cobra e esfria...\neu te vejo. De verdade.\nE tô aqui, no meu cantinho, de mãos limpas e alma quente,\nesperando pra cuidar de ti como tu merece."`, 100);
+                    await new Promise(res => setTimeout(res, 2500)); // Espera 1.5s após a msg final
 
                      // --- Decisão Final: Redirecionar ou Mostrar Erro Empático ---
                      // Espera um pouco mais caso a API esteja terminando
