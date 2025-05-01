@@ -393,7 +393,7 @@
     }
 
     // --- Função Async para Efeito de Digitação ---
-    async function typeMessage(element, message, delay = 100) {
+    async function typeMessage(element, message, delay = 80) {
         return new Promise(async (resolve) => {
             element.innerHTML = ""; element.style.whiteSpace = "pre-line";
             for (let i = 0; i < message.length; i++) {
@@ -479,13 +479,13 @@
 
                 // --- Sequência de Mensagens com Await ---
                 try {
-                    await typeMessage(formSuccessMessage, `🧾 "Recebi teu nome aqui. Relaxa. Ninguém vai te cobrar nada, nem pedir nada. Aqui é só pra te lembrar que tu também merece um tempinho só teu — mesmo que o mundo inteiro ache que tu tem que dar conta de tudo."`, 100);
-                    await new Promise(res => setTimeout(res, 800));
-
-                    await typeMessage(formSuccessMessage, `💅 "Tá difícil parar, né? Sempre tem alguma coisa: a compra que atrasou, a criança grudada na perna, a cabeça que não para nem dormindo. Mas tu chegou até aqui. E só por isso, já tá fazendo mais por ti do que metade do povo que vive dizendo 'se cuida' sem nem olhar na cara."`, 100);
+                    await typeMessage(formSuccessMessage, `🧾 Recebi teu nome aqui. Relaxa. Ninguém vai te cobrar nada, nem pedir nada. Aqui é só pra te <strong>lembrar</strong> que tu também merece um tempinho só teu — mesmo que o mundo inteiro ache que tu tem que dar conta de tudo.`, 80);
                     await new Promise(res => setTimeout(res, 1500));
 
-                    await typeMessage(formSuccessMessage, `🪑 "Agora é contigo. Já preparei tudo. Quando tu chegar, só senta. Não precisa sorrir, não precisa fingir nada. Aqui não tem julgamento, só cuidado — do tipo que tu devia estar recebendo faz tempo."`, 100);
+                    await typeMessage(formSuccessMessage, `💅 Tá difícil parar, né? Sempre tem alguma coisa: a compra que atrasou, a criança grudada na perna, a cabeça que não para nem dormindo. Mas tu chegou até aqui. E só por isso, já tá fazendo mais por ti do que metade do povo que vive dizendo <strong>'se cuida'</strong> sem nem olhar na cara.`, 100);
+                    await new Promise(res => setTimeout(res, 1500));
+
+                    await typeMessage(formSuccessMessage, `🪑 Agora é contigo. Já preparei tudo. Quando tu chegar, só senta. Não precisa sorrir, não precisa fingir nada. Aqui não tem julgamento, só cuidado — <strong>do tipo que tu devia estar recebendo faz tempo.</strong>💖`, 80);
                     await new Promise(res => setTimeout(res, 2500)); // Espera 1.5s após a msg final
 
                      // --- Decisão Final: Redirecionar ou Mostrar Erro Empático ---
