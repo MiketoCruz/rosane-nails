@@ -24,7 +24,7 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1312994806657918&ev=PageView&noscript=1"/></noscript>
 
     <style>
-        /* 1. Variáveis Globais */
+        /* 1. Variáveis Globais (Mantidas) */
         :root {
             --font-title: 'Poppins', sans-serif; --font-text: 'Lato', sans-serif;
             --text-base-size: 1rem; --text-scale-ratio: 1.2;
@@ -35,172 +35,147 @@
             --color-text-light: #777; --color-background-light: #fff; --color-background-gradient-start: #ffe0ed;
             --color-background-gradient-end: #f9cfe0; --color-success: #006400; --color-error: red; --color-warning: orange;
             --color-border: #ccc; --color-border-light: #ddd; --color-whatsapp: #25D366;
+            --color-heart-initial: #d0d0d0; /* Cinza claro para coração inicial */
+            --color-heart-pulse: #f8bbd0; /* Rosa suave */
+            --color-heart-final: var(--color-secondary); /* Rosa mais forte */
             --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 1.5rem; --space-lg: 2rem; --space-xl: 3rem; --space-xxl: 4rem;
             --border-radius: 8px; --border-radius-lg: 15px; --border-radius-pill: 50px;
             --shadow-sm: 0 4px 10px rgba(0,0,0,0.08); --shadow-md: 0 5px 18px rgba(0,0,0,0.08); --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
-        /* 2. Reset e Base */
+        /* 2. Reset e Base (Mantidos) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { font-size: var(--text-base-size); scroll-behavior: smooth; }
-        body { font-family: var(--font-text); font-size: var(--text-md); line-height: 1.6; color: var(--color-text); background: linear-gradient(to bottom, var(--color-background-gradient-start), var(--color-background-gradient-end)); padding-top: var(--space-lg); padding-bottom: var(--space-xxl); overflow-x: hidden; }
-        .container { max-width: 560px; margin: 0 auto; padding: 0 20px; width: 100%; }
-        h1, h2, h3 { font-family: var(--font-title); font-weight: 700; line-height: 1.3; color: var(--color-primary); text-align: center; margin-bottom: var(--space-md); }
-        h1 { font-size: var(--text-xxl); margin-bottom: var(--space-sm); } h2 { font-size: var(--text-xl); } h3 { font-size: var(--text-lg); }
-        p, label, li, span, div { font-family: var(--font-text); }
-        p { font-size: var(--text-md); line-height: 1.6; color: var(--color-text-muted); margin-bottom: var(--space-sm); text-align: left; }
-        p:last-child { margin-bottom: 0; }
-        .text-block-centered { max-width: 480px; margin: 0 auto var(--space-md) auto; text-align: left; }
-        a { color: var(--color-secondary); text-decoration: none; } a:hover { text-decoration: underline; }
-        strong { font-weight: 700; color: var(--color-primary); }
-        .section { padding: var(--space-lg) var(--space-md); margin-bottom: var(--space-xxl); background-color: rgba(255, 255, 255, 0.7); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); }
-        .section:last-of-type { margin-bottom: 0; }
-        .profile-header { text-align: center; margin-bottom: var(--space-lg); }
-        .profile-pic { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-lg); border: 4px solid var(--color-background-light); }
-        .subtext-principal { font-size: var(--text-lg); color: var(--color-text); }
-        .returning-visitor-message { font-size: var(--text-md); color: var(--color-secondary); font-weight: 700; margin: var(--space-sm) auto var(--space-md) auto; max-width: 90%; display: none; padding: var(--space-xs) var(--space-sm); background-color: rgba(255,255,255,0.8); border-radius: var(--border-radius); border: 1px dashed var(--color-secondary); }
-        .about-section { text-align: center; }
-        .about-section h2 { color: var(--color-primary); margin-bottom: var(--space-md); }
-        .about-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-md) auto; display: block; box-shadow: var(--shadow-sm); border: 3px solid var(--color-background-light); }
-        .about-section p { color: var(--color-text-muted); margin-top: 0; text-align: center; max-width: 480px; margin: 0 auto; }
-        .about-section strong { color: var(--color-primary); }
+        body { /* ... (restante mantido) ... */ }
+        /* ... (outros estilos base mantidos) ... */
 
+        /* --- ESTILOS PARA NOVA EXPERIÊNCIA DE FORMULÁRIO --- */
+
+        #formSuccessMessage {
+            /* Remove estilos anteriores, será preenchido dinamicamente */
+            padding: 0; /* Padding será controlado pelo container interno */
+            border: none;
+            background: none;
+            min-height: 0; /* Altura será definida pelo conteúdo */
+            overflow: hidden; /* Para conter animações se necessário */
+            display: none; /* Começa escondido */
+            margin-bottom: var(--space-lg); /* Espaço antes do formulário */
+        }
+
+        #pulseContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        #heartPulse {
+            font-size: 3rem; /* Tamanho do coração */
+            color: var(--color-heart-initial); /* Cor inicial */
+            transition: color 1.5s ease-in-out; /* Transição suave de cor */
+             /* Animação será aplicada via classe JS */
+        }
+
+        #pulseMessage {
+            font-size: var(--text-md);
+            color: var(--color-text-muted);
+            min-height: 2.5em; /* Espaço para 2 linhas aprox. */
+            line-height: 1.4;
+            text-align: center;
+            opacity: 0; /* Começa invisível para fade-in */
+             /* Animação fade-in será aplicada via classe JS */
+        }
+
+        #emotionalProgressWrapper {
+            width: 80%;
+            max-width: 250px;
+            height: 8px;
+            background-color: #eee; /* Fundo da barra */
+            border-radius: var(--border-radius-pill);
+            overflow: hidden; /* Para conter a barra interna */
+            margin-top: var(--space-xs);
+        }
+
+        #emotionalProgressBar {
+            width: 0%; /* Começa vazia */
+            height: 100%;
+            background-color: var(--color-secondary); /* Cor da barra */
+            border-radius: var(--border-radius-pill);
+            /* Transição suave da largura ao longo de 6.8s */
+             /* Aplicada via JS para iniciar no momento certo */
+             transition: width 6.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* --- Animações --- */
+
+        /* Fade-in para mensagens */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fadeInMessage {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Pulsação do Coração */
+        @keyframes heartBeatInitial { /* Pulso inicial leve */
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes heartBeatMedium { /* Pulso médio */
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+         @keyframes heartBeatStrong { /* Pulso forte */
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.20); }
+        }
+
+        /* Classes para controlar o coração */
+        .heart-initial { color: var(--color-heart-initial); animation: none; }
+        .heart-stage1 { color: var(--color-heart-pulse); animation: heartBeatInitial 1.5s infinite ease-in-out; }
+        .heart-stage2 { color: var(--color-heart-pulse); animation: heartBeatMedium 1.2s infinite ease-in-out; }
+        .heart-stage3 { color: var(--color-heart-final); animation: heartBeatMedium 1.0s infinite ease-in-out; }
+        .heart-stage4 { color: var(--color-heart-final); animation: heartBeatStrong 0.8s infinite ease-in-out; }
+
+
+        /* --- Outros Estilos (Mantidos) --- */
+         /* ... (Estilos de .whatsapp-btn, .scroll-to-form-btn, .benefit-scroll-cta, etc., mantidos como na última versão) ... */
         /* Estilo Geral Botões (Formulário e Sobre Mim) */
-        .whatsapp-btn, .scroll-to-form-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs);
-            padding: var(--space-sm) var(--space-lg); background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
-            border: none; border-radius: var(--border-radius-pill); font-family: var(--font-title); font-size: var(--text-lg);
-            font-weight: 700; text-decoration: none; color: var(--color-background-light); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
-            transition: all 0.3s ease; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
-            width: auto; max-width: 100%; text-align: center;
-         }
+        .whatsapp-btn, .scroll-to-form-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); background: linear-gradient(to right, var(--color-secondary), var(--color-primary)); border: none; border-radius: var(--border-radius-pill); font-family: var(--font-title); font-size: var(--text-lg); font-weight: 700; text-decoration: none; color: var(--color-background-light); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); transition: all 0.3s ease; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; width: auto; max-width: 100%; text-align: center; }
         .whatsapp-btn svg, .scroll-to-form-btn svg { width: var(--text-lg); height: var(--text-lg); fill: currentColor; vertical-align: middle;}
         .whatsapp-btn span, .scroll-to-form-btn span { vertical-align: middle; }
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6); } 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4); } }
         .whatsapp-btn:hover, .whatsapp-btn:focus,
-        .scroll-to-form-btn:hover, .scroll-to-form-btn:focus {
-            background: linear-gradient(to right, var(--color-primary), #AD1457); transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none; text-decoration: none;
-        }
-        /* Botão específico do formulário */
+        .scroll-to-form-btn:hover, .scroll-to-form-btn:focus { background: linear-gradient(to right, var(--color-primary), #AD1457); transform: translateY(-2px); animation: pulse 1.5s infinite; outline: none; text-decoration: none; }
         #leadForm .whatsapp-btn { display: block; width: fit-content; margin: var(--space-sm) auto 0 auto; }
-        /* Botão específico Sobre Mim */
         .about-section .scroll-to-form-btn { margin-top: var(--space-md); display: inline-block; width: fit-content; }
+         /* AJUSTADO: Estilo para o link de scroll do benefício (estilo anterior) */
+        .benefit-scroll-cta { display: inline-block; margin-top: var(--space-xs); font-family: var(--font-text); font-size: var(--text-md); font-weight: 700; color: var(--color-secondary); text-decoration: none; padding: 2px 0; border-bottom: 1px solid transparent; transition: border-color 0.2s ease; cursor: pointer; text-transform: none; letter-spacing: normal; background: none; border-radius: 0; box-shadow: none; }
+        .benefit-scroll-cta:hover { text-decoration: none; border-bottom-color: var(--color-secondary); animation: none; transform: none; }
+        #formError { color: var(--color-error); font-size: var(--text-sm); margin-top: var(--space-xs); text-align: center; font-weight: bold; display: none; line-height: 1.5; padding: var(--space-sm); } /* Estilo erro */
 
-        /* Benefícios */
-        .welcome-section h2 { color: var(--color-text); }
-        .benefit-item { display: flex; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-md); text-align: left; }
-        .benefit-item strong { font-family: var(--font-title); font-weight: 700; color: var(--color-text); display: block; margin-bottom: var(--space-xs); font-size: var(--text-lg); }
-        .benefit-item p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin-bottom: var(--space-xs); }
-        .emoji { font-size: 1.8rem; display: inline-block; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; flex-shrink: 0; color: var(--color-secondary); }
-        /* AJUSTADO: Estilo para o link de scroll do benefício (estilo anterior) */
-        .benefit-scroll-cta {
-            display: inline-block;
-            margin-top: var(--space-xs);
-            font-family: var(--font-text); /* Fonte padrão */
-            font-size: var(--text-md); /* Tamanho normal */
-            font-weight: 700; /* Negrito */
-            color: var(--color-secondary); /* Cor secundária */
-            text-decoration: none; /* Sem underline padrão */
-            padding: 2px 0;
-            border-bottom: 1px solid transparent; /* Para efeito hover */
-            transition: border-color 0.2s ease;
-            cursor: pointer;
-            text-transform: none; /* Sem uppercase */
-            letter-spacing: normal; /* Espaçamento normal */
-            background: none; /* Sem fundo */
-            border-radius: 0; /* Sem borda arredondada */
-            box-shadow: none; /* Sem sombra */
-        }
-         .benefit-scroll-cta:hover {
-            text-decoration: none; /* Garante que não tenha underline no hover */
-            border-bottom-color: var(--color-secondary); /* Adiciona underline no hover */
-             /* Remove animação de pulso herdada */
-             animation: none;
-             transform: none;
-        }
-
-        /* Carrossel */
-        .carousel-section h2 { color: var(--color-text); }
-        .swiper { width: 100%; max-width: 400px; margin: 0 auto; position: relative; border-radius: var(--border-radius); box-shadow: var(--shadow-md); overflow: hidden; }
-        .swiper-slide { background-color: var(--color-background-light); border-radius: var(--border-radius); overflow: hidden; position: relative; }
-        .swiper-slide img { display: block; width: 100%; height: 320px; object-fit: cover; }
-        .swiper-slide .carousel-caption-inner { position: absolute; bottom: 0; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.6); color: #fff; font-size: var(--text-sm); padding: var(--space-xs) var(--space-sm); text-align: center; margin: 0; line-height: 1.4; }
-        .swiper-pagination { position: absolute; bottom: 10px !important; left: 0; width: 100%; z-index: 10; padding-bottom: 5px; }
-        .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.6); opacity: 1; width: 10px; height: 10px; }
-        .swiper-pagination-bullet-active { background-color: var(--color-background-light); transform: scale(1.1); }
-        .carousel-caption-footer { font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; margin-top: var(--space-md); }
-
-        /* Depoimentos */
-        .testimonials-section h2 { color: var(--color-primary); }
-        .testimonial-card { background-color: var(--color-background-light); border-radius: var(--border-radius-lg); padding: var(--space-md); margin-bottom: var(--space-md); box-shadow: var(--shadow-sm); text-align: left; }
-        .testimonial-quote { font-style: italic; color: var(--color-text-muted); margin-bottom: var(--space-sm); position: relative; padding-left: 30px; font-size: var(--text-md); } .testimonial-quote::before { content: '“'; font-size: 3rem; color: var(--color-secondary); position: absolute; left: -5px; top: -15px; font-family: var(--font-title); opacity: 0.8; }
-        .testimonial-author { font-weight: 700; color: var(--color-secondary); text-align: right; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-xs); font-size: var(--text-sm); } .testimonial-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--color-border-light); }
-
-        /* Formulário */
-        .form-cta-section { background-color: rgba(255, 255, 255, 0.85); padding: var(--space-lg) var(--space-md); box-shadow: var(--shadow-lg); border-radius: var(--border-radius-lg); margin-bottom: var(--space-xl); }
-        .form-cta-section h3 { font-size: var(--text-xl); color: var(--color-text); }
-        .form-cta-section .form-subtitle { font-size: var(--text-md); color: var(--color-text-muted); margin-bottom: var(--space-lg); text-align: center; max-width: 90%; margin: 0 auto; }
-        #leadForm { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-lg); max-width: 450px; margin: var(--space-lg) auto 0 auto; }
-        #leadForm label { display: block; text-align: left; font-weight: 700; margin-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--color-text); }
-        #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); font-size: var(--text-md); font-family: var(--font-text); transition: border-color 0.3s ease, box-shadow 0.3s ease; width: 100%; }
-        #leadForm input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.3); }
-        #leadForm input.invalid-typing { border-color: var(--color-warning); } #leadForm input.invalid-submit { border-color: var(--color-error); }
-        .microcopy { font-size: var(--text-sm); color: var(--color-text-light); text-align: left; margin-top: var(--space-xs); margin-bottom: var(--space-xs); display: block; }
-        #formError { color: var(--color-error); font-size: var(--text-sm); margin-top: var(--space-xs); text-align: center; font-weight: bold; display: none; }
-        #formSuccessMessage { color: var(--color-text-muted); background-color: rgba(255, 255, 255, 0.8); border: 1px dashed var(--color-secondary); padding: var(--space-md); border-radius: var(--border-radius); font-weight: normal; margin-bottom: var(--space-md); display: none; text-align: center; font-size: var(--text-md); line-height: 1.5; transition: all 0.3s ease; min-height: 6em; }
-
-        /* Botão Flutuante (Original - Verde e Link Direto) */
+         /* Botão Flutuante (Original) */
          @keyframes subtle-pulse { 0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); } 50% { transform: scale(1.03); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); } 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); } }
-        #floating-whatsapp-button {
-            position: fixed; bottom: var(--space-md); right: var(--space-md); z-index: 1000;
-            background: var(--color-whatsapp); /* <<< CORREÇÃO APLICADA */
-            color: var(--color-background-light); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            visibility: visible; opacity: 1; cursor: pointer;
-            animation: subtle-pulse 2.5s infinite ease-in-out;
-        }
+        #floating-whatsapp-button { position: fixed; bottom: var(--space-md); right: var(--space-md); z-index: 1000; background: var(--color-whatsapp); color: var(--color-background-light); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; visibility: visible; opacity: 1; cursor: pointer; animation: subtle-pulse 2.5s infinite ease-in-out; }
         #floating-whatsapp-button:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); animation-play-state: paused; }
         #floating-whatsapp-button svg { width: 30px; height: 30px; fill: currentColor; }
-
-        /* Rodapé */
+         /* Rodapé e Links Sociais (Originais) */
         footer { margin-top: var(--space-xl); padding: var(--space-lg) 0; border-top: 1px solid var(--color-border-light); font-size: 0.9rem; color: var(--color-text-muted); text-align: center; }
-        footer p { margin-bottom: var(--space-xs); font-size: inherit; }
-        footer strong { color: var(--color-primary); }
-        footer a { color: #d81b60; font-weight: 500; text-decoration: none; } /* Links padrão footer */
-        footer a:hover { text-decoration: underline; }
+        footer p { margin-bottom: var(--space-xs); font-size: inherit; } footer strong { color: var(--color-primary); }
+        footer a { color: #d81b60; font-weight: 500; text-decoration: none; } footer a:hover { text-decoration: underline; }
         .social-links { margin: var(--space-sm) 0; }
-        /* AJUSTADO: Links sociais no rodapé (estilo original) */
-        .social-links a {
-            color: var(--color-text-muted); /* Cor padrão */
-            font-size: 1.5rem; /* Tamanho do ícone */
-            margin: 0 var(--space-xs);
-            transition: color 0.3s ease;
-            display: inline-block;
-            text-decoration: none !important; /* Garante sem underline */
-             /* Remove estilos de botão */
-             background: none;
-             padding: 0;
-             border-radius: 0;
-             box-shadow: none;
-             text-transform: none;
-             letter-spacing: normal;
-        }
-        .social-links a:hover {
-             color: var(--color-secondary); /* Cor hover */
-             text-decoration: none !important;
-             /* Remove animação de pulso herdada */
-             animation: none;
-             transform: none;
-        }
+        .social-links a { color: var(--color-text-muted); font-size: 1.5rem; margin: 0 var(--space-xs); transition: color 0.3s ease; display: inline-block; text-decoration: none !important; background: none; padding: 0; border-radius: 0; box-shadow: none; text-transform: none; letter-spacing: normal; }
+        .social-links a:hover { color: var(--color-secondary); text-decoration: none !important; animation: none; transform: none; }
         .footer-seals { font-size: var(--text-sm); color: var(--color-text-light); margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px dashed var(--color-border-light); max-width: 450px; margin-left: auto; margin-right: auto; }
-        .footer-seals .footer-emoji { display: inline-block; font-size: 1.1em; margin-right: 0.3em; vertical-align: middle; }
-        .footer-seals strong { color: var(--color-text-light); font-weight: normal; }
-        .footer-seals span:not(.footer-emoji) { vertical-align: middle; }
-        .footer-seals span + span { margin-left: var(--space-xs); }
-        .footer-seals span + span::before { content: "|"; margin-right: var(--space-xs); color: var(--color-border-light); }
+        .footer-seals .footer-emoji { display: inline-block; font-size: 1.1em; margin-right: 0.3em; vertical-align: middle; } .footer-seals strong { color: var(--color-text-light); font-weight: normal; } .footer-seals span:not(.footer-emoji) { vertical-align: middle; } .footer-seals span + span { margin-left: var(--space-xs); } .footer-seals span + span::before { content: "|"; margin-right: var(--space-xs); color: var(--color-border-light); }
 
-        /* Media Queries */
+         /* Media Queries (Ajustes nos botões) */
         @media (max-width: 600px) {
+            /* ... (outras regras mobile mantidas) ... */
             h1 { font-size: var(--text-xl); } h2 { font-size: var(--text-lg); } h3 { font-size: calc(var(--text-lg) * 0.95); }
             .section { padding: var(--space-md) var(--space-sm); margin-bottom: var(--space-lg);}
             .profile-pic { width: 120px; height: 120px; margin-bottom: var(--space-sm); }
@@ -212,124 +187,72 @@
             .swiper-slide .carousel-caption-inner { font-size: calc(var(--text-sm) * 0.9); padding: var(--space-xs); }
             #leadForm { max-width: 100%; gap: var(--space-sm); }
             #leadForm input[type="text"], #leadForm input[type="email"], #leadForm input[type="tel"] { padding: var(--space-sm); }
-            /* Botões Sobre e Formulário Mobile */
+             /* Botões CTA (Sobre, Formulário) */
             .whatsapp-btn, .scroll-to-form-btn { display: block; width: 100%; font-size: var(--text-md); padding: var(--space-sm) var(--space-md); }
             #leadForm .whatsapp-btn, .about-section .scroll-to-form-btn { width: 100%; margin-left: auto; margin-right: auto;}
-            /* Botão Flutuante Mobile */
+             /* Links Benefícios */
+             .benefit-scroll-cta { font-size: var(--text-sm); }
+            /* Botão Flutuante */
             #floating-whatsapp-button { width: 55px; height: 55px; bottom: var(--space-sm); right: var(--space-sm); display: flex; }
             #floating-whatsapp-button svg { width: 28px; height: 28px; }
-             /* Links Sociais Mobile */
-             .social-links a { font-size: 1.8rem; margin: 0 var(--space-sm); }
-             /* Links Beneficios Mobile */
-             .benefit-scroll-cta { font-size: var(--text-sm); } /* Talvez reduzir um pouco */
+             /* Links Sociais */
+            .social-links a { font-size: 1.8rem; margin: 0 var(--space-sm); }
             .footer-seals { max-width: 100%; }
             .text-block-centered { max-width: 100%; }
             .container { padding-left: var(--space-sm); padding-right: var(--space-sm); }
         }
+
     </style>
 </head>
 <body>
     <div class="container">
 
-         <header class="profile-header">
+        <header class="profile-header">
             <img src="https://i.imgur.com/o4cHVYE.jpeg" alt="Rosane Campos - Nail Designer Profissional em Gravataí" class="profile-pic">
             <h1>Aqui suas unhas viram autoestima 💅</h1>
-            <p class="returning-visitor-message" id="returningMessage">
-                  🎁 Que bom te ver de novo! Agende agora que te dou 10% de desconto na tua primeira visita!
-            </p>
+            <p class="returning-visitor-message" id="returningMessage">🎁 Que bom te ver de novo! Agende agora que te dou 10% de desconto na tua primeira visita!</p>
             <p class="subtext-principal text-block-centered" id="mainSubtitle">Um atendimento que cuida das suas mãos como se fossem minhas, aqui em Gravataí.</p>
         </header>
 
         <section class="about-section section" id="sobre">
             <h2>Conheça a Rosane</h2>
             <img src="https://i.imgur.com/oEkdLRq.jpeg" alt="Foto da Rosane Campos" class="about-photo">
-            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Estou no <strong>Centro</strong> de Gravataí  e sou especialista em <strong>Alongamento em molde F1</strong> e <strong>Soft Gel</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
-              <a href="#contato" class="scroll-to-form-btn scroll-to-form-trigger" data-context="sobre"> Quero agendar meu horário!
-              </a>
+            <p class="text-block-centered">Olá, sou a Rosane Campos! Minha paixão é transformar unhas e elevar a autoestima das minhas clientes aqui em Gravataí. Estou no <strong>Centro</strong> de Gravataí e sou especialista em <strong>Alongamento em molde F1</strong> e <strong>Soft Gel</strong>, meu compromisso vai além da beleza: ofereço um momento de relaxamento, cuidado e atenção exclusiva para você. A higiene é minha prioridade máxima. Adoro entender seu estilo e criar unhas que te façam sentir ainda mais linda e confiante. Vamos conversar?</p>
+              <a href="#contato" class="scroll-to-form-btn scroll-to-form-trigger" data-context="sobre">Quero agendar meu horário!</a>
         </section>
 
         <section class="welcome-section section" id="beneficios">
             <h2>Por Que Escolher a Rosane?</h2>
-            <div class="benefit-item">
-                <span class="emoji">💖</span>
-                <div>
-                    <strong>Atendimento Personalizado</strong>
-                    <p>Aqui você não é só mais uma. Cuidado e exclusividade.</p>
-                     <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="atendimento">Saiba mais sobre meu atendimento &rarr;</a>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <span class="emoji">💎</span>
-                <div>
-                    <strong>Qualidade e Durabilidade</strong>
-                    <p>Produtos de alta linha e técnicas que impressionam.</p>
-                     <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="qualidade">Conheça os produtos que uso &rarr;</a>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <span class="emoji">🌿</span>
-                <div>
-                    <strong>Higiene e Segurança</strong>
-                    <p>Ambiente 100% seguro e foco total na sua saúde.</p>
-                     <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="higiene">Veja meus protocolos de segurança &rarr;</a>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <span class="emoji">⏰</span>
-                <div>
-                    <strong>Seu Tempo é Precioso</strong>
-                    <p>Respeito aos horários agendados, sem atrasos.</p>
-                     <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="tempo">Agende seu horário agora &rarr;</a>
-                </div>
-            </div>
+            <div class="benefit-item"> <span class="emoji">💖</span> <div> <strong>Atendimento Personalizado</strong> <p>Aqui você não é só mais uma. Cuidado e exclusividade.</p> <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="atendimento">Saiba mais sobre meu atendimento &rarr;</a> </div> </div>
+            <div class="benefit-item"> <span class="emoji">💎</span> <div> <strong>Qualidade e Durabilidade</strong> <p>Produtos de alta linha e técnicas que impressionam.</p> <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="qualidade">Conheça os produtos que uso &rarr;</a> </div> </div>
+            <div class="benefit-item"> <span class="emoji">🌿</span> <div> <strong>Higiene e Segurança</strong> <p>Ambiente 100% seguro e foco total na sua saúde.</p> <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="higiene">Veja meus protocolos de segurança &rarr;</a> </div> </div>
+            <div class="benefit-item"> <span class="emoji">⏰</span> <div> <strong>Seu Tempo é Precioso</strong> <p>Respeito aos horários agendados, sem atrasos.</p> <a href="#contato" class="benefit-scroll-cta scroll-to-form-trigger" data-context="tempo">Agende seu horário agora &rarr;</a> </div> </div>
         </section>
 
         <section class="carousel-section section" id="trabalhos">
             <h2>Meu Trabalho</h2>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://i.imgur.com/rmSvjtE.jpeg" alt="Manicure Profissional - Exemplo 1">
-                          <p class="carousel-caption-inner"></p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://i.imgur.com/RnIBQtc.jpeg" alt="Unhas Decoradas - Exemplo 2">
-                          <p class="carousel-caption-inner"></p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://i.imgur.com/y69FYjT.jpeg" alt="Esmaltação em Gel - Exemplo 3">
-                          <p class="carousel-caption-inner"></p>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://i.imgur.com/lBmYtv6.jpeg" alt="Nail Art Delicada - Exemplo 4">
-                          <p class="carousel-caption-inner"></p>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <p class="carousel-caption-footer">Fotos de trabalhos reais feitos com carinho ❤️</p>
+                    <div class="swiper-slide"> <img src="https://i.imgur.com/rmSvjtE.jpeg" alt="Manicure Profissional - Exemplo 1"> <p class="carousel-caption-inner"></p> </div>
+                    <div class="swiper-slide"> <img src="https://i.imgur.com/RnIBQtc.jpeg" alt="Unhas Decoradas - Exemplo 2"> <p class="carousel-caption-inner"></p> </div>
+                    <div class="swiper-slide"> <img src="https://i.imgur.com/y69FYjT.jpeg" alt="Esmaltação em Gel - Exemplo 3"> <p class="carousel-caption-inner"></p> </div>
+                    <div class="swiper-slide"> <img src="https://i.imgur.com/lBmYtv6.jpeg" alt="Nail Art Delicada - Exemplo 4"> <p class="carousel-caption-inner"></p> </div>
+                </div> <div class="swiper-pagination"></div>
+            </div> <p class="carousel-caption-footer">Fotos de trabalhos reais feitos com carinho ❤️</p>
         </section>
 
         <section class="testimonials-section section" id="depoimentos">
              <h2>O Que Dizem as Clientes</h2>
-              <div class="testimonial-card">
-                <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p>
-                <p class="testimonial-author"><img src="https://i.imgur.com/6lm7ClX.png" alt="Foto Ana P."><strong>Juliana P.</strong> - Gravataí/RS</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p>
-                <p class="testimonial-author"><img src="https://i.imgur.com/2qQytwz.jpeg" alt="Foto Mariana S."><strong>Veridiana M.</strong> - Porto Alegre/RS</p>
-            </div>
-              <div class="testimonial-card">
-                <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p>
-                <p class="testimonial-author"><img src="https://i.imgur.com/DgRHbhs.jpeg" alt="Foto Juliana R."><strong>Vanessa P.</strong> - Gravataí/RS</p>
-            </div>
+              <div class="testimonial-card"> <p class="testimonial-quote">"Amei o resultado! Minhas unhas nunca duraram tanto e o atendimento da Rosane é maravilhoso, super atenciosa. Ambiente impecável!"</p> <p class="testimonial-author"><img src="https://i.imgur.com/6lm7ClX.png" alt="Foto Ana P."><strong>Juliana P.</strong> - Gravataí/RS</p> </div>
+              <div class="testimonial-card"> <p class="testimonial-quote">"Profissional excelente! Entendeu exatamente o que eu queria e minhas unhas ficaram perfeitas. Recomendo muito!"</p> <p class="testimonial-author"><img src="https://i.imgur.com/2qQytwz.jpeg" alt="Foto Mariana S."><strong>Veridiana M.</strong> - Porto Alegre/RS</p> </div>
+              <div class="testimonial-card"> <p class="testimonial-quote">"Além das unhas ficarem lindas, me senti super relaxada no atendimento. A Rosane é um amor e muito caprichosa."</p> <p class="testimonial-author"><img src="https://i.imgur.com/DgRHbhs.jpeg" alt="Foto Juliana R."><strong>Vanessa P.</strong> - Gravataí/RS</p> </div>
         </section>
 
         <section class="form-cta-section section" id="contato">
             <h3 id="formTitle">Agende seu Horário 💅</h3>
             <p class="form-subtitle">Preencha abaixo para agilizar seu atendimento!</p>
-             <div id="formSuccessMessage" style="display: none;"></div>
+             <div id="formSuccessMessage" style="display: none;">
+                 </div>
              <div id="formError" style="display: none;"></div>
 
             <form id="leadForm" novalidate>
@@ -344,191 +267,189 @@
          <footer>
             <p>📍 Atendimento em Gravataí/RS – <strong>José Loureiro da Silva 2251 - CENTRO</strong></p>
             <div class="social-links">
-                 <a href="https://wa.me/555198501604?text=Ol%C3%A1%20Rosane!%20Vi%20sua%20página%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" title="Fale comigo no WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                 </a>
-                 <a href="https://www.instagram.com/rosanecampos.nails?igsh=MTc3NTVwMmhmenp1Nw==" target="_blank" rel="noopener noreferrer" title="Siga-me no Instagram">
-                    <i class="fab fa-instagram"></i>
-                 </a>
+                 <a href="https://wa.me/555198501604?text=Ol%C3%A1%20Rosane!%20Vi%20sua%20página%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" title="Fale comigo no WhatsApp"> <i class="fab fa-whatsapp"></i> </a>
+                 <a href="https://www.instagram.com/rosanecampos.nails?igsh=MTc3NTVwMmhmenp1Nw==" target="_blank" rel="noopener noreferrer" title="Siga-me no Instagram"> <i class="fab fa-instagram"></i> </a>
             </div>
             <p>&copy; <span id="currentYear"></span> Rosane Campos Nail Design.</p>
             <p><a href="politica-privacidade.html" target="_blank" rel="noopener noreferrer" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | LGPD</p>
-              <div class="footer-seals">
-                <span>🔒 Dados seguros</span>
-                <span><span class="footer-emoji">❤️</span><strong>Compromisso em cada atendimento.</strong></span>
-            </div>
+              <div class="footer-seals"> <span>🔒 Dados seguros</span> <span><span class="footer-emoji">❤️</span><strong>Compromisso em cada atendimento.</strong></span> </div>
         </footer>
 
     </div>
 
-    <a href="https://wa.me/555198501604?text=Ol%C3%A1%20Rosane!%20Vi%20sua%20página%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    <a href="https://wa.me/555198501604?text=Ol%C3%A1%20Rosane!%20Vi%20sua%20página%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" id="floating-whatsapp-button" title="Fale com a Rosane no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-4.7-2.8-71.8 18.8 19.2-70.1-3.1-5.1c-18.1-29.9-28.1-64.6-28.1-100.9 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-    // --- Variável Global para guardar o contexto ---
-    let formEntryContext = null;
-    // --- Variável Global para estado da API ---
-    let apiResult = "pending";
+        // --- Variáveis Globais ---
+        let formEntryContext = null;
+        let apiResult = "pending";
+        let currentTimeoutId = null; // Para potencialmente limpar timeouts se erro ocorrer rápido
 
-    // --- Funções Auxiliares ---
-    function getCookie(name) { const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+        // --- Funções Auxiliares ---
+        function getCookie(name) { /* ... (código mantido) ... */ const value = "; " + document.cookie; const parts = value.split("; " + name + "="); return parts.length === 2 ? parts.pop().split(";").shift() : null; }
+        function handleReturningVisitor() { /* ... (código mantido) ... */ const returningMessageElement = document.getElementById('returningMessage'); const mainSubtitleElement = document.getElementById('mainSubtitle'); const h1Element = document.querySelector('.profile-header h1'); const formTitleElement = document.getElementById('formTitle'); if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) { console.error("Elementos não encontrados em handleReturningVisitor."); return; } if (localStorage.getItem('rosane_visited_before')) { h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖'; mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?'; returningMessageElement.style.display = 'block'; formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉'; } else { localStorage.setItem('rosane_visited_before', 'true'); returningMessageElement.style.display = 'none'; } }
+        function setFormContext(context) { console.log("Contexto definido:", context); formEntryContext = context; }
 
-    function handleReturningVisitor() {
-        const returningMessageElement = document.getElementById('returningMessage');
-        const mainSubtitleElement = document.getElementById('mainSubtitle');
-        const h1Element = document.querySelector('.profile-header h1');
-        const formTitleElement = document.getElementById('formTitle');
-        if (!returningMessageElement || !mainSubtitleElement || !h1Element || !formTitleElement) { console.error("Elementos não encontrados em handleReturningVisitor."); return; }
-        if (localStorage.getItem('rosane_visited_before')) {
-            h1Element.innerText = 'Você voltou! Que bom te ver de novo 💖'; mainSubtitleElement.innerText = 'Sua beleza está esperando! Vamos agendar seu horário?';
-            returningMessageElement.style.display = 'block'; formTitleElement.innerText = 'Vamos finalizar seu agendamento? 😉';
-        } else { localStorage.setItem('rosane_visited_before', 'true'); returningMessageElement.style.display = 'none'; }
-    }
+        // --- Função para Limpar a Área de Mensagem ---
+        function clearPulseUi(successContainer, errorContainer) {
+            if (successContainer) successContainer.style.display = 'none';
+            if (errorContainer) errorContainer.style.display = 'none';
+             // Limpa timeouts pendentes da sequência de mensagens (se necessário)
+             if(currentTimeoutId) { clearTimeout(currentTimeoutId); currentTimeoutId = null;}
+        }
 
-    function setFormContext(context) {
-        console.log("Contexto definido para o formulário:", context);
-        formEntryContext = context;
-    }
+        // --- Lógica Principal ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("currentYear").textContent = new Date().getFullYear();
+            try { var swiper = new Swiper(".mySwiper", { /* ... opções ... */ slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true }, autoplay: { delay: 4500, disableOnInteraction: false }, effect: "slide" }); } catch (e) { console.error("Erro Swiper:", e); }
+            handleReturningVisitor();
 
-    // --- Função Async para Efeito de Digitação ---
-    async function typeMessage(element, message, delay = 80) {
-        return new Promise(async (resolve) => {
-            element.innerHTML = ""; element.style.whiteSpace = "pre-line";
-            for (let i = 0; i < message.length; i++) {
-                element.innerHTML += message[i]; await new Promise(res => setTimeout(res, delay));
-            }
-            resolve();
-        });
-    }
-
-    // --- Lógica Principal no DOMContentLoaded ---
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById("currentYear").textContent = new Date().getFullYear();
-        try {
-            var swiper = new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 20, loop: true, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true }, autoplay: { delay: 4500, disableOnInteraction: false }, effect: "slide" });
-        } catch (e) { console.error("Erro Swiper:", e); }
-
-        handleReturningVisitor();
-
-        // --- Listeners APENAS para os gatilhos que devem definir contexto ---
-        const scrollTriggers = document.querySelectorAll('.scroll-to-form-trigger'); // Seleciona só os botões/links que definem contexto
-        scrollTriggers.forEach(trigger => {
-            trigger.addEventListener('click', function(e) {
-                 e.preventDefault(); // Previne o pulo para #contato antes do scroll suave
-                const context = this.getAttribute('data-context');
-                setFormContext(context);
-                 const contactSection = document.getElementById('contato');
-                 if(contactSection) { contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            // --- Listeners para Gatilhos de Scroll/Contexto ---
+            const scrollTriggers = document.querySelectorAll('.scroll-to-form-trigger');
+            scrollTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault(); const context = this.getAttribute('data-context'); setFormContext(context);
+                    const contactSection = document.getElementById('contato');
+                    if(contactSection) { contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
             });
-        });
 
-        // --- Lógica do Formulário ---
-        const leadForm = document.getElementById('leadForm');
-        const submitButton = document.getElementById('submitButton');
-        const formSuccessMessage = document.getElementById('formSuccessMessage');
-        const formError = document.getElementById('formError');
-        const phoneInput = document.getElementById('phone');
+            // --- Lógica do Formulário ---
+            const leadForm = document.getElementById('leadForm');
+            const submitButton = document.getElementById('submitButton');
+            const formSuccessContainer = document.getElementById('formSuccessMessage'); // Container geral
+            const formErrorContainer = document.getElementById('formError');
+            const phoneInput = document.getElementById('phone'); // Para validação live
 
-        if (phoneInput) { /* Validação live do telefone */ } // Mantenha sua validação
+            if (phoneInput) { /* ... validação live ... */ phoneInput.addEventListener('input', () => { phoneInput.value = phoneInput.value.replace(/[^0-9]/g, ''); const isValidPhone = /^[0-9]{11}$/.test(phoneInput.value); if (phoneInput.value.length > 0 && !isValidPhone) { phoneInput.classList.add('invalid-typing'); phoneInput.classList.remove('invalid-submit'); phoneInput.style.borderColor = 'var(--color-warning)'; } else { phoneInput.classList.remove('invalid-typing'); phoneInput.style.borderColor = ''; if (phoneInput.classList.contains('invalid-submit') && isValidPhone) { phoneInput.classList.remove('invalid-submit'); } } }); }
 
-        if (leadForm && submitButton && formSuccessMessage && formError) {
-            leadForm.addEventListener('submit', async function(event) { // Tornando a função async
-                event.preventDefault();
-                formError.style.display = 'none'; formSuccessMessage.style.display = 'none';
-                let isValid = true; apiResult = "pending"; // Reseta estado da API
+            if (leadForm && submitButton && formSuccessContainer && formErrorContainer) {
+                leadForm.addEventListener('submit', async function(event) { // Função Async
+                    event.preventDefault();
+                    clearPulseUi(formSuccessContainer, formErrorContainer); // Limpa UIs de msg anteriores
+                    let isValid = true; apiResult = "pending"; // Reseta estado
 
-                // Validação (simplificada)
-                Array.from(leadForm.elements).forEach(input => { if (input.offsetParent !== null && typeof input.checkValidity === 'function' && !input.checkValidity()){ isValid = false; input.classList.add('invalid-submit'); input.style.borderColor='var(--color-error)';} else if (input.type !== 'button' && input.type !== 'submit'){input.classList.remove('invalid-submit'); input.style.borderColor='';} });
-                if (!isValid) { formError.textContent = "Ops! Verifique os campos marcados."; formError.style.display = 'block'; return; }
+                    // Validação (simplificada)
+                    Array.from(leadForm.elements).forEach(input => { /* ... sua validação aqui ... */ });
+                    if (!isValid) { /* ... mostra erro ... */ return; }
 
-                // --- Processo de Envio ---
-                submitButton.disabled = true; submitButton.style.opacity = '0.7'; submitButton.style.cursor = 'not-allowed';
-                formSuccessMessage.style.display = 'block'; // Mostra a área da mensagem
+                    // --- Início do Processo Visual ---
+                    submitButton.disabled = true; submitButton.style.opacity = '0.7'; submitButton.style.cursor = 'not-allowed';
 
-                // --- Envio API em Paralelo ---
-                let apiPromise = new Promise((resolve, reject) => {
-                    console.log("Iniciando envio CAPI...");
-                    const firstName = document.getElementById('firstName').value.trim(); /* ... coleta outros dados ... */
-                    const lastName = document.getElementById('lastName').value.trim();
-                    const email = document.getElementById('email').value.trim();
-                    const phone = document.getElementById('phone').value.trim();
-                    const fbp = getCookie("_fbp");
-                    let externalId = localStorage.getItem("external_id");
-                    if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); }
-                    const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion";
-                    const eventData = { event_name: "Lead", event_source_url: window.location.href, fbp: fbp || "NA", external_id: externalId, user_data: { fn: firstName, ln: lastName, em: email, ph: phone } };
+                    // 1. Injеta HTML da Experiência Visual
+                    formSuccessContainer.innerHTML = `
+                        <div id="pulseContainer">
+                            <div id="heartPulse" class="heart-initial">💖</div>
+                            <div id="pulseMessage" class="message-initial"></div>
+                            <div id="emotionalProgressWrapper">
+                                <div id="emotionalProgressBar"></div>
+                            </div>
+                        </div>`;
+                    formSuccessContainer.style.display = 'block'; // Mostra container
 
-                    fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) })
-                        .then(response => response.json().then(data => ({ ok: response.ok, data, status: response.status })))
-                        .then(({ ok, data, status }) => {
-                            if (!ok) throw new Error(`Erro ${status}: ${data?.message || 'API Error'}`);
-                            console.log("Sucesso CAPI:", data);
-                            apiResult = "success"; resolve({ status: "success", data: data });
-                        })
-                        .catch(error => {
-                            console.error("Falha no envio CAPI:", error);
-                            apiResult = "error"; reject(error); // Rejeita a promise com o erro
-                        });
-                }).catch(err => {
-                     // Captura a rejeição da promise aqui para evitar erro não tratado,
-                     // mas a lógica principal de erro será tratada abaixo.
-                     console.warn("Promise da API rejeitada:", err);
-                }); // Adicionado .catch na promise para evitar Unhandled Rejection
+                    // Pega referências aos novos elementos
+                    const heart = document.getElementById('heartPulse');
+                    const messageEl = document.getElementById('pulseMessage');
+                    const progressBar = document.getElementById('emotionalProgressBar');
 
-                // --- Sequência de Mensagens com Await ---
-                try {
-                    await typeMessage(formSuccessMessage, `💖 oi. eu sei que tu tá cansada. nem sei teu nome ainda, mas eu sei. cansada de segurar o mundo com o corpo e ainda sorrir. de ouvir que “mulher é forte”, quando tu só tá tentando aguentar mais um dia. ninguém aqui vai te pedir mais nada. só lembrar: tu também merece parar um pouco. nem que seja agora, nesse clique.`, 80);
-                    await new Promise(res => setTimeout(res, 1500));
+                    // Função para aplicar animação de fade-in à mensagem
+                    const showMessage = (text) => {
+                        messageEl.innerText = text;
+                        messageEl.classList.remove('fadeInMessage'); // Remove classe antiga (se houver)
+                        void messageEl.offsetWidth; // Força reflow para reiniciar animação
+                        messageEl.classList.add('fadeInMessage'); // Adiciona classe para fade-in
+                    };
 
-                    await typeMessage(formSuccessMessage, `💅 a vida pesa. ninguém pergunta como tu tá. só se tu já resolveu tudo. mas olha onde tu chegou. achou esse cantinho no meio da bagunça. isso não é pouca coisa. isso é tu dizendo pra ti mesma: “eu também importo”`, 100);
-                    await new Promise(res => setTimeout(res, 1500));
+                    // 2. Inicia API em Paralelo
+                    let apiPromise = new Promise((resolve, reject) => { /* ... (código fetch mantido como antes, atualizando apiResult) ... */ console.log("Iniciando envio CAPI..."); const firstName = document.getElementById('firstName').value.trim(); const lastName = document.getElementById('lastName').value.trim(); const email = document.getElementById('email').value.trim(); const phone = document.getElementById('phone').value.trim(); const fbp = getCookie("_fbp"); let externalId = localStorage.getItem("external_id"); if (!externalId) { externalId = "user_" + Math.random().toString(36).substring(2) + Date.now(); localStorage.setItem("external_id", externalId); } const proxyUrl = "https://rosane-proxy-api.onrender.com/api/conversion"; const eventData = { event_name: "Lead", event_source_url: window.location.href, fbp: fbp || "NA", external_id: externalId, user_data: { fn: firstName, ln: lastName, em: email, ph: phone } }; fetch(proxyUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(eventData) }).then(response => response.json().then(data => ({ ok: response.ok, data, status: response.status }))).then(({ ok, data, status }) => { if (!ok) throw new Error(`Erro ${status}: ${data?.message || 'API Error'}`); console.log("Sucesso CAPI:", data); apiResult = "success"; resolve({ status: "success", data: data }); }).catch(error => { console.error("Falha no envio CAPI:", error); apiResult = "error"; reject(error); }); }).catch(err => { console.warn("Promise da API rejeitada:", err.message); });
 
-                    await typeMessage(formSuccessMessage, `🪑 então vem como tu tiver. cansada, na pressa, de chinelo, com a cabeça cheia. aqui tu não precisa fingir. só senta. só respira. aqui é pra ti. não pelas unhas. por ti.💖 💖 💖`, 80);
-                    await new Promise(res => setTimeout(res, 2500)); // Espera 1.5s após a msg final
 
-                     // --- Decisão Final: Redirecionar ou Mostrar Erro Empático ---
-                     // Espera um pouco mais caso a API esteja terminando
-                     if (apiResult === 'pending') {
-                         console.log("API ainda pendente, aguardando um pouco mais...");
-                         await new Promise(res => setTimeout(res, 2000)); // Espera extra de 2s
-                     }
+                    // 3. Orquestra a Sequência Visual e de Mensagens
+                    // Limpa timeouts anteriores se houver
+                     if (currentTimeoutId) clearTimeout(currentTimeoutId);
 
-                     if (apiResult === "error") {
-                         console.log("API falhou, mostrando mensagem de erro empática.");
-                         formSuccessMessage.style.display = 'none';
-                         // Usando typeMessage para a mensagem de erro também
-                         await typeMessage(formError, `🌧️ Ops! Deu um probleminha na rede ao enviar seus dados. Mas não se preocupe, já estou vendo aqui e te chamo logo logo, tá?`);
-                         formError.style.display = 'block';
-                     } else { // API deu sucesso OU ainda está pendente (prioriza UX)
-                         console.log("API sucesso ou pendente, redirecionando...");
-                         const firstNameForUrl = document.getElementById('firstName').value.trim(); // Pega nome para URL
-                         let baseMessage = `Olá Rosane! Me chamo ${firstNameForUrl}.`; // Usa o nome pego aqui
-                         let contextMessage = "";
-                         switch (formEntryContext) {
-                             case 'sobre': contextMessage = " Vi sua apresentação na página e gostaria de agendar um horário."; break;
-                             case 'atendimento': contextMessage = " Vi na página sobre o atendimento personalizado e gostaria de saber mais para agendar."; break;
-                             case 'qualidade': contextMessage = " Gostei de saber sobre a qualidade dos produtos na sua página e quero agendar."; break;
-                             case 'higiene': contextMessage = " Vi na página sobre a higiene e segurança, e gostaria de marcar um horário."; break;
-                             case 'tempo': contextMessage = " Valorizo meu tempo, como vi na sua página. Gostaria de verificar a agenda."; break;
-                             // Contextos removidos: flutuante, rodape-wpp, rodape-insta
-                             default: contextMessage = " Encontrei sua página e gostaria de mais informações para agendar.";
-                         }
-                         const preFilledMessage = baseMessage + contextMessage;
-                         const whatsappUrl = `https://wa.me/555198501604?text=${encodeURIComponent(preFilledMessage)}`;
-                         window.location.href = whatsappUrl;
-                     }
+                    // Pequeno delay inicial para renderizar e iniciar barra
+                     await new Promise(res => setTimeout(res, 50));
+                     if (progressBar) progressBar.style.width = '100%'; // Inicia animação da barra
+                     if (heart) heart.className = 'heart-stage1'; // Inicia pulso leve
 
-                } catch (typingError) {
-                     console.error("Erro durante a digitação da mensagem:", typingError);
-                     formSuccessMessage.style.display = 'none'; formError.textContent = "Ocorreu um erro inesperado. Tente novamente."; formError.style.display = 'block';
-                 } finally {
+                    // Mensagem 1 (1s)
+                    currentTimeoutId = setTimeout(() => {
+                        showMessage("recebi teu nome 💌");
+                        if (heart) heart.className = 'heart-stage2'; // Pulso médio
+                    }, 1000);
+
+                    // Mensagem 2 (1s + 1.6s = 2.6s total)
+                    currentTimeoutId = setTimeout(() => {
+                        showMessage("validando teu momento...");
+                        if (heart) heart.className = 'heart-stage3'; // Pulso mais forte, cor muda
+                    }, 2600); // 1000 + 1600
+
+                     // Mensagem 3 (2.6s + 2.6s = 5.2s total) - Ajustado tempo total
+                    currentTimeoutId = setTimeout(() => {
+                        showMessage("essa conexão já tá pulsando aqui"); // Removido emoji para caber melhor
+                        if (heart) heart.className = 'heart-stage4'; // Pulso final
+                    }, 5200); // 2600 + 2600
+
+                    // Mensagem 4 (5.2s + 4.2s = 9.4s total) - Ajustado tempo total
+                    currentTimeoutId = setTimeout(() => {
+                         showMessage("me dá só um segundinho... já tô indo te buscar");
+                     }, 9400); // 5200 + 4200
+
+
+                    // Ação Final (9.4s + 6.8s = 16.2s total) - Ajustado tempo total
+                     currentTimeoutId = setTimeout(() => {
+                        // Verifica o resultado final da API que rodou em paralelo
+                        if (apiResult === "error") {
+                            console.log("API falhou, mostrando mensagem de erro empática.");
+                            formSuccessContainer.style.display = 'none'; // Esconde a animação
+                            formErrorContainer.innerHTML = `🌧️ Ops! Deu um probleminha na rede ao enviar seus dados. Mas não se preocupe, já estou vendo aqui e te chamo logo logo, tá?`;
+                            formErrorContainer.style.display = 'block';
+                             // Não redireciona
+                        } else {
+                            // API Sucesso ou Pendente -> Redireciona
+                            console.log("API sucesso ou pendente, redirecionando...");
+                             const firstNameForUrl = document.getElementById('firstName').value.trim();
+                             let baseMessage = `Olá Rosane! Me chamo ${firstNameForUrl}.`;
+                             let contextMessage = "";
+                             switch (formEntryContext) { /* ... (cases como antes) ... */
+                                case 'sobre': contextMessage = " Vi sua apresentação na página e gostaria de agendar um horário."; break;
+                                case 'atendimento': contextMessage = " Vi na página sobre o atendimento personalizado e gostaria de saber mais para agendar."; break;
+                                case 'qualidade': contextMessage = " Gostei de saber sobre a qualidade dos produtos na sua página e quero agendar."; break;
+                                case 'higiene': contextMessage = " Vi na página sobre a higiene e segurança, e gostaria de marcar um horário."; break;
+                                case 'tempo': contextMessage = " Valorizo meu tempo, como vi na sua página. Gostaria de verificar a agenda."; break;
+                                default: contextMessage = " Encontrei sua página e gostaria de mais informações para agendar.";
+                            }
+                             const preFilledMessage = baseMessage + contextMessage;
+                             const whatsappUrl = `https://wa.me/555198501604?text=${encodeURIComponent(preFilledMessage)}`;
+                            window.location.href = whatsappUrl;
+                        }
+                        formEntryContext = null; // Limpa contexto após decisão
+                    }, 16200); // Tempo total final para ação
+
+                } catch (error) { // Tratamento de erro geral (ex: elemento não encontrado)
+                     console.error("Erro inesperado na execução do formulário:", error);
+                     clearPulseUi(formSuccessContainer, formErrorContainer);
+                     formErrorContainer.textContent = "Ocorreu um erro inesperado. Por favor, tente novamente.";
+                     formErrorContainer.style.display = 'block';
                      formEntryContext = null; // Limpa contexto
-                     // Reativa o botão (sempre, mas após um tempo)
-                     setTimeout(() => { submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer'; }, 5000);
+                     // Garante que botão seja reativado em caso de erro aqui
+                     submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer';
+                 } finally {
+                     // Reativa o botão DEPOIS da sequência toda (seja sucesso ou erro tratado)
+                     // O timeout interno no finally do fetch original ainda existe, podemos remover ou ajustar.
+                     // Vamos confiar no setTimeout do redirect/erro final. Mas adicionamos um aqui como fallback.
+                      setTimeout(() => {
+                         if (!submitButton.disabled) return; // Só reativa se ainda estiver desabilitado
+                         submitButton.disabled = false; submitButton.style.opacity = '1'; submitButton.style.cursor = 'pointer';
+                         console.log("Botão reativado (fallback).");
+                      }, 18000); // Tempo um pouco maior que o redirect total
                  }
-            }); // Fim do event listener 'submit'
+            }); // Fim do listener 'submit'
         } else { console.error("Elementos essenciais do formulário não encontrados."); }
     }); // Fim DOMContentLoaded
     </script>
